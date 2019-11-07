@@ -20,7 +20,7 @@ class HoraireController extends AbstractController
      */
     public function index(HoraireRepository $horaireRepository): Response
     {
-        return $this->render('horaire/index.html.twig', [
+        return $this->render('back/horaire/index.html.twig', [
             'horaires' => $horaireRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class HoraireController extends AbstractController
             return $this->redirectToRoute('horaire_index');
         }
 
-        return $this->render('horaire/new.html.twig', [
+        return $this->render('back/horaire/new.html.twig', [
             'horaire' => $horaire,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class HoraireController extends AbstractController
      */
     public function show(Horaire $horaire): Response
     {
-        return $this->render('horaire/show.html.twig', [
+        return $this->render('back/horaire/show.html.twig', [
             'horaire' => $horaire,
         ]);
     }
@@ -72,7 +72,7 @@ class HoraireController extends AbstractController
             return $this->redirectToRoute('horaire_index');
         }
 
-        return $this->render('horaire/edit.html.twig', [
+        return $this->render('back/horaire/edit.html.twig', [
             'horaire' => $horaire,
             'form' => $form->createView(),
         ]);
