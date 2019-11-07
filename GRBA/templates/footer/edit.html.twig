@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Footer{% endblock %}
+
+{% block body %}
+    <h1>Edit Footer</h1>
+
+    {{ include('footer/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('footer_index') }}">back to list</a>
+
+    {{ include('footer/_delete_form.html.twig') }}
+{% endblock %}
