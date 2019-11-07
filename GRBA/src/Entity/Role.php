@@ -31,6 +31,12 @@ class Role
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="role")
      */
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+    
     private $users;
 
     public function __construct()
@@ -97,4 +103,6 @@ class Role
 
         return $this;
     }
+
+
 }
