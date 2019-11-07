@@ -20,7 +20,7 @@ class HeaderController extends AbstractController
      */
     public function index(HeaderRepository $headerRepository): Response
     {
-        return $this->render('header/index.html.twig', [
+        return $this->render('back/header/index.html.twig', [
             'headers' => $headerRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class HeaderController extends AbstractController
             return $this->redirectToRoute('header_index');
         }
 
-        return $this->render('header/new.html.twig', [
+        return $this->render('back/header/new.html.twig', [
             'header' => $header,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class HeaderController extends AbstractController
      */
     public function show(Header $header): Response
     {
-        return $this->render('header/show.html.twig', [
+        return $this->render('back/header/show.html.twig', [
             'header' => $header,
         ]);
     }
@@ -72,7 +72,7 @@ class HeaderController extends AbstractController
             return $this->redirectToRoute('header_index');
         }
 
-        return $this->render('header/edit.html.twig', [
+        return $this->render('back/header/edit.html.twig', [
             'header' => $header,
             'form' => $form->createView(),
         ]);

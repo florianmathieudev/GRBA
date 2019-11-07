@@ -20,7 +20,7 @@ class PictureController extends AbstractController
      */
     public function index(PictureRepository $pictureRepository): Response
     {
-        return $this->render('picture/index.html.twig', [
+        return $this->render('back/picture/index.html.twig', [
             'pictures' => $pictureRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class PictureController extends AbstractController
             return $this->redirectToRoute('picture_index');
         }
 
-        return $this->render('picture/new.html.twig', [
+        return $this->render('back/picture/new.html.twig', [
             'picture' => $picture,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class PictureController extends AbstractController
      */
     public function show(Picture $picture): Response
     {
-        return $this->render('picture/show.html.twig', [
+        return $this->render('back/picture/show.html.twig', [
             'picture' => $picture,
         ]);
     }
@@ -72,7 +72,7 @@ class PictureController extends AbstractController
             return $this->redirectToRoute('picture_index');
         }
 
-        return $this->render('picture/edit.html.twig', [
+        return $this->render('back/picture/edit.html.twig', [
             'picture' => $picture,
             'form' => $form->createView(),
         ]);

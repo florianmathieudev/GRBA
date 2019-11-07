@@ -20,7 +20,7 @@ class ContactController extends AbstractController
      */
     public function index(ContactRepository $contactRepository): Response
     {
-        return $this->render('contact/index.html.twig', [
+        return $this->render('back/contact/index.html.twig', [
             'contacts' => $contactRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('contact_index');
         }
 
-        return $this->render('contact/new.html.twig', [
+        return $this->render('back/contact/new.html.twig', [
             'contact' => $contact,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class ContactController extends AbstractController
      */
     public function show(Contact $contact): Response
     {
-        return $this->render('contact/show.html.twig', [
+        return $this->render('back/contact/show.html.twig', [
             'contact' => $contact,
         ]);
     }
@@ -72,7 +72,7 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('contact_index');
         }
 
-        return $this->render('contact/edit.html.twig', [
+        return $this->render('back/contact/edit.html.twig', [
             'contact' => $contact,
             'form' => $form->createView(),
         ]);

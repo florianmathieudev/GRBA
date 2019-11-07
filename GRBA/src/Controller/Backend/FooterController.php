@@ -20,7 +20,7 @@ class FooterController extends AbstractController
      */
     public function index(FooterRepository $footerRepository): Response
     {
-        return $this->render('footer/index.html.twig', [
+        return $this->render('back/footer/index.html.twig', [
             'footers' => $footerRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class FooterController extends AbstractController
             return $this->redirectToRoute('footer_index');
         }
 
-        return $this->render('footer/new.html.twig', [
+        return $this->render('back/footer/new.html.twig', [
             'footer' => $footer,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class FooterController extends AbstractController
      */
     public function show(Footer $footer): Response
     {
-        return $this->render('footer/show.html.twig', [
+        return $this->render('back/footer/show.html.twig', [
             'footer' => $footer,
         ]);
     }
@@ -72,7 +72,7 @@ class FooterController extends AbstractController
             return $this->redirectToRoute('footer_index');
         }
 
-        return $this->render('footer/edit.html.twig', [
+        return $this->render('back/footer/edit.html.twig', [
             'footer' => $footer,
             'form' => $form->createView(),
         ]);

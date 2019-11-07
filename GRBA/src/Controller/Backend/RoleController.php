@@ -20,7 +20,7 @@ class RoleController extends AbstractController
      */
     public function index(RoleRepository $roleRepository): Response
     {
-        return $this->render('role/index.html.twig', [
+        return $this->render('back/role/index.html.twig', [
             'roles' => $roleRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class RoleController extends AbstractController
             return $this->redirectToRoute('role_index');
         }
 
-        return $this->render('role/new.html.twig', [
+        return $this->render('back/role/new.html.twig', [
             'role' => $role,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class RoleController extends AbstractController
      */
     public function show(Role $role): Response
     {
-        return $this->render('role/show.html.twig', [
+        return $this->render('back/role/show.html.twig', [
             'role' => $role,
         ]);
     }
@@ -72,7 +72,7 @@ class RoleController extends AbstractController
             return $this->redirectToRoute('role_index');
         }
 
-        return $this->render('role/edit.html.twig', [
+        return $this->render('back/role/edit.html.twig', [
             'role' => $role,
             'form' => $form->createView(),
         ]);

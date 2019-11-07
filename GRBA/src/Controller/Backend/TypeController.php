@@ -20,7 +20,7 @@ class TypeController extends AbstractController
      */
     public function index(TypeRepository $typeRepository): Response
     {
-        return $this->render('type/index.html.twig', [
+        return $this->render('back/type/index.html.twig', [
             'types' => $typeRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class TypeController extends AbstractController
             return $this->redirectToRoute('type_index');
         }
 
-        return $this->render('type/new.html.twig', [
+        return $this->render('back/type/new.html.twig', [
             'type' => $type,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class TypeController extends AbstractController
      */
     public function show(Type $type): Response
     {
-        return $this->render('type/show.html.twig', [
+        return $this->render('back/type/show.html.twig', [
             'type' => $type,
         ]);
     }
@@ -72,7 +72,7 @@ class TypeController extends AbstractController
             return $this->redirectToRoute('type_index');
         }
 
-        return $this->render('type/edit.html.twig', [
+        return $this->render('back/type/edit.html.twig', [
             'type' => $type,
             'form' => $form->createView(),
         ]);

@@ -20,7 +20,7 @@ class NetworkController extends AbstractController
      */
     public function index(NetworkRepository $networkRepository): Response
     {
-        return $this->render('network/index.html.twig', [
+        return $this->render('back/network/index.html.twig', [
             'networks' => $networkRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class NetworkController extends AbstractController
             return $this->redirectToRoute('network_index');
         }
 
-        return $this->render('network/new.html.twig', [
+        return $this->render('back/network/new.html.twig', [
             'network' => $network,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class NetworkController extends AbstractController
      */
     public function show(Network $network): Response
     {
-        return $this->render('network/show.html.twig', [
+        return $this->render('back/network/show.html.twig', [
             'network' => $network,
         ]);
     }
@@ -72,7 +72,7 @@ class NetworkController extends AbstractController
             return $this->redirectToRoute('network_index');
         }
 
-        return $this->render('network/edit.html.twig', [
+        return $this->render('back/network/edit.html.twig', [
             'network' => $network,
             'form' => $form->createView(),
         ]);

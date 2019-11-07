@@ -20,7 +20,7 @@ class EventController extends AbstractController
      */
     public function index(EventRepository $eventRepository): Response
     {
-        return $this->render('event/index.html.twig', [
+        return $this->render('back/event/index.html.twig', [
             'events' => $eventRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class EventController extends AbstractController
             return $this->redirectToRoute('event_index');
         }
 
-        return $this->render('event/new.html.twig', [
+        return $this->render('back/event/new.html.twig', [
             'event' => $event,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class EventController extends AbstractController
      */
     public function show(Event $event): Response
     {
-        return $this->render('event/show.html.twig', [
+        return $this->render('back/event/show.html.twig', [
             'event' => $event,
         ]);
     }
@@ -72,7 +72,7 @@ class EventController extends AbstractController
             return $this->redirectToRoute('event_index');
         }
 
-        return $this->render('event/edit.html.twig', [
+        return $this->render('back/event/edit.html.twig', [
             'event' => $event,
             'form' => $form->createView(),
         ]);
