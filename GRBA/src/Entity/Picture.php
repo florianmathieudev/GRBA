@@ -26,6 +26,12 @@ class Picture
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="pictures")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $event;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +57,18 @@ class Picture
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getEvent(): ?Event
+    {
+        return $this->event;
+    }
+
+    public function setEvent(?Event $event): self
+    {
+        $this->event = $event;
 
         return $this;
     }
