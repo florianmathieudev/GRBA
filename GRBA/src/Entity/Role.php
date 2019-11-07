@@ -28,10 +28,6 @@ class Role
      */
     private $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="role")
-     */
-
     public function __toString()
     {
         return $this->name;
