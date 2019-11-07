@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Footer{% endblock %}
+
+{% block body %}
+    <h1>Footer</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ footer.id }}</td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ footer.text }}</td>
+            </tr>
+            <tr>
+                <th>Information</th>
+                <td>{{ footer.information }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('footer_index') }}">back to list</a>
+
+    <a href="{{ path('footer_edit', {'id': footer.id}) }}">edit</a>
+
+    {{ include('footer/_delete_form.html.twig') }}
+{% endblock %}
