@@ -12,6 +12,11 @@ security:
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 1814400 # Three Weeks
+                path:     /
+                # TODO voir si on fait le coup du token ( https://symfony.com/doc/current/security/remember_me.html )
             logout:
                 path: app_logout
                 # where to redirect after logout
