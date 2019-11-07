@@ -26,6 +26,11 @@ class Footer
      */
     private $information;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
+     */
+    private $picture;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +56,18 @@ class Footer
     public function setInformation(?string $information): self
     {
         $this->information = $information;
+
+        return $this;
+    }
+
+    public function getPicture(): ?Picture
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?Picture $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }
