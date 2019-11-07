@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -15,6 +17,11 @@ class User
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -30,7 +37,10 @@ class User
      * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $role;
+    private $roles;
+
+    private $salt;
+
 
     public function getId(): ?int
     {
@@ -61,16 +71,62 @@ class User
         return $this;
     }
 
-    public function getRole(): ?Role
+    public function getRoles(): ?Roles
     {
-        return $this->role;
+        return $this->roles;
     }
 
-    public function setRole(?Role $role): self
+    public function setRoles(?Roles $roles): self
     {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
+    }
+
+
+    /**
+     * Get the value of salt
+     */ 
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * Set the value of salt
+     *
+     * @return  self
+     */ 
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Username
+     */ 
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of Username
+     *
+     * @return  self
+     */ 
+    public function setUsername($Username)
+    {
+        $this->Username = $Username;
+
+        return $this;
+    }
+
+    public function eraseCredentials()
+    {
+        
     }
 
 }
