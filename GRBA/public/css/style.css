@@ -1,0 +1,26 @@
+/* body {
+    background-color: black;
+} */
+
+.btn {
+    margin: 0.33em;
+}
+
+#mainImg {
+    background-image: url("https://www.hotel-les-grenettes.com/wp-content/uploads/2019/08/randonnee-ile-de-re.jpg");
+    background-size: cover;
+    width: auto;
+    height: 60em;
+    max-height: 45vh;
+    background-position: center;
+}
+
+/* .row {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+} */
+
+/* .card {
+    margin: auto;
+} */
