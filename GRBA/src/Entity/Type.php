@@ -33,6 +33,11 @@ class Type
      */
     private $events;
 
+    public function __toString()
+    {
+        return $this->title;
+    }
+
     public function __construct()
     {
         $this->events = new ArrayCollection();

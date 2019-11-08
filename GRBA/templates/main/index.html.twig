@@ -26,10 +26,40 @@
             <div id="mainImg">
             </div>
         </div>
-
     </header>
     <main>
-    
+        <div class="container-fluid">
+            <div class="row">
+                <section class="article col-9">
+                    <h2>Prochains Évènements</h2>
+                    <div class="container-fluid">
+                        <div class="row">
+                        {% for event in events %}
+                        <div class="card col-4 d-flex justify-content-center" style="width: 2em">
+                            <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ event.title }}</h5>
+                                <p class="card-text">{{ event.description }}</p>
+                                <h6>{{ event.type }}</h6>
+                                <a href="#" class="btn btn-primary">Voir plus</a>
+                            </div>
+                        </div>
+                            {# <td>{{ event.date }}</td> #}
+                        {% else %}
+                        <tr>
+                            <td colspan="9">no records found</td>
+                        </tr>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </section>
+                <section class="sidebar col-3">
+                    <h2>Calendrier</h2>
+                </section>
+            </div>
+        </div>
+        <div class="container">
+        </div>
     </main>
     <footer>
     
