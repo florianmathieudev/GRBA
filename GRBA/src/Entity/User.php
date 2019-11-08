@@ -37,7 +37,7 @@ class User implements UserInterface
      * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $roles;
+    private $role;
 
     private $salt;
 
@@ -71,16 +71,20 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles(): ?Roles
+    public function getRole(): ?Role
     {
-        return $this->roles;
+        return $this->role;
     }
 
-    public function setRoles(?Roles $roles): self
+    public function setRole(?Role $role): self
     {
-        $this->roles = $roles;
-
+        $this->role = $role;
         return $this;
+    }
+
+    public function getRoles()
+    {
+        return array($this->getRole()->getCode());
     }
 
 
