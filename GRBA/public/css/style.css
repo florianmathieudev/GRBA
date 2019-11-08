@@ -1,0 +1,14 @@
+/* body {
+    background-color: black;
+} */
+
+.btn {
+    margin: 0.33em;
+}
+
+#mainImg {
+    background-image: url("http://placehold.it/350x65");
+    background-size: cover;
+    height: 400px;
+    max-height: 80vw;
+}

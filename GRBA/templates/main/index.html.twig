@@ -1,20 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}GRBA - Groupe des Randonneurs et Baliseurs Aubois{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <header>
+        <div id="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Accueil</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="btn btn-outline-secondary" href="#">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-secondary" href="#">Connexion</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div id="mainImg">
+            </div>
+        </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! :white_check_mark:</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/GRBA/GRBA/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/GRBA/GRBA/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
-</div>
+    </header>
+    <main>
+    
+    </main>
+    <footer>
+    
+    </footer>
 {% endblock %}
