@@ -7,8 +7,10 @@
 }
 
 #mainImg {
-    background-image: url("http://placehold.it/350x65");
+    background-image: url("https://www.hotel-les-grenettes.com/wp-content/uploads/2019/08/randonnee-ile-de-re.jpg");
     background-size: cover;
-    height: 400px;
-    max-height: 80vw;
+    width: auto;
+    height: 60em;
+    max-height: 45vh;
+    background-position: center;
 }
