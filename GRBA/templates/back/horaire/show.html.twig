@@ -12,23 +12,23 @@
                 <td>{{ horaire.id }}</td>
             </tr>
             <tr>
-                <th>Opening</th>
+                <th>Ouverture</th>
                 <td>{{ horaire.opening }}</td>
             </tr>
             <tr>
-                <th>Closing</th>
+                <th>Fermeture</th>
                 <td>{{ horaire.closing }}</td>
             </tr>
             <tr>
-                <th>Open</th>
+                <th>Ouvert</th>
                 <td>{{ horaire.open ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('horaire_index') }}">back to list</a>
+    <a href="{{ path('horaire_index') }}">Revenir à la liste</a>
 
-    <a href="{{ path('horaire_edit', {'id': horaire.id}) }}">edit</a>
+    <a href="{{ path('horaire_edit', {'id': horaire.id}) }}">Éditer</a>
 
     {{ include('back/horaire/_delete_form.html.twig') }}
 {% endblock %}

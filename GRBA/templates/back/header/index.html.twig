@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Header index{% endblock %}
+{% block title %}Liste des Entêtes{% endblock %}
 
 {% block body %}
-    <h1>Header index</h1>
+    <h1>Liste des Entêtes</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Tab</th>
-                <th>Title</th>
-                <th>actions</th>
+                <th>Onglet</th>
+                <th>Titre</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +21,17 @@
                 <td>{{ header.tab }}</td>
                 <td>{{ header.title }}</td>
                 <td>
-                    <a href="{{ path('header_show', {'id': header.id}) }}">show</a>
-                    <a href="{{ path('header_edit', {'id': header.id}) }}">edit</a>
+                    <a href="{{ path('header_show', {'id': header.id}) }}">Voir</a>
+                    <a href="{{ path('header_edit', {'id': header.id}) }}">Éditer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucune Entête</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('header_new') }}">Create new</a>
+    <a href="{{ path('header_new') }}">Créer une nouvelle Entête</a>
 {% endblock %}
