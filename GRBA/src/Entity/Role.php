@@ -33,6 +33,9 @@ class Role
         return $this->name;
     }
     
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="role")
+     */
     private $users;
 
     public function __construct()

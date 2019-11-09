@@ -37,11 +37,18 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $role;
+    private $role; // = array(); 
 
     private $salt;
+
+
+    public function __construct()
+    {
+        // $this->role = [2];
+    }
+
 
 
     public function getId(): ?int
@@ -75,10 +82,10 @@ class User implements UserInterface
 
     public function getRole(): ?Role
     {
-        if (empty($this->role))
-        {
-            return [2];
-        }
+        // if (empty($this->role))
+        // {
+        //     return [2];
+        // }
         return $this->role;
     }
 
@@ -90,7 +97,7 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return array($this->getRole()->getCode());
+        return array($this->getRole());
     }
 
 
