@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Footer index{% endblock %}
+{% block title %}Liste des Pieds de page{% endblock %}
 
 {% block body %}
-    <h1>Footer index</h1>
+    <h1>Liste des Pieds de page</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Text</th>
+                <th>Texte</th>
                 <th>Information</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +21,17 @@
                 <td>{{ footer.text }}</td>
                 <td>{{ footer.information }}</td>
                 <td>
-                    <a href="{{ path('footer_show', {'id': footer.id}) }}">show</a>
-                    <a href="{{ path('footer_edit', {'id': footer.id}) }}">edit</a>
+                    <a href="{{ path('footer_show', {'id': footer.id}) }}">Voir</a>
+                    <a href="{{ path('footer_edit', {'id': footer.id}) }}">Éditer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun Pied de page</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('footer_new') }}">Create new</a>
+    <a href="{{ path('footer_new') }}">Créer un nouveau Pied de page</a>
 {% endblock %}

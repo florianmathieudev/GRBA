@@ -12,7 +12,7 @@
                 <td>{{ type.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <td>{{ type.title }}</td>
             </tr>
             <tr>
@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('type_index') }}">back to list</a>
+    <a href="{{ path('type_index') }}">Revenir à la liste</a>
 
-    <a href="{{ path('type_edit', {'id': type.id}) }}">edit</a>
+    <a href="{{ path('type_edit', {'id': type.id}) }}">Éditer</a>
 
     {{ include('back/type/_delete_form.html.twig') }}
 {% endblock %}
