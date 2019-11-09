@@ -1,20 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}GRBA - Groupe des Randonneurs et Baliseurs Aubois{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/GRBA/GRBA/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/GRBA/GRBA/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <header>
+        <div id="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Accueil</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="btn btn-outline-secondary" href="#">Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="btn btn-outline-secondary" href="#">Connexion</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div id="mainImg">
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <section class="article col-9">
+                    <h2>Prochains Évènements</h2>
+                    <div class="container-fluid">
+                        <div class="row">
+                        {% for event in events %}
+                        <div class="card col-4 d-flex justify-content-center" style="width: 2em">
+                            <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ event.title }}</h5>
+                                <p class="card-text">{{ event.description }}</p>
+                                <h6>{{ event.type }}</h6>
+                                <a href="#" class="btn btn-primary">Voir plus</a>
+                            </div>
+                        </div>
+                            {# <td>{{ event.date }}</td> #}
+                        {% else %}
+                        <tr>
+                            <td colspan="9">no records found</td>
+                        </tr>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </section>
+                <section class="sidebar col-3">
+                    <h2>Calendrier</h2>
+                </section>
+            </div>
+        </div>
+        <div class="container">
+        </div>
+    </main>
+    <footer>
+    
+    </footer>
 {% endblock %}

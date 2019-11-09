@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/network")
+ * @Route("/admin/network")
  */
 class NetworkController extends AbstractController
 {
