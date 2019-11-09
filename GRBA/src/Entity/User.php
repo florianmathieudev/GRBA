@@ -21,7 +21,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Username;
 
@@ -75,6 +75,10 @@ class User implements UserInterface
 
     public function getRole(): ?Role
     {
+        if (empty($this->role))
+        {
+            return [2];
+        }
         return $this->role;
     }
 
@@ -125,7 +129,7 @@ class User implements UserInterface
      */ 
     public function setUsername($Username)
     {
-        $this->Username = $Username;
+        $this->Username = $this->email;
 
         return $this;
     }
