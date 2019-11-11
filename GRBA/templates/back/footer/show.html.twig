@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'back_base.html.twig' %}
 
 {% block title %}Footer{% endblock %}
 
@@ -12,7 +12,7 @@
                 <td>{{ footer.id }}</td>
             </tr>
             <tr>
-                <th>Text</th>
+                <th>Texte</th>
                 <td>{{ footer.text }}</td>
             </tr>
             <tr>
@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('footer_index') }}">back to list</a>
+    <a href="{{ path('footer_index') }}">Revenir à la liste</a>
 
-    <a href="{{ path('footer_edit', {'id': footer.id}) }}">edit</a>
+    <a href="{{ path('footer_edit', {'id': footer.id}) }}">Éditer</a>
 
     {{ include('back/footer/_delete_form.html.twig') }}
 {% endblock %}

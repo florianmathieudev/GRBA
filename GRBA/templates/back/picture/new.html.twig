@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'back_base.html.twig' %}
 
 {% block title %}New Picture{% endblock %}
 
@@ -7,5 +7,5 @@
 
     {{ include('back/picture/_form.html.twig') }}
 
-    <a href="{{ path('picture_index') }}">back to list</a>
+    <a href="{{ path('picture_index') }}">Revenir à la liste</a>
 {% endblock %}

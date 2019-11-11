@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'back_base.html.twig' %}
 
 {% block title %}Contact{% endblock %}
 
@@ -12,7 +12,7 @@
                 <td>{{ contact.id }}</td>
             </tr>
             <tr>
-                <th>Phone</th>
+                <th>Numéro</th>
                 <td>{{ contact.phone }}</td>
             </tr>
             <tr>
@@ -26,9 +26,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('contact_index') }}">back to list</a>
+    <a href="{{ path('contact_index') }}">Revenir à la liste</a>
 
-    <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
+    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Éditer</a>
 
     {{ include('back/contact/_delete_form.html.twig') }}
 {% endblock %}

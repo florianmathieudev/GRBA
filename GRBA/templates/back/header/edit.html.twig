@@ -1,13 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'back_base.html.twig' %}
 
-{% block title %}Edit Header{% endblock %}
+{% block title %}Éditer Header{% endblock %}
 
 {% block body %}
-    <h1>Edit Header</h1>
+    <h1>Éditer Header</h1>
 
-    {{ include('back/header/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('back/header/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('header_index') }}">back to list</a>
+    <a href="{{ path('header_index') }}">Revenir à la liste</a>
 
     {{ include('back/header/_delete_form.html.twig') }}
 {% endblock %}

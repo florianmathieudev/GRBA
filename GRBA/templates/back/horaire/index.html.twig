@@ -1,18 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'back_base.html.twig' %}
 
-{% block title %}Horaire index{% endblock %}
+{% block title %}Liste des Horaires{% endblock %}
 
 {% block body %}
-    <h1>Horaire index</h1>
+    <h1>Liste des Horaires</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Opening</th>
-                <th>Closing</th>
-                <th>Open</th>
-                <th>actions</th>
+                <th>Ouverture</th>
+                <th>Fermeture</th>
+                <th>Ouvert</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,17 +23,17 @@
                 <td>{{ horaire.closing }}</td>
                 <td>{{ horaire.open ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('horaire_show', {'id': horaire.id}) }}">show</a>
-                    <a href="{{ path('horaire_edit', {'id': horaire.id}) }}">edit</a>
+                    <a href="{{ path('horaire_show', {'id': horaire.id}) }}">Voir</a>
+                    <a href="{{ path('horaire_edit', {'id': horaire.id}) }}">Éditer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucune Horaire</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('horaire_new') }}">Create new</a>
+    <a href="{{ path('horaire_new') }}">Créer un nouvel Horaire</a>
 {% endblock %}

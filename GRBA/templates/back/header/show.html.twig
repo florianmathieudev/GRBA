@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'back_base.html.twig' %}
 
 {% block title %}Header{% endblock %}
 
@@ -12,19 +12,19 @@
                 <td>{{ header.id }}</td>
             </tr>
             <tr>
-                <th>Tab</th>
+                <th>Onglet</th>
                 <td>{{ header.tab }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <td>{{ header.title }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('header_index') }}">back to list</a>
+    <a href="{{ path('header_index') }}">Revenir à la liste</a>
 
-    <a href="{{ path('header_edit', {'id': header.id}) }}">edit</a>
+    <a href="{{ path('header_edit', {'id': header.id}) }}">Éditer</a>
 
     {{ include('back/header/_delete_form.html.twig') }}
 {% endblock %}

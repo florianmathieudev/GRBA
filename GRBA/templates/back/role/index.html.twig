@@ -1,17 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'back_base.html.twig' %}
 
-{% block title %}Role index{% endblock %}
+{% block title %}Liste des Roles{% endblock %}
 
 {% block body %}
-    <h1>Role index</h1>
+    <h1>Liste des Roles</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Code</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +21,17 @@
                 <td>{{ role.code }}</td>
                 <td>{{ role.name }}</td>
                 <td>
-                    <a href="{{ path('role_show', {'id': role.id}) }}">show</a>
-                    <a href="{{ path('role_edit', {'id': role.id}) }}">edit</a>
+                    <a href="{{ path('role_show', {'id': role.id}) }}">Voir</a>
+                    <a href="{{ path('role_edit', {'id': role.id}) }}">Éditer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun Role</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('role_new') }}">Create new</a>
+    <a href="{{ path('role_new') }}">Créer un nouveau Role </a>
 {% endblock %}
