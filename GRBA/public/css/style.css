@@ -15,12 +15,7 @@
     background-position: center;
 }
 
-/* .row {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-} */
-
-/* .card {
-    margin: auto;
-} */
+#footer {
+    background-color: #343a40;
+    text-decoration-color: white;
+}
