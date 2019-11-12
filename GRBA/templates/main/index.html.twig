@@ -2,32 +2,29 @@
 
 {% block title %}GRBA - Groupe des Randonneurs et Baliseurs Aubois{% endblock %}
 
-{% block body %}
-    <main>
-    <br>
-        <div class="container-fluid">
-            <div class="row">
-                <section class="article col-9">
-                    <h2>Prochains Évènements</h2>
+{% block body %}   
+<div class="container-fluid">
+    <div class="row">                       
+        <div class="col-9">        
+            <section class="article col-12">
+                <h2>Prochaines Randonnées</h2>
                     <div class="container-fluid">
                         <div class="row">
-
                         {% for event in events %}
-                        {% if event.content == null %}
-                        {# {% for i in 0..3 %} #}
-                        
-                        <div class="card col-4 d-flex justify-content-center" style="width: 2em">
-                            <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
+                        {% if event.content == null and event.type == "Randonné" %}
+                        {# {% for i in 0..3 %} #}                        
+                            <div class="card col-4 d-flex justify-content-center" style="width: 2em">
+                                <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
                                 <h5 class="card-title">{{ event.title }}</h5>
-                                <p class="card-text">{{ event.description }}</p>
+                                    <p class="card-text">{{ event.description }}</p>
                                 <h6>{{ event.type }}</h6>
-                                <a href="#" class="btn btn-primary">Voir plus</a>
+                                    <a href="#" class="btn btn-primary">Voir plus</a>
+                                </div>
                             </div>
-                        </div>
                         {# {% endfor %} #}
                         {% endif %}
-                            {# <td>{{ event.date }}</td> #}
+                        {# <td>{{ event.date }}</td> #}
                         {% else %}
                         <tr>
                             <td colspan="9">Pas d'évènements prévus</td>
@@ -35,42 +32,56 @@
                         {% endfor %}
                         </div>
                     </div>
-                </section>
-                <section class="sidebar col-3">
-                    <h2>Calendrier</h2>
-                </section>
-            </div>
-        </div>
-        <br>
-        <div class="container-fluid">
-            <div class="row">
-                <section class="article col-12">
-                    <h2>Précédents Évènements</h2>
-                    <div class="container-fluid">
-                        <div class="row">
-                        {% for event in events %}
-                        {% if event.content != null %}
-                        <div class="card col-3 d-flex justify-content-center" style="width: 2em">
-                            <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ event.title }}</h5>
-                                <p class="card-text">{{ event.content }}</p>
-                                <h6>{{ event.type }}</h6>
-                                <a href="#" class="btn btn-primary">Voir plus</a>
-                            </div>
-                        </div>
-                        {% endif %}
-                            {# <td>{{ event.date }}</td> #}
-                        {% else %}
-                        <tr>
-                            <td colspan="9">Pas de précédents évènements</td>
-                        </tr>
-                        {% endfor %}
+            </section>        
+            <section class="article col-12">
+                <h2>Précédents Évènements</h2>
+                <div class="container-fluid">
+                    <div class="row">
+                    {% for event in events %}
+                    {% if event.content != null %}
+                    <div class="card col-3 d-flex justify-content-center" style="width: 2em">
+                        <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ event.title }}</h5>
+                            <p class="card-text">{{ event.content }}</p>
+                            <h6>{{ event.type }}</h6>
+                            <a href="#" class="btn btn-primary">Voir plus</a>
                         </div>
                     </div>
-                </section>
-            </div>
+                    {% endif %}
+                        {# <td>{{ event.date }}</td> #}
+                    {% else %}
+                    <tr>
+                        <td colspan="9">Pas de précédents évènements</td>
+                    </tr>
+                    {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </div>       
+        <div class="container-fluid col-3">
+            <section class="sidebar col-12">
+                <h2>Autres Évènements</h2>
+                    {% for event in events %}
+                    {% if event.content == null and event.type != "Randonné" %}
+                    <div class="card">
+                        
+                        <div class="card-body">
+                        <h5 class="card-title">{{ event.title }}</h5>
+                            <p class="card-text">{{ event.description }}</p>
+                        <h6>{{ event.type }}</h6>
+                            <a href="#" class="btn btn-primary">Voir plus</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {# <td>{{ event.date }}</td> #}
+                    {% else %}
+                    <tr>
+                        <td colspan="9">Pas d'évènements prévus</td>
+                    </tr>
+                    {% endfor %}
+            </section>
         </div>
-        <br>
-    </main>
+    </div>
+</div> 
 {% endblock %}

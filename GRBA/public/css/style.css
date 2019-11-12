@@ -1,5 +1,8 @@
-main {
-    background-color: #343a40;
+
+
+.navbar {
+    background: rgb(49,49,49);
+    background: linear-gradient(164deg, rgba(49,49,49,1) 0%, rgba(152,185,128,1) 35%);
 }
 
 .btn {
@@ -23,3 +26,4 @@ main {
 .container-fluid {
     background-color: #f8f9fa;
 }
+
