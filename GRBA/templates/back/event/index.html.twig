@@ -12,6 +12,7 @@
                 <th>Date</th>
                 <th>Description</th>
                 <th>Contenu</th>
+                <th>Type</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
                 <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ event.description }}</td>
                 <td>{{ event.content }}</td>
+                <td>{{ event.type }}</td>
                 <td>
                     <a href="{{ path('event_show', {'id': event.id}) }}">Voir</a>
                     <a href="{{ path('event_edit', {'id': event.id}) }}">Éditer</a>

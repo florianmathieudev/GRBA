@@ -19,6 +19,9 @@ class MainController extends AbstractController
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
             'events' => $eventRepository->findAll(),
+            'findNextLastEvents' => $eventRepository->findNextLastEvents(),
+            'findPreviousLastEvents' => $eventRepository->findPreviousLastEvents(),
+            'findOtherLastEvents' => $eventRepository->findOtherLastEvents(),
             'contacts' => $contactRepository->findAll(),
         ]);
     }

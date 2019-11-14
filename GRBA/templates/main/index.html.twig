@@ -10,26 +10,23 @@
                 <h2>Prochaines Randonnées</h2>
                     <div class="container-fluid">
                         <div class="row C">
-                        {% for event in events %}
-                        {% if event.content == null and event.type == "Randonné" %}
+                        {% for event in findNextLastEvents %}
+                        
                         {# {% for i in 0..3 %} #}                        
                             <div class="card col-lg-3 col-sm-12 justify-content-center" style="width: auto">
                                 <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                 <h5 class="card-title">{{ event.title }}</h5>
+                                    <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
                                     <p class="card-text">{{ event.description }}</p>
                                 <h6>{{ event.type }}</h6>
                                     <a href="#" class="btn btn-primary">Voir plus</a>
                                 </div>
                             </div>
-                        {# {% endfor %} #}
-                        {% endif %}
-                        {# <td>{{ event.date }}</td> #}
-                        {% else %}
-                        <tr>
-                            <td colspan="9">Pas d'évènements prévus</td>
-                        </tr>
                         {% endfor %}
+                       
+                        
+                       
                         </div>
                     </div>
                 </div> 
@@ -38,23 +35,19 @@
                 <h2>Précédents Évènements</h2>
                 <div class="container-fluid">
                     <div class="row C">
-                    {% for event in events %}
-                    {% if event.content != null %}
+                        {% for event in findPreviousLastEvents %}
+                    
                     <div class="card card col-lg-3 col-sm-12 d-flex justify-content-center" style="width: auto">
                         <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ event.title }}</h5>
+                            <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
                             <p class="card-text">{{ event.content }}</p>
                             <h6>{{ event.type }}</h6>
                             <a href="#" class="btn btn-primary">Voir plus</a>
                         </div>
                     </div>
-                    {% endif %}
-                        {# <td>{{ event.date }}</td> #}
-                    {% else %}
-                    <tr>
-                        <td colspan="9">Pas de précédents évènements</td>
-                    </tr>
+                    
                     {% endfor %}
                     </div>
                 </div>
@@ -63,23 +56,19 @@
         <div class="container-fluid col-lg-3 col-sm-12 order-sm-1">
             <section class="sidebar col-12">
                 <h2>Autres Évènements</h2>
-                    {% for event in events %}
-                    {% if event.content == null and event.type != "Randonné" %}
+                    {% for event in findOtherLastEvents %}
+                    
                     <div class="card cardOther">
                         
                         <div class="card-body">
                         <h5 class="card-title">{{ event.title }}</h5>
+                        <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
                             <p class="card-text">{{ event.description }}</p>
                         <h6>{{ event.type }}</h6>
                             <a href="#" class="btn btn-primary">Voir plus</a>
                         </div>
                     </div>
-                    {% endif %}
-                    {# <td>{{ event.date }}</td> #}
-                    {% else %}
-                    <tr>
-                        <td colspan="9">Pas d'évènements prévus</td>
-                    </tr>
+                   
                     {% endfor %}
             </section>
         </div>

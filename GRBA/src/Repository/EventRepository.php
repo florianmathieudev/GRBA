@@ -22,6 +22,44 @@ class EventRepository extends ServiceEntityRepository
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */
+
+
+    public function findNextLastEvents()
+    {
+        return $this->createQueryBuilder('e')
+                    ->where("e.type=1")
+                    ->andWhere("e.content IS NULL")
+                    ->orderBy('e.id', 'DESC')
+                    ->setMaxResults(3)
+                    ->getQuery()
+                    ->getResult();
+    }
+
+
+    public function findPreviousLastEvents()
+    {
+        return $this->createQueryBuilder('e')
+                    ->where("e.type=1")
+                    ->andWhere("e.content IS NOT NULL")
+                    ->orderBy('e.id', 'DESC')
+                    ->setMaxResults(3)
+                    ->getQuery()
+                    ->getResult();
+    }
+
+    public function findOtherLastEvents()
+    {
+        return $this->createQueryBuilder('e')
+                    ->where("e.type!=1")
+                    ->andWhere("e.content IS NULL")
+                    ->orderBy('e.id', 'DESC')
+                    ->setMaxResults(4)
+                    ->getQuery()
+                    ->getResult();
+    }
+
+
+
     /*
     public function findByExampleField($value)
     {
