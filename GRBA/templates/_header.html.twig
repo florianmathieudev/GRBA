@@ -18,16 +18,19 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     {% if not app.user %}
-                            <li class="nav-item">
-                                <a class="btn btn-outline-secondary" href="{{ path('security_login') }}">Connexion</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="btn btn-outline-secondary" href="{{ path('security_logout') }}">Déconnexion</a>
-                            </li>
-                        {% endif %}
+                        <li class="nav-item">
+                            <a class="btn btn-outline-secondary" href="{{ path('security_login') }}">Connexion</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-outline-secondary" href="{{ path('security_logout') }}">Déconnexion</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
+        </nav>
+        <div id="mainImg">
         </div>
-    </header> 
+    </div>
+</header> 
 {% endblock %}
