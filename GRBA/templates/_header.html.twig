@@ -1,20 +1,23 @@
 {% block body %}
 
-    <header>
-        <div id="header">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="{{ path('main') }}">Accueil</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<header>
+    <div id="header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div>
+                <a href="{{ path('main') }}"><img src="image/gggg.jpg" alt="" height="40px" width="40px"></a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="btn btn-outline-secondary" href="#">Contact</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        {% if not app.user %}
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if not app.user %}
                             <li class="nav-item">
                                 <a class="btn btn-outline-secondary" href="{{ path('security_login') }}">Connexion</a>
                             </li>
@@ -23,12 +26,8 @@
                                 <a class="btn btn-outline-secondary" href="{{ path('security_logout') }}">Déconnexion</a>
                             </li>
                         {% endif %}
-                    </ul>
-                </div>
-            </nav>
-            <div id="mainImg">
+                </ul>
             </div>
         </div>
     </header> 
-
 {% endblock %}
