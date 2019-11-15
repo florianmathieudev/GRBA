@@ -8,29 +8,34 @@
         <div class="col-lg-9 col-sm-12">        
             <div class="article col-lg-12 order-sm-2">
                 <h2>Prochaines Randonnées</h2>
-                    <div class="container-fluid">
+                    <div class="container-fluid justify-content-center">
                         <div class="row C">
-                        {% for event in findNextLastEvents %}
-                        
-                        {# {% for i in 0..3 %} #}                        
-                            <div class="card col-lg-3 col-sm-12 justify-content-center" style="width: auto">
-                                <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                <h5 class="card-title">{{ event.title }}</h5>
-                                    <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
-                                    <p class="card-text">{{ event.description }}</p>
-                                <h6>{{ event.type }}</h6>
-                                    <a href="#" class="btn btn-primary">Voir plus</a>
-                                </div>
+                        {% for event in findNextLastEvents %} 
+                            <div class="myContainer col-lg-3 col-sm-12 " style="width: auto">                                
+                                <div class="myCard">                                                                     
+                                    <div class="myFront">
+                                        <div class="card " >      
+                                            <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ event.title }}</h5>
+                                                    <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
+                                                    <p class="card-text">{{ event.description }}</p>
+                                                <h6>{{ event.type }}</h6>
+                                                    <a href="#" class="btn btn-primary">Voir plus</a>
+                                            </div>
+                                        </div>
+                                    </div>                                     
+                                    <div class="myBack">
+                                        <div class="" >
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat dolore commodi esse reprehenderit, eveniet quae ut distinctio sunt dolor in autem atque inventore ad consequatur. Blanditiis at quae nesciunt? Quae.</p>
+                                        </div>
+                                    </div>                                    
+                                </div> 
                             </div>
-                        {% endfor %}
-                       
-                        
-                       
+                        {% endfor %}               
                         </div>
                     </div>
-                </div> 
-                   
+            </div>                  
             <div class="article col-12">
                 <h2>Précédents Évènements</h2>
                 <div class="container-fluid">
@@ -74,4 +79,6 @@
         </div>
     </div>
 </div> 
+
+        
 {% endblock %}
