@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Description</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td>{{ picture.id }}</td>
                 <td>{{ picture.name }}</td>
                 <td>{{ picture.description }}</td>
+                <td><img src="{{ asset('uploads/' ~ picture.name ) }}" height="80em" ></td>
                 <td>
                     <a href="{{ path('picture_show', {'id': picture.id}) }}">Voir</a>
                     <a href="{{ path('picture_edit', {'id': picture.id}) }}">Éditer</a>
