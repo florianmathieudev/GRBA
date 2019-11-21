@@ -19,8 +19,7 @@
                                             <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ event.title }}</h5>
-                                                    <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : '' }}</p>                                                    
-                                                                                                  
+                                                    <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : '' }}<p>                                                    
                                             </div>
                                         </div>
                                     </div>                                     
@@ -28,7 +27,7 @@
                                         <div class="card " >      
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ event.title }}</h5>
-                                                    <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i:s') : '' }}</p>
+                                                    <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i:s') : '' }}<p>
                                                     <div class="desc">
                                                         <p class="card-text">{{ event.description }}</p>
                                                     </div>                                                                                           
@@ -79,12 +78,9 @@
                             <a href="#" class="btn btn-primary">Voir plus</a>
                         </div>
                     </div>
-                   
                     {% endfor %}
             </section>
         </div>
     </div>
 </div> 
-
-        
 {% endblock %}
