@@ -31,12 +31,10 @@
             </div>
         </nav>
         <div id="mainImg">
-            {# {{render(controller(
-                'App\\Controller\\HeaderController::index'
-            ))}} #}
-            {# {% for header in headers %} 
-                <img src="{{ header.picture }}">                   
-            {% endfor %} #}
+
+            {% for header in headers %} 
+                <img src="{{asset('uploads/' ~  header.picture)}}">                   
+            {% endfor %}
         </div>
     </div>
 </header> 

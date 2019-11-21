@@ -35,8 +35,12 @@
             </div>
         </header>  #}
 
-        {% include "_header.html.twig" %}
+        {# {% include "_header.html.twig" %} #}
+            {{ render(controller('App\\Controller\\HeaderController::back'))}}
 
+            {# {% for header in headers %}
+                <img src="{{asset('uploads/' ~  header.picture)}}">                   
+            {% endfor %} #}
         {% include "_nav.html.twig" %}
         
         {% block body %}   

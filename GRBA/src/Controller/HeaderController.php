@@ -16,4 +16,12 @@ class HeaderController extends AbstractController
             'headers' => $headerRepository->findAll()
         ]);
     }
+
+    public function back(HeaderRepository $headerRepository)
+    {
+        return $this->render('/back_base.html.twig', [
+            'controller_name' => 'HeaderController',
+            'headers' => $headerRepository->findAll()
+        ]);
+    }
 }
