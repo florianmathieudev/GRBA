@@ -27,7 +27,7 @@ class EventRepository extends ServiceEntityRepository
     public function findNextLastEvents()
     {
         return $this->createQueryBuilder('e')
-                    ->where("e.type=1")
+                    ->where("e.type=1 OR e.type=2 OR e.type=3 OR e.type=4")                    
                     ->andWhere("e.content IS NULL")
                     ->orderBy('e.id', 'DESC')
                     ->setMaxResults(3)
@@ -39,8 +39,7 @@ class EventRepository extends ServiceEntityRepository
     public function findPreviousLastEvents()
     {
         return $this->createQueryBuilder('e')
-                    ->where("e.type=1")
-                    ->andWhere("e.content IS NOT NULL")
+                    ->Where("e.content IS NOT NULL")
                     ->orderBy('e.id', 'DESC')
                     ->setMaxResults(3)
                     ->getQuery()
@@ -50,7 +49,7 @@ class EventRepository extends ServiceEntityRepository
     public function findOtherLastEvents()
     {
         return $this->createQueryBuilder('e')
-                    ->where("e.type!=1")
+                    ->where("e.type=5 OR e.type=6")                    
                     ->andWhere("e.content IS NULL")
                     ->orderBy('e.id', 'DESC')
                     ->setMaxResults(4)

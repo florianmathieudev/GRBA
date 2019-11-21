@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Picture
 {
-    /**
+    /** 
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -37,12 +37,12 @@ class Picture
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName()
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName($name): self
     {
         $this->name = $name;
 
@@ -72,4 +72,5 @@ class Picture
 
         return $this;
     }
+
 }
