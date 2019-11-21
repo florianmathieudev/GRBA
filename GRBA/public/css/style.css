@@ -38,7 +38,7 @@ h2 {
 }
 
 #mainImg {
-    background-image: url("https://www.hotel-les-grenettes.com/wp-content/uploads/2019/08/randonnee-ile-de-re.jpg");
+    /* background-image: url("https://www.hotel-les-grenettes.com/wp-content/uploads/2019/08/randonnee-ile-de-re.jpg"); */
     background-size: cover;
     width: auto;
     height: 60em;
