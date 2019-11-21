@@ -42,47 +42,8 @@
         {% block body %}   
         {% endblock %}
 
-        {% include "_footer.html.twig" %}
-        {# <footer id="footer" class="top-space">
-            <div class="footer1 text-light">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3 widget">
-                        <br>
-                            <h3 class="widget-title">Contact</h3>
-                            <div class="widget-body">
-                                {% for contact in contacts %}
-                                <p>{{ contact.phone }}<br>
-                                {% endfor %}
-                                <a href="mailto:#">{% for contact in contacts %}<p>{{ contact.email }}{% endfor %}</a><br>
-                                {% for contact in contacts %}
-                                <p>{{ contact.adresse }}<br>
-                                {% endfor %}
-                                </p>	
-                            </div>
-                        </div>
-                        <div class="col-md-3 widget">
-                        <br>
-                            <h3 class="widget-title">Nous suivre</h3>
-                            <div class="widget-body">
-                                <p class="follow-me-icons">
-                                    <a href=""><i class="fa fa-twitter fa-2"></i></a>
-                                    <a href=""><i class="fa fa-linkedin fa-2"></i></a>
-                                    <a href=""><i class="fa fa-instagram fa-2"></i></a>
-                                    <a href="https://www.facebook.com/grba10/"><i class="fa fa-facebook fa-2"></i></a>
-                                </p>	
-                            </div>
-                        </div>
-                        <div class="col-md-6 widget">
-                        <br>
-                            <h3 class="widget-title">À propos de nous</h3>
-                            <div class="widget-body">
-                                <p>L’Association a pour but d’exercer et promouvoir la randonnée pédestre et les activités de plein air agréées par la FFRandonnée,de participer facultativement aux actions menées par le Comité départemental de la randonnée.</p>                            </div>
-                        </div>
-                    </div> <!-- /row of widgets -->
-                </div>
-            </div>
-        </footer>	 #}
+        {{ render(controller('App\\Controller\\FooterController::index'))}}
+
         {% block javascripts %}
         
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
