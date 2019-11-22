@@ -39,8 +39,7 @@ h2 {
 
 #mainImg {
     /* background-image: url("https://www.hotel-les-grenettes.com/wp-content/uploads/2019/08/randonnee-ile-de-re.jpg"); */
-    background-size: cover;
-    
+    background-size: cover;    
     object-fit:cover;
     width: 100%;
     max-height: 60vh;
@@ -78,7 +77,7 @@ h6 {
     width: 400px;
     height: 550px;
     margin: 0 0.5em 1em 0.5em;
-    border-radius: 20px;
+    border-radius: 20px 0 20px 0;
     -webkit-perspective: 1000;
     -moz-perspective: 1000;
     -o-perspective: 1000;
@@ -94,7 +93,7 @@ h6 {
     height: 100%;
     transform-style: preserve-3d;
     transition: 0.6s;
-    border-radius: 20px;
+    border-radius: 20px 0 20px 0;
   }
   
   .myContainer:hover .myCard,
@@ -106,7 +105,7 @@ h6 {
   }
   
   .myFront {
-    border-radius: 20px;
+    border-radius: 20px 0 20px 0;
 
     position: absolute;
     width: 100%;
@@ -119,7 +118,7 @@ h6 {
   }
   
   .myBack {
-    border-radius: 20px;
+    border-radius: 20px 0 20px 0;
 
     position: absolute;
     width: 100%;
@@ -141,6 +140,8 @@ h6 {
     box-shadow: 20px 11px 36px -20px rgba(0,0,0,1);
     padding: 1em 0 0 0;
     min-width: 400px;
+    border-radius: 20px 0 20px 0;
+
 }
 
 .cardOther {
@@ -153,7 +154,6 @@ h6 {
     background-attachment: fixed;
     box-shadow: 20px 11px 36px -20px rgba(0,0,0,1);
     padding: 1em 0 0 0;
-    border-radius: 20px;
 }
 
 .card {
@@ -164,7 +164,7 @@ h6 {
     background-attachment: fixed;
     box-shadow: 20px 11px 36px -20px rgba(0,0,0,1);
     padding: 1em 0 0 0;
-    border-radius: 20px;
+    border-radius: 20px 0 20px 0;
 }
 
 .desc {
