@@ -35,10 +35,10 @@ class PictureController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $file = $picture->getName();
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move($this->getParameter('upload_directory'), $fileName);
-            $picture->setName($fileName);
+            $file = $picture->getPath();
+            $filePath = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directory'), $filePath);
+            $picture->setPath($filePath);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($picture);
