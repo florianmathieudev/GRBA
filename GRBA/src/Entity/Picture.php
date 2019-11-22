@@ -121,12 +121,12 @@ class Picture
         return $this;
     }
 
-    public function getName(): ?string
+    public function getName()
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName( $name): self
     {
         $this->name = $name;
 
