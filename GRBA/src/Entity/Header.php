@@ -90,7 +90,7 @@ class Header
      */
     public function getPictures(): Collection
     {
-        return $this->pictures;
+        return $this->picture;
     }
 
     public function addPicture(Picture $picture): self

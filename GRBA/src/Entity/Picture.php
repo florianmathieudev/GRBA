@@ -21,7 +21,7 @@ class Picture
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $path;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -39,6 +39,11 @@ class Picture
      */
     private $header;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
     public function __construct()
     {
         $this->header = new ArrayCollection();
@@ -49,14 +54,14 @@ class Picture
         return $this->id;
     }
 
-    public function getName()
+    public function getPath()
     {
-        return $this->name;
+        return $this->path;
     }
 
-    public function setName($name): self
+    public function setPath($path): self
     {
-        $this->name = $name;
+        $this->path = $path;
 
         return $this;
     }
@@ -87,7 +92,7 @@ class Picture
 
     public function __toString()
     {
-        return $this->name;
+        return $this->path;
     }
 
     /**
@@ -112,6 +117,18 @@ class Picture
         if ($this->header->contains($header)) {
             $this->header->removeElement($header);
         }
+
+        return $this;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName( $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
