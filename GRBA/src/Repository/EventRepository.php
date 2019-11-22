@@ -52,7 +52,7 @@ class EventRepository extends ServiceEntityRepository
                     ->where("e.type=5 OR e.type=6")                    
                     ->andWhere("e.content IS NULL")
                     ->orderBy('e.id', 'DESC')
-                    ->setMaxResults(4)
+                    ->setMaxResults(2)
                     ->getQuery()
                     ->getResult();
     }
