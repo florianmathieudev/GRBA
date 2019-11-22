@@ -35,7 +35,7 @@
             </div>
         </header>  #}
 
-        {% include "_header.html.twig" %}
+            {{ render(controller('App\\Controller\\HeaderController::index'))}}
 
         {% include "_nav.html.twig" %}
         

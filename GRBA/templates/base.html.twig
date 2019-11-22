@@ -37,7 +37,9 @@
             </div>
         </header>  #}
 
-        {% include "_header.html.twig" %}
+        {# {% include "_header.html.twig" %} #}
+        {{ render(controller('App\\Controller\\HeaderController::index'))}}
+
 
         {% block body %}   
         {% endblock %}
