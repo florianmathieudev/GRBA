@@ -31,7 +31,7 @@ class EventRepository extends ServiceEntityRepository
                     ->leftJoin('e.type', 't')
                     ->where("t.code=1 OR t.code=2 OR t.code=3 OR t.code=4")                    
                     ->andWhere("e.content IS NULL")
-                    ->orderBy('e.id', 'DESC')
+                    ->orderBy('e.date', 'ASC')
                     ->setMaxResults(3)
                     ->getQuery()
                     ->getResult();
