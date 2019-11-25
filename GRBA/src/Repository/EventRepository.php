@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Event;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use App\Repository\TypeRepository;
 
 /**
  * @method Event|null find($id, $lockMode = null, $lockVersion = null)
@@ -27,7 +28,8 @@ class EventRepository extends ServiceEntityRepository
     public function findNextLastEvents()
     {
         return $this->createQueryBuilder('e')
-                    ->where("e.type=1 OR e.type=2 OR e.type=3 OR e.type=4")                    
+                    ->leftJoin('e.type', 't')
+                    ->where("t.code=1 OR t.code=2 OR t.code=3 OR t.code=4")                    
                     ->andWhere("e.content IS NULL")
                     ->orderBy('e.id', 'DESC')
                     ->setMaxResults(3)
