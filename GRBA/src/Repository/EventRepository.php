@@ -31,8 +31,8 @@ class EventRepository extends ServiceEntityRepository
                     ->leftJoin('e.type', 't')
                     ->where("t.code=1 OR t.code=2 OR t.code=3 OR t.code=4")                    
                     ->andWhere("e.content IS NULL")
-                    ->orderBy('e.id', 'DESC')
-                    ->setMaxResults(3)
+                    ->orderBy('e.date', 'ASC')
+                    ->setMaxResults(4)
                     ->getQuery()
                     ->getResult();
     }
@@ -42,7 +42,7 @@ class EventRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('e')
                     ->Where("e.content IS NOT NULL")
-                    ->orderBy('e.id', 'DESC')
+                    ->orderBy('e.date', 'DESC')
                     ->setMaxResults(4)
                     ->getQuery()
                     ->getResult();
@@ -51,9 +51,10 @@ class EventRepository extends ServiceEntityRepository
     public function findOtherLastEvents()
     {
         return $this->createQueryBuilder('e')
-                    ->where("e.type=5 OR e.type=6")                    
+                    ->leftJoin('e.type', 't')
+                    ->where("t.code=5 OR t.code=6")                    
                     ->andWhere("e.content IS NULL")
-                    ->orderBy('e.id', 'DESC')
+                    ->orderBy('e.date', 'ASC')
                     ->setMaxResults(2)
                     ->getQuery()
                     ->getResult();
