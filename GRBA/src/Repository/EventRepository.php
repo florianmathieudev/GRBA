@@ -32,7 +32,7 @@ class EventRepository extends ServiceEntityRepository
                     ->where("t.code=1 OR t.code=2 OR t.code=3 OR t.code=4")                    
                     ->andWhere("e.content IS NULL")
                     ->orderBy('e.id', 'DESC')
-                    ->setMaxResults(3)
+                    ->setMaxResults(4)
                     ->getQuery()
                     ->getResult();
     }

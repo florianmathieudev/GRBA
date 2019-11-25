@@ -2,51 +2,55 @@
 
 {% block title %}GRBA - Groupe des Randonneurs et Baliseurs Aubois{% endblock %}
 
-{% block body %}   
-<div class="container-fluid">
-    <div class="row">                       
-        <div class="col-lg-10 col-md-12 "> 
-            <h2>Prochaines Randonnées</h2>
-                <div class="container-fluid ">
-                    <div class="row">
-                    {% for event in findNextLastEvents %} 
-                        <div class="myContainer col-lg-3" >                                
-                            <div class="myCard">                                                                     
-                                <div class="myFront">
-                                    <div class="card " > 
-                                            <h6>{{ event.type }}</h6>      
+{% block body %}  
+<div class="main">
+    <div class="content nextLastEvents">
+        <h2>Prochaines Randonnées</h2>
+            <div class="container-fluid">
+                <div class="row ">
+                {% for event in findNextLastEvents %} 
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12" >  
+                        <div class="myContainer">                            
+                        <div class="myCard">                                                                     
+                            <div class="myFront">
+                                <div class="card " > 
+                                    <figure>
                                         <img src="image\téléchargement.jfif" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ event.title }}</h5>
-                                                <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : '' }}</p>                                                    
-                                        </div>
+                                        <figcaption class="img-title">{{ event.type }}</figcaption>    
+                                    </figure>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ event.title }}</h5>
+                                            <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : '' }}</p>                                                    
                                     </div>
-                                </div>                                     
-                                <div class="myBack">
-                                    <div class="card " >      
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ event.title }}</h5>
-                                                <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i:s') : '' }}</p>
-                                                <div class="desc">
-                                                    <p class="card-text">{{ event.description }}</p>
-                                                </div>                                                                                           
-                                        </div>
+                                </div>
+                            </div>                            
+                            <div class="myBack">
+                                <div class="cardReverse " >      
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ event.title }}</h5>
+                                            <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i:s') : '' }}</p>
+                                            <div class="desc">
+                                                <p class="card-text">{{ event.description }}</p>
+                                            </div>                                                                                           
                                     </div>
-                                </div>                                    
-                            </div> 
+                                </div>
+                            </div>                                    
                         </div>
-                    {% endfor %}               
+                    </div>  
                     </div>
+                {% endfor %}               
                 </div>
-        </div>       
-        <div class="col-lg-2 col-md-12 ">
-            <div>
-                <h2>Autres Évènements</h2>
+            </div>
+    </div>         
+        
+    <div class="content otherLastEvents">
+        <h2>Autres Évènements</h2>
+            <div class="container-fluid">
+                <div class="row  d-flex justify-content-end">
                     {% for event in findOtherLastEvents %}
-                    
-                    <div class="cardOther">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
                         
-                        <div class="card-body">
+                        <div class="cardOther card-body">
                                 <h6>{{ event.type }}</h6>
                         <h5 class="card-title">{{ event.title }}</h5>
                         <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
@@ -56,33 +60,33 @@
                         </div>
                     </div>
                     {% endfor %}
-            </div>
-        </div>
-    </div><!-- row -->
-</div> 
-
-
-
-
-<div class="article col-12">
-                <h2>Précédents Évènements</h2>
-                <div class="container-fluid ">
-                    <div class="row">
-                        {% for event in findPreviousLastEvents %}
-                    
-                    <div class="card2 col-md-2" style="width: auto">
-                        <img src="https://previews.123rf.com/images/annazasimova/annazasimova1701/annazasimova170100071/69975284-un-seau-d-eau-monochrome-ic%C3%B4ne-ic%C3%B4ne-illustration-vectorielle.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ event.title }}</h5>
-                            <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
-                            <p class="card-text">{{ event.content }}</p>
-                            <h6>{{ event.type }}</h6>
-                            <a href="#" class="btn btn-primary">Voir plus</a>
-                        </div>
-                    </div>
-                    
-                    {% endfor %}
-                    </div>
                 </div>
             </div>
+    </div>
+    
+
+
+
+    <div class="content previousLastEvents">
+        <h2>Précédents Évènements</h2>
+            <div class="container-fluid">
+                <div class="row">
+                {% for event in findPreviousLastEvents %}
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card">
+                            <img src="image\téléchargement.jfif" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title">{{ event.title }}</h5>
+                                <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
+                                <p class="card-text">{{ event.content }}</p>
+                                <h6>{{ event.type }}</h6>
+                                    <a href="#" class="btn btn-primary">Voir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+    </div>
+</div> 
 {% endblock %}
