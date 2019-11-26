@@ -74,7 +74,7 @@ h6 {
 figure {
     position: relative;
     display: inline-block;
-    height:  calc(100% - 18.8em);
+    height:  calc(100% - 17em);
   }
   
   figcaption {
@@ -210,6 +210,12 @@ figure {
     position: absolute;
     bottom: 0;
     }
+
+@media only screen and (max-width: 992px) {
+    #btnSeeAll {
+        position: relative;
+    }
+}
 
                                                                     /* end reverse card */
 
