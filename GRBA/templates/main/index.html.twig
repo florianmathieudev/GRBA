@@ -25,11 +25,11 @@
                                 </div>
                             </div>                            
                             <div class="myBack">
-                                <div class="cardReverse " >      
-                                    <div class="card-body">
+                                <div class="cardReverse" >      
+                                    <div class="card-body" id="des">
                                         <h5 class="card-title">{{ event.title }}</h5>
                                             <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i:s') : '' }}</p>
-                                            <div class="desc">
+                                            <div class="desc" >
                                                 <p class="card-text">{{ event.description }}</p>
                                             </div>                                                                                           
                                     </div>
@@ -45,12 +45,12 @@
         
     <div class="content otherLastEvents">
         <h2>Autres Évènements</h2>
-            <div class="container-fluid">
-                <div class="row  d-flex justify-content-end">
+            <div class="container-fluid ">
+                <div class="row">
                     {% for event in findOtherLastEvents %}
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                         
-                        <div class="cardOther card-body">
+                        <div class="cardOther card-body ">
                                 <h6>{{ event.type }}</h6>
                         <h5 class="card-title">{{ event.title }}</h5>
                         <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
