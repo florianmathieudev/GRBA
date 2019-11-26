@@ -4,42 +4,52 @@
 
 {% block body %}  
 <div class="main">
+        
     <div class="content nextLastEvents">
+            
         <h2>Prochaines Randonnées</h2>
+        
             <div class="container-fluid">
                 <div class="row ">
-                {% for event in findNextLastEvents %} 
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12" >  
-                        <div class="myContainer">                            
-                        <div class="myCard">                                                                     
-                            <div class="myFront">
-                                <div class="card " > 
-                                    <figure>
-                                        <img src="image\téléchargement.jfif" class="card-img-top" alt="...">
-                                        <figcaption class="img-title">{{ event.type }}</figcaption>    
-                                    </figure>
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ event.title }}</h5>
-                                            <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : '' }}</p>                                                    
+                    <div class="col-lg-11 col-md-12 ">   
+                        <div class="row">         
+                {% for event in findNextLastEvents %}                     
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-12" >  
+                                <div class="myContainer">                            
+                                    <div class="myCard">                                                                     
+                                        <div class="myFront">
+                                            <div class="card " > 
+                                                <figure>
+                                                    <img src="image\téléchargement.jfif" class="card-img-top" alt="...">
+                                                    <figcaption class="img-title">{{ event.type }}</figcaption>    
+                                                </figure>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{ event.title }}</h5>
+                                                        <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : '' }}</p>                                                    
+                                                </div>
+                                            </div>
+                                        </div>                            
+                                        <div class="myBack">
+                                            <div class="cardReverse" >      
+                                                <div class="card-body" id="des">
+                                                    <h5 class="card-title">{{ event.title }}</h5>
+                                                        <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i:s') : '' }}</p>
+                                                        <div class="desc" >
+                                                            <p class="card-text">{{ event.description }}</p>
+                                                        </div>                                                                                           
+                                                </div>
+                                            </div>
+                                        </div>                                    
                                     </div>
-                                </div>
-                            </div>                            
-                            <div class="myBack">
-                                <div class="cardReverse" >      
-                                    <div class="card-body" id="des">
-                                        <h5 class="card-title">{{ event.title }}</h5>
-                                            <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i:s') : '' }}</p>
-                                            <div class="desc" >
-                                                <p class="card-text">{{ event.description }}</p>
-                                            </div>                                                                                           
-                                    </div>
-                                </div>
-                            </div>                                    
-                        </div>
-                    </div>  
+                                </div>  
+                            </div>
+                {% endfor %}
+                        </div> 
                     </div>
-                {% endfor %}               
-                </div>
+                    <div class="seeAll col-lg-1 col-md-12">
+                        <button href="#" type="button" class="btn btn-secondary" style="width:80px;" id="btnSeeAll">Voir tout</button>
+                    </div>
+                </div>           
             </div>
     </div>         
         
