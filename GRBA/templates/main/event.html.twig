@@ -1,1 +1,43 @@
-{%{% extends "base.html.twig" %}}
+{% extends "base.html.twig" %}
+{% block title %} Tous les évenements{% endblock %}
+
+{% block body %}
+    <div class ="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2> Tous nos évenements</h2>
+                <div class="container-fluid">
+                    <div class="row">
+                        {% for event in findPastEvents  %}
+                            <div class="myContainer col-lg3">
+                                <div class="myCard">
+                                    <div class="myFront">
+                                        <div class"card">
+                                            <h6> {{ event.type}}</h6>
+                                            <img src="image\téléchargement.jfif" class="card-img-top" alt="">
+                                            <div class="card-body">
+                                                <h5 class="card-title"> {{ event.title}}</h5>
+                                                <p> Le {{event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : ''}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="myBack">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title"> {{event.title}}</h5>
+                                                <p> Le {{event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : ''}}</p>
+                                                <div class="desc">
+                                                    <p class="card-text"> {{event.description}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
