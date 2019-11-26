@@ -65,6 +65,7 @@ class EventRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('e')
                     ->Where("e.date < CURRENT_TIMESTAMP()")
+                    ->orderBy('e.date', 'DESC')
                     ->getQuery()
                     ->getResult()
     ;}
