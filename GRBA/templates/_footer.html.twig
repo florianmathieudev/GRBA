@@ -1,70 +1,43 @@
 {% block body %}
 
-<footer id="footer" class="top-space">
-    <div class="footer1">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 widget">
-                <br>
-                    <h3 class="widget-title">Contact</h3>
-                    <div class="widget-body">
+<footer id="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="contact col-lg-4 col-md-12">
+                <h3>CONTACT</h3>
+                    <ul>
                         {% for contact in contacts %}
-                        <p>{{ contact.phone }}<br>
+                        <li><a href="">{{ contact.phone }}</a></li>
                         {% endfor %}
-                        <a href="mailto:#">{% for contact in contacts %}<p>{{ contact.email }}{% endfor %}</a><br>
                         {% for contact in contacts %}
-                        <p>{{ contact.adresse }}<br>
+                        <li><a href="mailto:#">{{ contact.email }}</a></li>
                         {% endfor %}
-                        </p>	
-                    </div>
-                </div>
-                <div class="col-md-3 widget">
-                <br>
-                    <h3 class="widget-title">Nous suivre</h3>
-                    <div class="widget-body">
-                        <p class="follow-me-icons">
-                            <a href=""><i class="fa fa-twitter fa-2"></i></a>
-                            <a href=""><i class="fa fa-linkedin fa-2"></i></a>
-                            <a href=""><i class="fa fa-instagram fa-2"></i></a>
-                            <a href="https://www.facebook.com/grba10/"><i class="fa fa-facebook fa-2"></i></a>
-                        </p>	
-                    </div>
-                </div>
-                <div class="col-md-6 widget">
-                <br>
-                    <h3 class="widget-title">À propos de nous</h3>
-                    <div class="widget-body">
-                        <p>L’Association a pour but d’exercer et promouvoir la randonnée pédestre et les activités de plein air agréées par la FFRandonnée,de participer facultativement aux actions menées par le Comité départemental de la randonnée.</p>                            </div>
-                </div>
-            </div> <!-- /row of widgets -->
+                        {% for contact in contacts %}
+                        <li><a href="https://www.google.fr/maps/place/Maison+des+Associations/@48.3022338,4.060545,17z/data=!3m1!4b1!4m5!3m4!1s0x47ee985b554ce31f:0xe61ecee0c59eec95!8m2!3d48.3022303!4d4.0627337">{{ contact.adresse }}</a></li>
+                        {% endfor %}                        
+                    </ul>
+            </div>
+            <div class="network col-lg-4 col-md-12">
+                <h3>Réseaux sociaux</h3>
+                    <span style="font-size: 20px; color: aliceblue;">
+                        <a href="https://www.facebook.com/grba10/"><i class="fa fa-facebook fa-2"></i></a>
+                    </span>       
+                                
+            </div>
+            <div class="about col-lg-4 col-md-12">
+                <h3 id="about">A propos</h3>
+                    <p>L’Association a pour but d’exercer et promouvoir la randonnée pédestre et les activités de plein air agréées par la FFRandonnée,de participer facultativement aux actions menées par le Comité départemental de la randonnée.</p>
+            </div>
+        </div>
+        <div class="row">
+            <p id="ovh">Hébergé chez OVH SAS - Siège social : 140 Quai du Sartel, 59100 Roubaix, France. - téléphone : 1007</p>
+        </div>
+        <div class="row">
+            <p id="us">©️2019, Corentin Tournaire, Florian Mathieu, Franck Valet</p>
         </div>
     </div>
-    <br>
-    <div class="footer2">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-md-6 widget">
-                    <div class="widget-body">
-                        <p class="simplenav">
-                            <a href="#">Accueil</a> | 
-                            <a href="about.html">À propos</a> |
-                            <a href="contact.html">Contact</a> |
-                            <b><a href="signup.html">S'inscrire</a></b>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 widget">
-                    <div class="widget-body">
-                        <p class="text-right">
-                            Copyright &copy; 2019, GRBA. Designed by NOUS 
-                        </p>
-                    </div>
-                </div>
-            </div> <!-- /row of widgets -->
-        </div>
-    </div>
-    <br>
+
 </footer>
 
 {% endblock %}
+
