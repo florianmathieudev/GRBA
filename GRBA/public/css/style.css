@@ -188,17 +188,7 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
     border-radius: 20px;
 }
 
-.card2 {
-    width: 100%;
-    height: 100%;
-    background: url('https://www.comment-photographier.com/wp-content/uploads/2015/02/F4A5328.jpg');
-    background-size: 150%;
-    background-attachment: fixed;
-    border-radius: 20px;
-    /* border-bottom-right-radius: 0; */
-    /* border: solid 2px; */
-    border-radius: 20px;
-}
+
 
 .card-body {
     text-align: center;
@@ -258,26 +248,31 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
 
                                                                     /* end reverse card */
 
-/* other last events */
+                                                                    /* other last events */
 
 .otherLastEvents {
-    background-image: url('https://www.comment-photographier.com/wp-content/uploads/2015/02/F4A5328.jpg');
-    background-image: url(/image/bgdiv.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     margin: 50px 0 50px 0;
     padding: 10px;
-    border-top: solid 2px;
-    border-bottom: solid 2px;
-    border-left: solid 2px;
-    
-    /* min-height: 80vh;  */
     height: auto;
-    -webkit-box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
-    -moz-box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
-    box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
     }
+
+    .card2 {
+        width: 100%;
+        height: 100%;
+        background: url('/image/other.jpg');
+        background-attachment: fixed;
+        border-radius: 20px;
+        /* border-bottom-right-radius: 0; */
+        /* border: solid 2px; */
+        border-radius: 20px;
+        margin: 0;
+    }
+
+#col {
+    padding: 0;
+}
+
+                                                                    /* end other last events */
 
                                                                     /* previous last events */
 

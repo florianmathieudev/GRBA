@@ -56,7 +56,7 @@ class EventRepository extends ServiceEntityRepository
                     ->where("t.code=5 OR t.code=6")                    
                     ->andWhere("e.content IS NULL")
                     ->orderBy('e.date', 'ASC')
-                    ->setMaxResults(4)
+                    ->setMaxResults(6)
                     ->getQuery()
                     ->getResult();
     }
