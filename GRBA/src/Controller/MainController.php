@@ -25,4 +25,17 @@ class MainController extends AbstractController
             'contacts' => $contactRepository->findAll(),
         ]);
     }
+
+    /**
+     * @Route("/events", name="allEvents")
+     *
+     */
+    public function allEvents(EventRepository $eventRepository){
+        return $this->render('main/event.html.twig', [
+            'controller_name' => 'MainController',
+            'events' => $eventRepository->findAll(),
+            'findPastEvents' => $eventRepository->findPastEvents(),
+            'findPrevious'
+        ]);
+    }
 }
