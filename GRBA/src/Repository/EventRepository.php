@@ -6,6 +6,7 @@ use App\Entity\Event;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use App\Repository\TypeRepository;
+use Doctrine\ORM\Query\AST\Functions\CurrentTimestampFunction;
 
 /**
  * @method Event|null find($id, $lockMode = null, $lockVersion = null)
@@ -60,7 +61,14 @@ class EventRepository extends ServiceEntityRepository
                     ->getResult();
     }
 
-
+    public function findPastEvents()
+    {
+        return $this->createQueryBuilder('e')
+                    ->Where("e.date < CURRENT_TIMESTAMP()")
+                    ->orderBy('e.date', 'DESC')
+                    ->getQuery()
+                    ->getResult()
+    ;}
 
     /*
     public function findByExampleField($value)
