@@ -2,42 +2,24 @@
 {% block title %} Tous les évenements{% endblock %}
 
 {% block body %}
-    <div class ="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2> Nos anciens évenements</h2>
-                <div class="container-fluid">
-                    <div class="row">
-                        {% for event in findPastEvents  %}
-                            <div class="myContainer col-lg3">
-                                <div class="myCard">
-                                    <div class="myFront">
-                                        <div class"card">
-                                            <h6> {{ event.type}}</h6>
-                                            <img src="image\téléchargement.jfif" class="card-img-top" alt="">
-                                            <div class="card-body">
-                                                <h5 class="card-title"> {{ event.title}}</h5>
-                                                <p> Le {{event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : ''}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="myBack">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5 class="card-title"> {{event.title}}</h5>
-                                                <p> Le {{event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : ''}}</p>
-                                                <div class="desc">
-                                                    <p class="card-text"> {{event.description}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="container-fluid">
+        <h2> Nos anciens évenements</h2>
+            {% for event in findPastEvents  %}
+                <div class="myContainer">
+                    <div class="card3">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="image\téléchargement.jfif" class="card-img-top3" alt="">
                             </div>
-                        {% endfor %}
+                            <div class="col-8">
+                                <h5 class="card-title2 col-12">{{ event.title}}</h5>
+                                <p class="col-12"> Le {{event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : ''}}</p>
+                                <h6 class="col-12">{{ event.type}}</h6>
+                                <p class="card-text2 col-12">{{event.description}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            {% endfor %}
     </div>
 {% endblock %}

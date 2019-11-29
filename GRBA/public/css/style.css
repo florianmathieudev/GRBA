@@ -59,15 +59,7 @@ h6 {
     padding-top: 40%;
 
 } */
-.card-img-top {
-    border-radius: 20px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    margin: 0 auto 0 auto;
-    height: 100%;
-    max-width: 450px;
-    object-fit:cover;
-}
+
 
 
 figure {
@@ -87,12 +79,22 @@ figcaption {
 
 
                                                                     /* reverse card */
+
+.card-img-top {
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin: 0 auto 0 auto;
+    height: 100%;
+    max-width: 450px;
+    object-fit:cover;
+}
 .nextLastEvents {
     background-image: url(/image/bgdiv.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    margin: 50px 0 50px 15%;
+    margin: 2em 0 2em 2em;
     padding: 10px;
     border-radius: 20px;
     border-top-right-radius: 0;
@@ -119,16 +121,7 @@ figcaption {
     perspective: 1000;
 }
 
-.myContainer2 {
-    position: relative;
-    height: 450px;
-    margin: 0.5em;
-    border-radius: 20px;
-    -webkit-perspective: 1000;
-    -moz-perspective: 1000;
-    -o-perspective: 1000;
-    perspective: 1000;
-}
+
 
 .myCard{
     border-radius: 20px;
@@ -228,6 +221,7 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
     border-bottom-right-radius: 20px; 
     width: auto; 
     height: 278.5px;
+    color: black;
 }
 
 .seeAll {
@@ -256,32 +250,52 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
     height: auto;
     }
 
-    .card2 {
-        width: 100%;
-        height: 100%;
-        background: url('/image/other.jpg');
-        background-attachment: fixed;
-        border-radius: 20px;
-        /* border-bottom-right-radius: 0; */
-        /* border: solid 2px; */
-        border-radius: 20px;
-        margin: 0;
-    }
+    
 
 #col {
     padding: 0;
+}
+
+
+.myContainer2 {
+    position: relative;
+    height: 450px;
+    margin: 0.5em;
+    border-radius: 20px;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -o-perspective: 1000;
+    perspective: 1000;
+    color: white;
+    font-weight: 700;
+}
+
+.blend {
+    mix-blend-mode: difference;
 }
 
                                                                     /* end other last events */
 
                                                                     /* previous last events */
 
+.card2 {
+    width: 100%;
+    height: 100%;
+    background: url('/image/other.jpg');
+    background-attachment: fixed;
+    border-radius: 20px;
+    /* border-bottom-right-radius: 0; */
+    /* border: solid 2px; */
+    border-radius: 20px;
+    margin: 0;
+}
+
 .previousLastEvents {
     background-image: url(/image/bgdiv.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    margin: 50px 15% 50px 0;
+    margin: 2em 2em 2em 0;
     padding: 10px;
     border-radius: 20px;
     border-top-left-radius: 0;
@@ -289,12 +303,26 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
     border-top: solid 2px;
     border-bottom: solid 2px;
     border-right: solid 2px;
-    
-    /* min-height: 80vh;  */
     height: auto;
     -webkit-box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
     -moz-box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
     box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
+    }
+
+    .card-img-top2 {
+        border-radius: 20px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        margin: 0;
+        height: 30%;
+        width: auto;
+        max-width: auto;
+        object-fit:cover;
+    }
+
+    .btn-primary {
+        width: 6em;
+        margin: 0 0 1em 1em;
     }
 
 
@@ -328,4 +356,24 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
 
                                                         /* end footer */
 
-
+.card3 {
+    width: 100%;
+    height: 100%;
+    background-image: url(/image/bgdiv.png);
+    background-size: 150%;
+    background-attachment: fixed;
+    border-radius: 20px;
+    /* border-bottom-right-radius: 0; /
+    / border: solid 2px; */
+    border-radius: 20px;
+    margin-top: 1em;
+}
+.card-img-top3 {
+    border-radius: 20px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    height: 450px;
+    /* width: 42.4%; /
+    max-width: 450px;
+    / object-fit:cover; */
+}
