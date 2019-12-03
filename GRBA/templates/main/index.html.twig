@@ -11,7 +11,7 @@
                 <div class="row ">
                     <div class="col-lg-11 col-md-12 ">   
                         <div class="row">         
-                        {% for event in findNextLastEvents %}                     
+                        {% for event in findNextEvents %}                     
                             <div class="col-lg-3 col-md-6 col-sm-6 col-12" >  
                                 <div class="myContainer">
                                     <div class="myCard">                      
@@ -45,7 +45,7 @@
                         </div> 
                     </div>
                     <div class="seeAll col-lg-1 col-md-12">
-                        <button href="#" type="button" class="btn btn-secondary"  id="btnSeeAll">Voir tout</button>
+                        <a href="{{ path('allNextEvents') }}" class="btn btn-secondary" id="btnSeeAll">Voir tout</a>
                     </div>
                 </div>           
             </div>
@@ -58,8 +58,8 @@
                 <div class="row">
                     <div class="col-lg-11 col-md-12 ">   
                         <div class="row">
-                            {% for event in findOtherLastEvents %}
-                                    <div class="col-lg-2 col-md-6 col-sm-6 col-12" id="col">  
+                            {% for event in findOtherEvents %}
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-12" id="col">  
                                         <div class="myContainer2"> 
                                             <div class="myCard">
                                                 <div class="card2 " > 
@@ -77,9 +77,9 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="seeAll col-lg-1 col-md-12">
+                    {# <div class="seeAll col-lg-1 col-md-12">
                         <button href="#" type="button" class="btn btn-secondary"  id="btnSeeAll">Voir tout</button>
-                    </div>
+                    </div> #}
                 </div>
             </div>
     </div>
@@ -93,7 +93,7 @@
                 <div class="row">
                     <div class="col-lg-11 col-md-12 "> 
                         <div class="row"> 
-                        {% for event in findPreviousLastEvents %}
+                        {% for event in findPastEvents %}
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="card">
                                     <img src="image\téléchargement.jfif" class="card-img-top2" alt="...">
@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     <div class="seeAll col-lg-1 col-md-12">
-                        <button href="#" type="button" class="btn btn-secondary"  id="btnSeeAll">Voir tout</button>
+                        <a href="{{ path('allPastEvents') }}" type="button" class="btn btn-secondary"  id="btnSeeAll">Voir tout</a>
                     </div>
                 </div>
             </div>

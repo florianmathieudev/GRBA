@@ -25,38 +25,47 @@ class EventRepository extends ServiceEntityRepository
     //  * @return Event[] Returns an array of Event objects
     //  */
 
-
-    public function findNextLastEvents()
+    public function findNextEventsMP()
     {
         return $this->createQueryBuilder('e')
                     ->leftJoin('e.type', 't')
-                    ->where("t.code=1 OR t.code=2 OR t.code=3 OR t.code=4")                    
-                    ->andWhere("e.content IS NULL")
+                    ->where("t.code=1 OR t.code=2 OR t.code=3 OR t.code=4")             
+                    ->andWhere("e.date > CURRENT_TIMESTAMP()")
                     ->orderBy('e.date', 'ASC')
                     ->setMaxResults(4)
                     ->getQuery()
                     ->getResult();
     }
 
-
-    public function findPreviousLastEvents()
+    public function findPastEventsMP()
     {
         return $this->createQueryBuilder('e')
-                    ->Where("e.content IS NOT NULL")
+                    ->andWhere("e.date < CURRENT_TIMESTAMP()")
                     ->orderBy('e.date', 'DESC')
                     ->setMaxResults(4)
                     ->getQuery()
                     ->getResult();
     }
 
-    public function findOtherLastEvents()
+    public function findOtherEventsMP()
     {
         return $this->createQueryBuilder('e')
                     ->leftJoin('e.type', 't')
-                    ->where("t.code=5 OR t.code=6")                    
-                    ->andWhere("e.content IS NULL")
+                    ->where("t.code=5 OR t.code=6") 
+                    ->andWhere("e.date > CURRENT_TIMESTAMP()")                   
                     ->orderBy('e.date', 'ASC')
                     ->setMaxResults(6)
+                    ->getQuery()
+                    ->getResult();
+    }
+
+    public function findNextEvents()
+    {
+        return $this->createQueryBuilder('e')
+                    ->leftJoin('e.type', 't')
+                    ->where("t.code=1 OR t.code=2 OR t.code=3 OR t.code=4")             
+                    ->andWhere("e.date > CURRENT_TIMESTAMP()")
+                    ->orderBy('e.date', 'ASC')
                     ->getQuery()
                     ->getResult();
     }
@@ -64,11 +73,31 @@ class EventRepository extends ServiceEntityRepository
     public function findPastEvents()
     {
         return $this->createQueryBuilder('e')
-                    ->Where("e.date < CURRENT_TIMESTAMP()")
+                    ->andWhere("e.date < CURRENT_TIMESTAMP()")
                     ->orderBy('e.date', 'DESC')
                     ->getQuery()
-                    ->getResult()
-    ;}
+                    ->getResult();
+    }
+
+    // public function findOtherEvents()
+    // {
+    //     return $this->createQueryBuilder('e')
+    //                 ->leftJoin('e.type', 't')
+    //                 ->where("t.code=5 OR t.code=6") 
+    //                 ->andWhere("e.date > CURRENT_TIMESTAMP()")                   
+    //                 ->orderBy('e.date', 'ASC')
+    //                 ->getQuery()
+    //                 ->getResult();
+    // }
+
+    // public function findPastEvents()
+    // {
+    //     return $this->createQueryBuilder('e')
+    //                 ->where("e.date < CURRENT_TIMESTAMP()")
+    //                 ->orderBy('e.date', 'DESC')
+    //                 ->getQuery()
+    //                 ->getResult()
+    // ;}
 
     /*
     public function findByExampleField($value)

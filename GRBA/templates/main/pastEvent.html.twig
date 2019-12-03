@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block title %}Les précédents évenements{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h2>Les précédents évenements</h2>
+            {% for event in findPastEvents  %}
+                <div class="myContainer">
+                    <div class="card3">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="image\téléchargement.jfif" class="card-img-top3" alt="">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="card-title2 col-12">{{ event.title}}</h5>
+                                <p class="col-12"> Le {{event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : ''}}</p>
+                                <h6 class="col-12">{{ event.type}}</h6>
+                                <p class="card-text2 col-12">{{event.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+{% endblock %}
