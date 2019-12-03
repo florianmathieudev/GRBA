@@ -69,10 +69,8 @@ figure {
 }
 
 figcaption {
-    position: absolute;
     width: 100%;
     top: 5.5em;
-    text-align: center;
     font-family: sans-serif; font-size: 20px;
     color: white;
 }
@@ -181,12 +179,13 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
     border-radius: 20px;
 }
 
-
+.card-title {
+    padding: 1em;
+}
 
 .card-body {
-    text-align: center;
     padding: 0;
-    
+    color: white;
 }
 
 
@@ -245,11 +244,17 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
                                                                     /* other last events */
 
 .otherLastEvents {
-    margin: 50px 0 50px 0;
-    padding: 10px;
+    margin: 2em 0 2em 0;
+    padding: 1em;
     height: auto;
+    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
     }
 
+.otherLastEvents h2 {
+text-align: center;
+}
     
 
 #col {
@@ -270,25 +275,33 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
     font-weight: 700;
 }
 
-.blend {
-    mix-blend-mode: difference;
+.card-body2 {
+    margin-top: 1em;
 }
 
-                                                                    /* end other last events */
-
-                                                                    /* previous last events */
-
-.card2 {
+.card2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: url('/image/other.jpg');
+    background: url('/image/forest.jpg');
     background-attachment: fixed;
+    filter: opacity(66%);
     border-radius: 20px;
     /* border-bottom-right-radius: 0; */
     /* border: solid 2px; */
     border-radius: 20px;
     margin: 0;
 }
+
+
+                                                                    /* end other last events */
+
+                                                                    /* previous last events */
+
+
 
 .previousLastEvents {
     background-image: url(/image/bgdiv.png);
@@ -307,6 +320,10 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
     -webkit-box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
     -moz-box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
     box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
+    }
+
+    .previousLastEvents h2 {
+        text-align: right;
     }
 
     .card-img-top2 {
