@@ -1,9 +1,9 @@
 {% extends "base.html.twig" %}
-{% block title %} Tous les évenements{% endblock %}
+{% block title %}Les précédents évenements{% endblock %}
 
 {% block body %}
     <div class="container-fluid">
-        <h2> Nos anciens évenements</h2>
+        <h2>Les précédents évenements</h2>
             {% for event in findPastEvents  %}
                 <div class="myContainer">
                     <div class="card3">

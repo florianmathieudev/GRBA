@@ -19,9 +19,9 @@ class MainController extends AbstractController
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
             'events' => $eventRepository->findAll(),
-            'findNextLastEvents' => $eventRepository->findNextLastEvents(),
-            'findPreviousLastEvents' => $eventRepository->findPreviousLastEvents(),
-            'findOtherLastEvents' => $eventRepository->findOtherLastEvents(),
+            'findNextEvents' => $eventRepository->findNextEventsMP(),
+            'findPastEvents' => $eventRepository->findPastEventsMP(),
+            'findOtherEvents' => $eventRepository->findOtherEventsMP(),
             'contacts' => $contactRepository->findAll(),
         ]);
     }
@@ -40,17 +40,26 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/prochains-evenements", name="allNextEvents")
+     * @Route("/prochaines-randonnees", name="allNextEvents")
      *
      */
     public function nextEvents(EventRepository $eventRepository){
         return $this->render('main/nextEvent.html.twig', [
             'controller_name' => 'MainController',
             'events' => $eventRepository->findAll(),
-            'findNextEvents' => $eventRepository->findNextLastEvents(),
+            'findNextEvents' => $eventRepository->findNextEvents(),
         ]);
     }
 
-
-    
+    // /**
+    //  * @Route("/autres-evenements", name="allOtherEvents")
+    //  *
+    //  */
+    // public function otherEvents(EventRepository $eventRepository){
+    //     return $this->render('main/otherEvent.html.twig', [
+    //         'controller_name' => 'MainController',
+    //         'events' => $eventRepository->findAll(),
+    //         'findOtherEvents' => $eventRepository->findOtherEvents(),
+    //     ]);
+    // }
 }

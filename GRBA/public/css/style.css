@@ -2,7 +2,7 @@ body, html  {
     background: rgb(180,255,133);
 background: linear-gradient(155deg, rgba(180,255,133,1) 0%, rgba(120,177,120,1) 50%);
     font-family: 'Roboto', sans-serif;
-    overflow-x: hidden; 
+    /* overflow-x: hidden;  */
 }
 
                                                     /* header */
