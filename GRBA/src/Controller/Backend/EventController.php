@@ -5,6 +5,9 @@ namespace App\Controller\Backend;
 use App\Entity\Event;
 use App\Form\EventType;
 use App\Repository\EventRepository;
+use App\Repository\TypeRepository;
+use App\Entity\Type;
+use App\Form\TypeType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,10 +22,33 @@ class EventController extends AbstractController
     /**
      * @Route("/", name="event_index", methods={"GET"})
      */
-    public function index(EventRepository $eventRepository): Response
+    public function index(EventRepository $eventRepository, Request $request, TypeRepository $typeRepository): Response
     {
+        $event = new Event();
+        $eventForm = $this->createForm(EventType::class, $event);
+        $eventForm->handleRequest($request);
+        if ($eventForm->isSubmitted() && $eventForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($event);
+            $entityManager->flush();
+            return $this->redirectToRoute('event_index');
+        };
+
+        $type = new Type();
+        $form = $this->createForm(TypeType::class, $type);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($type);
+            $entityManager->flush();
+            return $this->redirectToRoute('event_index');
+        }
         return $this->render('back/event/index.html.twig', [
             'events' => $eventRepository->findAll(),
+            'types' => $typeRepository->findAll(),
+            'event' => $event,
+            'form' => $form->createView(),            
+            'eventForm' => $eventForm->createView(),
         ]);
     }
 

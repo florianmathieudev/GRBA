@@ -2,6 +2,39 @@
 {% block title %}Liste des Évènements{% endblock %}
 
 {% block body %}
+    <h1>Liste des Types</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type in types %}
+            <tr>
+                <td>{{ type.id }}</td>
+                <td>{{ type.title }}</td>
+                <td>{{ type.code }}</td>
+                <td>
+                    <a href="{{ path('type_show', {'id': type.id}) }}">Voir</a>
+                    <a href="{{ path('type_edit', {'id': type.id}) }}">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun Type</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h1>Créer un nouveau Type</h1>
+
+    {{ include('back/type/_form.html.twig') }}
+
+    <a href="{{ path('type_index') }}">Revenir à la liste</a>
     <h1>Liste des Évènements</h1>
 
     <table class="table">
@@ -37,4 +70,10 @@
     </table>
 
     <a href="{{ path('event_new') }}">Créer un nouvel Évènement</a>
+
+    <h1>Créer un nouvel Évènement</h1>
+
+    {{ include('back/event/_form.html.twig') }}
+
+    <a href="{{ path('event_index') }}">Revenir à la liste</a>
 {% endblock %}
