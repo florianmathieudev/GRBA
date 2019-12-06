@@ -31,10 +31,10 @@ class ContactController extends AbstractController
     public function new(Request $request): Response
     {
         $contact = new Contact();
-        $form = $this->createForm(ContactType::class, $contact);
-        $form->handleRequest($request);
+        $contactForm = $this->createForm(ContactType::class, $contact);
+        $contactForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($contact);
             $entityManager->flush();
@@ -44,7 +44,7 @@ class ContactController extends AbstractController
 
         return $this->render('back/contact/new.html.twig', [
             'contact' => $contact,
-            'form' => $form->createView(),
+            'contactForm' => $contactForm->createView(),
         ]);
     }
 
@@ -63,10 +63,10 @@ class ContactController extends AbstractController
      */
     public function edit(Request $request, Contact $contact): Response
     {
-        $form = $this->createForm(ContactType::class, $contact);
-        $form->handleRequest($request);
+        $contactForm = $this->createForm(ContactType::class, $contact);
+        $contactForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('contact_index');
@@ -74,7 +74,7 @@ class ContactController extends AbstractController
 
         return $this->render('back/contact/edit.html.twig', [
             'contact' => $contact,
-            'form' => $form->createView(),
+            'contactForm' => $contactForm->createView(),
         ]);
     }
 

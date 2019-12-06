@@ -31,10 +31,10 @@ class FooterController extends AbstractController
     public function new(Request $request): Response
     {
         $footer = new Footer();
-        $form = $this->createForm(FooterType::class, $footer);
-        $form->handleRequest($request);
+        $footerForm = $this->createForm(FooterType::class, $footer);
+        $footerForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($footerForm->isSubmitted() && $footerForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($footer);
             $entityManager->flush();
@@ -44,7 +44,7 @@ class FooterController extends AbstractController
 
         return $this->render('back/footer/new.html.twig', [
             'footer' => $footer,
-            'form' => $form->createView(),
+            'footerForm' => $footerForm->createView(),
         ]);
     }
 
@@ -63,10 +63,10 @@ class FooterController extends AbstractController
      */
     public function edit(Request $request, Footer $footer): Response
     {
-        $form = $this->createForm(FooterType::class, $footer);
-        $form->handleRequest($request);
+        $footerForm = $this->createForm(FooterType::class, $footer);
+        $footerForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($footerForm->isSubmitted() && $footerForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('footer_index');
@@ -74,7 +74,7 @@ class FooterController extends AbstractController
 
         return $this->render('back/footer/edit.html.twig', [
             'footer' => $footer,
-            'form' => $form->createView(),
+            'footerForm' => $footerForm->createView(),
         ]);
     }
 

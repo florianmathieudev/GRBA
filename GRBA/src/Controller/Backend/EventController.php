@@ -20,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EventController extends AbstractController
 {
     /**
-     * @Route("/", name="event_index", methods={"GET"})
+     * @Route("/", name="event_index", methods={"GET","POST"})
      */
     public function index(EventRepository $eventRepository, Request $request, TypeRepository $typeRepository): Response
     {
@@ -35,9 +35,9 @@ class EventController extends AbstractController
         };
 
         $type = new Type();
-        $form = $this->createForm(TypeType::class, $type);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        $typeform = $this->createForm(TypeType::class, $type);
+        $typeform->handleRequest($request);
+        if ($typeform->isSubmitted() && $typeform->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($type);
             $entityManager->flush();
@@ -47,7 +47,7 @@ class EventController extends AbstractController
             'events' => $eventRepository->findAll(),
             'types' => $typeRepository->findAll(),
             'event' => $event,
-            'form' => $form->createView(),            
+            'typeForm' => $typeform->createView(),            
             'eventForm' => $eventForm->createView(),
         ]);
     }
@@ -58,10 +58,10 @@ class EventController extends AbstractController
     public function new(Request $request): Response
     {
         $event = new Event();
-        $form = $this->createForm(EventType::class, $event);
-        $form->handleRequest($request);
+        $eventForm = $this->createForm(EventType::class, $event);
+        $eventForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($eventForm->isSubmitted() && $eventForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($event);
             $entityManager->flush();
@@ -71,7 +71,7 @@ class EventController extends AbstractController
 
         return $this->render('back/event/new.html.twig', [
             'event' => $event,
-            'form' => $form->createView(),
+            'eventForm' => $eventForm->createView(),
         ]);
     }
 
@@ -90,10 +90,10 @@ class EventController extends AbstractController
      */
     public function edit(Request $request, Event $event): Response
     {
-        $form = $this->createForm(EventType::class, $event);
-        $form->handleRequest($request);
+        $eventForm = $this->createForm(EventType::class, $event);
+        $eventForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($eventForm->isSubmitted() && $eventForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('event_index');
@@ -101,7 +101,7 @@ class EventController extends AbstractController
 
         return $this->render('back/event/edit.html.twig', [
             'event' => $event,
-            'form' => $form->createView(),
+            'eventForm' => $eventForm->createView(),
         ]);
     }
 

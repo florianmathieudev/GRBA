@@ -31,10 +31,10 @@ class HoraireController extends AbstractController
     public function new(Request $request): Response
     {
         $horaire = new Horaire();
-        $form = $this->createForm(HoraireType::class, $horaire);
-        $form->handleRequest($request);
+        $horaireForm = $this->createForm(HoraireType::class, $horaire);
+        $horaireForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($horaireForm->isSubmitted() && $horaireForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($horaire);
             $entityManager->flush();
@@ -44,7 +44,7 @@ class HoraireController extends AbstractController
 
         return $this->render('back/horaire/new.html.twig', [
             'horaire' => $horaire,
-            'form' => $form->createView(),
+            'horaireForm' => $horaireForm->createView(),
         ]);
     }
 
@@ -63,10 +63,10 @@ class HoraireController extends AbstractController
      */
     public function edit(Request $request, Horaire $horaire): Response
     {
-        $form = $this->createForm(HoraireType::class, $horaire);
-        $form->handleRequest($request);
+        $horaireForm = $this->createForm(HoraireType::class, $horaire);
+        $horaireForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($horaireForm->isSubmitted() && $horaireForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('horaire_index');
@@ -74,7 +74,7 @@ class HoraireController extends AbstractController
 
         return $this->render('back/horaire/edit.html.twig', [
             'horaire' => $horaire,
-            'form' => $form->createView(),
+            'horaireForm' => $horaireForm->createView(),
         ]);
     }
 

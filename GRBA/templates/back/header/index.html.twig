@@ -3,8 +3,14 @@
 {% block title %}Liste des Entêtes{% endblock %}
 
 {% block body %}
-    <h1>Liste des Entêtes</h1>
 
+
+    <h1>Créer une nouvelle Entête</h1>
+    {{ include('back/header/_form.html.twig') }}
+    <a href="{{ path('header_index') }}">Revenir à la liste</a>
+
+
+    <h1>Liste des Entêtes</h1>
     <table class="table">
         <thead>
             <tr>
@@ -32,6 +38,159 @@
         {% endfor %}
         </tbody>
     </table>
-
     <a href="{{ path('header_new') }}">Créer une nouvelle Entête</a>
+
+
+    <h1>Créer un nouveau Pied de page</h1>
+    {{ include('back/footer/_form.html.twig') }}
+    <a href="{{ path('footer_index') }}">Revenir à la liste</a>
+
+
+    <h1>Liste des Pieds de page</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Texte</th>
+                <th>Information</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for footer in footers %}
+            <tr>
+                <td>{{ footer.id }}</td>
+                <td>{{ footer.text }}</td>
+                <td>{{ footer.information }}</td>
+                <td>
+                    <a href="{{ path('footer_show', {'id': footer.id}) }}">Voir</a>
+                    <a href="{{ path('footer_edit', {'id': footer.id}) }}">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun Pied de page</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('footer_new') }}">Créer un nouveau Pied de page</a>
+
+
+    <h1>Créer un nouveau Contact</h1>
+    {{ include('back/contact/_form.html.twig') }}
+    <a href="{{ path('contact_index') }}">Revenir à la liste</a>
+
+
+    <h1>Liste des Contacts</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numéro</th>
+                <th>Email</th>
+                <th>Adresse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.id }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.adresse }}</td>
+                <td>
+                    <a href="{{ path('contact_show', {'id': contact.id}) }}">Voir</a>
+                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun Contact</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('contact_new') }}">Créer un nouveau Contact</a>
+
+
+    <h1>Créer un nouveau Réseau social</h1>
+    {{ include('back/network/_form.html.twig') }}
+    <a href="{{ path('network_index') }}">Revenir à la liste</a>
+
+
+    <h1>Liste des Réseaux sociaux</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Facebook</th>
+                <th>Twitter</th>
+                <th>Instagram</th>
+                <th>Linkedin</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for network in networks %}
+            <tr>
+                <td>{{ network.id }}</td>
+                <td>{{ network.facebook }}</td>
+                <td>{{ network.twitter }}</td>
+                <td>{{ network.instagram }}</td>
+                <td>{{ network.linkedin }}</td>
+                <td>
+                    <a href="{{ path('network_show', {'id': network.id}) }}">Voir</a>
+                    <a href="{{ path('network_edit', {'id': network.id}) }}">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun Réseau social</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('network_new') }}">Créer un nouveau Réseau social</a>
+
+
+    <h1>Créer un nouvel Horaire</h1>
+    {{ include('back/horaire/_form.html.twig') }}
+    <a href="{{ path('horaire_index') }}">Revenir à la liste</a>
+
+
+    <h1>Liste des Horaires</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ouverture</th>
+                <th>Fermeture</th>
+                <th>Ouvert</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for horaire in horaires %}
+            <tr>
+                <td>{{ horaire.id }}</td>
+                <td>{{ horaire.opening }}</td>
+                <td>{{ horaire.closing }}</td>
+                <td>{{ horaire.open ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('horaire_show', {'id': horaire.id}) }}">Voir</a>
+                    <a href="{{ path('horaire_edit', {'id': horaire.id}) }}">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucune Horaire</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('horaire_new') }}">Créer un nouvel Horaire</a>
+    
+
 {% endblock %}

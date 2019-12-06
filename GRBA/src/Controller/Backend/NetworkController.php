@@ -31,10 +31,10 @@ class NetworkController extends AbstractController
     public function new(Request $request): Response
     {
         $network = new Network();
-        $form = $this->createForm(NetworkType::class, $network);
-        $form->handleRequest($request);
+        $networkForm = $this->createForm(NetworkType::class, $network);
+        $networkForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($networkForm->isSubmitted() && $networkForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($network);
             $entityManager->flush();
@@ -44,7 +44,7 @@ class NetworkController extends AbstractController
 
         return $this->render('back/network/new.html.twig', [
             'network' => $network,
-            'form' => $form->createView(),
+            'networkForm' => $networkForm->createView(),
         ]);
     }
 
@@ -63,10 +63,10 @@ class NetworkController extends AbstractController
      */
     public function edit(Request $request, Network $network): Response
     {
-        $form = $this->createForm(NetworkType::class, $network);
-        $form->handleRequest($request);
+        $networkForm = $this->createForm(NetworkType::class, $network);
+        $networkForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($networkForm->isSubmitted() && $networkForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('network_index');
@@ -74,7 +74,7 @@ class NetworkController extends AbstractController
 
         return $this->render('back/network/edit.html.twig', [
             'network' => $network,
-            'form' => $form->createView(),
+            'networkForm' => $networkForm->createView(),
         ]);
     }
 

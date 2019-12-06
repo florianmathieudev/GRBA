@@ -31,10 +31,10 @@ class PictureController extends AbstractController
     public function new(Request $request): Response
     {
         $picture = new Picture();
-        $form = $this->createForm(PictureType::class, $picture);
-        $form->handleRequest($request);
+        $pictureForm = $this->createForm(PictureType::class, $picture);
+        $pictureForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
             $file = $picture->getPath();
             $filePath = md5(uniqid()).'.'.$file->guessExtension();
             $file->move($this->getParameter('upload_directory'), $filePath);
@@ -49,7 +49,7 @@ class PictureController extends AbstractController
 
         return $this->render('back/picture/new.html.twig', [
             'picture' => $picture,
-            'form' => $form->createView(),
+            'pictureForm' => $pictureForm->createView(),
         ]);
     }
 
@@ -68,10 +68,10 @@ class PictureController extends AbstractController
      */
     public function edit(Request $request, Picture $picture): Response
     {
-        $form = $this->createForm(PictureType::class, $picture);
-        $form->handleRequest($request);
+        $pictureForm = $this->createForm(PictureType::class, $picture);
+        $pictureForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('picture_index');
@@ -79,7 +79,7 @@ class PictureController extends AbstractController
 
         return $this->render('back/picture/edit.html.twig', [
             'picture' => $picture,
-            'form' => $form->createView(),
+            'pictureForm' => $pictureForm->createView(),
         ]);
     }
 

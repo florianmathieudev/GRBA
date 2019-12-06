@@ -3,8 +3,50 @@
 {% block title %}Liste des Utilisateurs{% endblock %}
 
 {% block body %}
-    <h1>Liste des Utilisateurs</h1>
 
+
+    <h1>Créer un nouveau Role</h1>
+    {{ include('back/role/_form.html.twig') }}
+    <a href="{{ path('role_index') }}">Revenir à la liste</a>
+
+
+    <h1>Liste des Roles</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for role in roles %}
+            <tr>
+                <td>{{ role.id }}</td>
+                <td>{{ role.code }}</td>
+                <td>{{ role.name }}</td>
+                <td>
+                    <a href="{{ path('role_show', {'id': role.id}) }}">Voir</a>
+                    <a href="{{ path('role_edit', {'id': role.id}) }}">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun Role</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('role_new') }}">Créer un nouveau Role </a>
+
+
+    <h1>Créer un nouvel Utilisateur</h1>
+    {{ include('back/user/_form.html.twig') }}
+    <a href="{{ path('user_index') }}">Revenir à la liste</a>
+
+
+    <h1>Liste des Utilisateurs</h1>
     <table class="table">
         <thead>
             <tr>
@@ -32,6 +74,7 @@
         {% endfor %}
         </tbody>
     </table>
-
     <a href="{{ path('user_new') }}">Créer un nouveau Utilisateur</a>
+
+    
 {% endblock %}
