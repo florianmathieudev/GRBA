@@ -44,7 +44,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Titre</th>
                 <th>Date</th>
                 <th>Description</th>
                 <th>Contenu</th>
@@ -55,7 +54,6 @@
         <tbody>
         {% for event in events %}
             <tr>
-                <td>{{ event.title }}</td>
                 <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ event.description }}</td>
                 <td>{{ event.content }}</td>

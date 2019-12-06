@@ -18,11 +18,11 @@
                                         <div class="myFront">
                                             <div class="card " > 
                                                 <figure>
-                                                    <img src="image\téléchargement.jfif" class="card-img-top" alt="...">
+                                                    <img src="{{ type.picture }}" class="card-img-top" alt="...">
                                                     <figcaption class="img-title">{{ event.type }}</figcaption>    
                                                 </figure>
                                                 <div class="card-body">
-                                                    <h5 class="card-title">{{ event.title }}</h5>
+                                                    <h5 class="card-title">{{ event.place }}</h5>
                                                         <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : '' }}</p> 
                                                 </div>
                                             </div>
@@ -30,7 +30,7 @@
                                         <div class="myBack">
                                             <div class="cardReverse" >      
                                                 <div class="card-body" id="des">
-                                                    <h5 class="card-title">{{ event.title }}</h5>
+                                                    <h5 class="card-title">{{ event.place }}</h5>
                                                         <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i:s') : '' }}</p>
                                                         <div class="desc" >
                                                             <p class="card-text">{{ event.description }}</p>
@@ -66,7 +66,7 @@
                                                     <figure>
                                                         <figcaption class="img-title blend">{{ event.type }}</figcaption>
                                                         <div class="card-body card-body2">
-                                                        <h5 class="card-title ">{{ event.title }}</h5>
+                                                        <h5 class="card-title ">{{ event.place }}</h5>
                                                             <p class="">le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : '' }}</p> 
                                                     </div>    
                                                     </figure>
@@ -97,9 +97,9 @@
                         {% for event in findPastEvents %}
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="card">
-                                    <img src="image\téléchargement.jfif" class="card-img-top2" alt="...">
+                                    <img src="{{asset('uploads/' ~  event.type.picture)}}" class="card-img-top2" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ event.title }}</h5>
+                                        <h5 class="card-title">{{ event.place }}</h5>
                                             <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
                                             <p class="card-text">{{ event.content }}</p>
                                             <h6>{{ event.type }}</h6>

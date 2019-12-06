@@ -394,3 +394,17 @@ text-align: center;
     max-width: 450px;
     / object-fit:cover; */
 }
+
+.test {
+    background-color: #2D2D2D;
+    color: white;
+    padding: 2em 5em 2em 5em;
+    font-size: 0.7em;
+}
+
+.test2 {
+    background-color:  white;
+    color: #2D2D2D;
+    padding: 2em 5em 2em 5em;
+    font-size: 0.7em;
+}

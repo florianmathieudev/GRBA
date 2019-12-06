@@ -33,6 +33,11 @@ class Type
      */
     private $events;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
+     */
+    private $picture;
+
     public function __toString()
     {
         return $this->title;
@@ -99,6 +104,18 @@ class Type
                 $event->setType(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPicture(): ?Picture
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?Picture $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }
