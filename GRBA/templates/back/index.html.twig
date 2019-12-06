@@ -9,40 +9,4 @@
 <br>
 <br>
 <h4>Ci-dessus vous retrouverez tous les liens qui permettent de modérer les contenus de la Base de Données de GRBA</h4>
-<h1>Liste des Types</h1>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Titre</th>
-            <th>Code</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for type in types %}
-        <tr>
-            <td>{{ type.id }}</td>
-            <td>{{ type.title }}</td>
-            <td>{{ type.code }}</td>
-            <td>
-                <a href="{{ path('type_show', {'id': type.id}) }}">Voir</a>
-                <a href="{{ path('type_edit', {'id': type.id}) }}">Éditer</a>
-            </td>
-        </tr>
-    {% else %}
-        <tr>
-            <td colspan="4">Aucun Type</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<h1>Créer un nouvel Évènement</h1>
-
-{{ include('back/event/_form.html.twig') }}
-
-<a href="{{ path('event_index') }}">Revenir à la liste</a>
-
-<a href="{{ path('type_new') }}">Créer un nouveau Type</a>
 {% endblock %}
