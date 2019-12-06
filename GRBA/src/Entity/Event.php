@@ -142,7 +142,8 @@ class Event
     public function __toString()
     {
         return $this->title;
-    }
+    }    
+    
 
     public function getPlace(): ?string
     {
