@@ -31,10 +31,10 @@ class RoleController extends AbstractController
     public function new(Request $request): Response
     {
         $role = new Role();
-        $form = $this->createForm(RoleType::class, $role);
-        $form->handleRequest($request);
+        $roleForm = $this->createForm(RoleType::class, $role);
+        $roleForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($roleForm->isSubmitted() && $roleForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($role);
             $entityManager->flush();
@@ -44,7 +44,7 @@ class RoleController extends AbstractController
 
         return $this->render('back/role/new.html.twig', [
             'role' => $role,
-            'form' => $form->createView(),
+            'roleForm' => $roleForm->createView(),
         ]);
     }
 
@@ -63,10 +63,10 @@ class RoleController extends AbstractController
      */
     public function edit(Request $request, Role $role): Response
     {
-        $form = $this->createForm(RoleType::class, $role);
-        $form->handleRequest($request);
+        $roleForm = $this->createForm(RoleType::class, $role);
+        $roleForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($roleForm->isSubmitted() && $roleForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('role_index');
@@ -74,7 +74,7 @@ class RoleController extends AbstractController
 
         return $this->render('back/role/edit.html.twig', [
             'role' => $role,
-            'form' => $form->createView(),
+            'roleForm' => $roleForm->createView(),
         ]);
     }
 

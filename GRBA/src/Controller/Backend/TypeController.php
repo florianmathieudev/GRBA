@@ -31,10 +31,10 @@ class TypeController extends AbstractController
     public function new(Request $request): Response
     {
         $type = new Type();
-        $form = $this->createForm(TypeType::class, $type);
-        $form->handleRequest($request);
+        $typeForm = $this->createForm(TypeType::class, $type);
+        $typeForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($typeForm->isSubmitted() && $typeForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($type);
             $entityManager->flush();
@@ -44,7 +44,7 @@ class TypeController extends AbstractController
 
         return $this->render('back/type/new.html.twig', [
             'type' => $type,
-            'form' => $form->createView(),
+            'typeForm' => $typeForm->createView(),
         ]);
     }
 
@@ -63,10 +63,10 @@ class TypeController extends AbstractController
      */
     public function edit(Request $request, Type $type): Response
     {
-        $form = $this->createForm(TypeType::class, $type);
-        $form->handleRequest($request);
+        $typeForm = $this->createForm(TypeType::class, $type);
+        $typeForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($typeForm->isSubmitted() && $typeForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('type_index');
@@ -74,7 +74,7 @@ class TypeController extends AbstractController
 
         return $this->render('back/type/edit.html.twig', [
             'type' => $type,
-            'form' => $form->createView(),
+            'typeForm' => $typeForm->createView(),
         ]);
     }
 

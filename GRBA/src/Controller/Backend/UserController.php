@@ -4,7 +4,10 @@ namespace App\Controller\Backend;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Entity\Role;
+use App\Form\RoleType;
 use App\Repository\UserRepository;
+use App\Repository\RoleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,12 +19,37 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="user_index", methods={"GET"})
+     * @Route("/", name="user_index", methods={"GET","POST"})
      */
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, Request $request, RoleRepository $roleRepository): Response
     {
+        $user = new User();
+        $userForm = $this->createForm(UserType::class, $user);
+        $userForm->handleRequest($request);
+        if ($userForm->isSubmitted() && $userForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return $this->redirectToRoute('user_index');
+        }
+
+        $role = new Role();
+        $roleForm = $this->createForm(RoleType::class, $role);
+        $roleForm->handleRequest($request);
+        if ($roleForm->isSubmitted() && $roleForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($role);
+            $entityManager->flush();
+            return $this->redirectToRoute('user_index');
+        }
+
         return $this->render('back/user/index.html.twig', [
             'users' => $userRepository->findAll(),
+            'user' => $user,
+            'userForm' => $userForm->createView(),
+            'role' => $role,
+            'roleForm' => $roleForm->createView(),
+            'roles' => $roleRepository->findAll(),
         ]);
     }
 
@@ -31,10 +59,10 @@ class UserController extends AbstractController
     public function new(Request $request): Response
     {
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        $userForm = $this->createForm(UserType::class, $user);
+        $userForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($userForm->isSubmitted() && $userForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -44,7 +72,7 @@ class UserController extends AbstractController
 
         return $this->render('back/user/new.html.twig', [
             'user' => $user,
-            'form' => $form->createView(),
+            'userForm' => $userForm->createView(),
         ]);
     }
 
@@ -63,10 +91,10 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user): Response
     {
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        $userForm = $this->createForm(UserType::class, $user);
+        $userForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($userForm->isSubmitted() && $userForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_index');
@@ -74,7 +102,7 @@ class UserController extends AbstractController
 
         return $this->render('back/user/edit.html.twig', [
             'user' => $user,
-            'form' => $form->createView(),
+            'userForm' => $userForm->createView(),
         ]);
     }
 
