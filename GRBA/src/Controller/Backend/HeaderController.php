@@ -28,7 +28,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HeaderController extends AbstractController
 {
     /**
-     * @Route("/", name="header_index", methods={"GET"})
+     * @Route("/", name="header_index", methods={"GET","POST"})
      */
     public function index(HeaderRepository $headerRepository, FooterRepository $footerRepository, ContactRepository $contactRepository, NetworkRepository $networkRepository, HoraireRepository $horaireRepository, Request $request): Response
     {

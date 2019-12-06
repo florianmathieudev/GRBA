@@ -17,12 +17,12 @@ class Event
      * @ORM\Column(type="integer")
      */
     private $id;
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
-
+    private $place;
+    
     /**
      * @ORM\Column(type="datetime")
      */
@@ -49,6 +49,7 @@ class Event
      */
     private $pictures;
 
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
@@ -57,18 +58,6 @@ class Event
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
     }
 
     public function getDate(): ?\DateTimeInterface
@@ -153,5 +142,17 @@ class Event
     public function __toString()
     {
         return $this->title;
+    }
+
+    public function getPlace(): ?string
+    {
+        return $this->place;
+    }
+
+    public function setPlace(string $place): self
+    {
+        $this->place = $place;
+
+        return $this;
     }
 }

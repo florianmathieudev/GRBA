@@ -40,6 +40,7 @@ class EventRepository extends ServiceEntityRepository
     public function findPastEventsMP()
     {
         return $this->createQueryBuilder('e')
+                    ->leftJoin('e.type', 't')
                     ->andWhere("e.date < CURRENT_TIMESTAMP()")
                     ->orderBy('e.date', 'DESC')
                     ->setMaxResults(4)
@@ -73,6 +74,7 @@ class EventRepository extends ServiceEntityRepository
     public function findPastEvents()
     {
         return $this->createQueryBuilder('e')
+                    ->leftJoin('e.type', 't')   
                     ->andWhere("e.date < CURRENT_TIMESTAMP()")
                     ->orderBy('e.date', 'DESC')
                     ->getQuery()
