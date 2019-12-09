@@ -3,6 +3,7 @@ body, html  {
 background: linear-gradient(155deg, rgba(180,255,133,1) 0%, rgba(120,177,120,1) 50%);
     font-family: 'Roboto', sans-serif;
     /* overflow-x: hidden;  */
+    
 }
 
                                                     /* header */
@@ -51,14 +52,15 @@ h6 {
     text-align: center;
     color: white;
     font-size: 2em;
-}
+} */
 
 
 
 .card-text {
-    padding-top: 40%;
-
-} */
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%);
+}
 
 
 
@@ -69,9 +71,14 @@ figure {
 }
 
 figcaption {
+    position: absolute;
     width: 100%;
-    top: 5.5em;
-    font-family: sans-serif; font-size: 20px;
+    font-weight: 900;
+    font-size: 2em;
+    top: 1em;
+    text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: 'Montserrat', sans-serif;
     color: white;
 }
 
@@ -79,9 +86,8 @@ figcaption {
                                                                     /* reverse card */
 
 .card-img-top {
-    border-radius: 20px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 0;
+
     margin: 0 auto 0 auto;
     height: 100%;
     max-width: 450px;
@@ -94,9 +100,7 @@ figcaption {
     background-attachment: fixed;
     margin: 2em 0 2em 2em;
     padding: 10px;
-    border-radius: 20px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    
     border-top: solid 2px;
     border-bottom: solid 2px;
     border-left: solid 2px;
@@ -112,7 +116,7 @@ figcaption {
     position: relative;
     height: 450px;
     margin: 0.5em;
-    border-radius: 20px;
+    
     -webkit-perspective: 1000;
     -moz-perspective: 1000;
     -o-perspective: 1000;
@@ -122,7 +126,7 @@ figcaption {
 
 
 .myCard{
-    border-radius: 20px;
+    
     position: absolute;
     width: 100%;
     height: 100%;
@@ -149,7 +153,7 @@ figcaption {
     -webkit-box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
 -moz-box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
 box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
-    border-radius: 20px;
+    
 }
 
 .myBack {
@@ -164,7 +168,7 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
     -webkit-box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
 -moz-box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
 box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
-    border-radius: 20px;
+    
 }
 
 .card {
@@ -173,18 +177,39 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
     background: linear-gradient(164deg, rgba(31,31,31,1) 0%, rgba(189,184,184,1) 35%) ;
     background-size: 100%;
     background-attachment: fixed;
-    border-radius: 20px;
-    /* border-bottom-right-radius: 0; */
-    /* border: solid 2px; */
-    border-radius: 20px;
+    border-radius: 0;
+
     max-height: 500px;
 }
 
 .card-title {
-    padding: 1em;
+   text-align: end;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: 900;
+   margin-right: 3px;
+}
+
+.back-card-title {
+    text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    padding: 1.5em .5em 0 .5em;
+    font-size: 2em;
+}
+h6{
+    position: absolute;
+    top: 9em;
+    padding-left: 1em;
+    color: black;
 }
 
 .card-body {
+    color: white;
+    padding: 2em;;
+}
+
+.back-card-body {
     padding: 0;
     color: white;
 }
@@ -207,23 +232,29 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
     background: linear-gradient(164deg, rgba(31,31,31,1) 0%, rgba(189,184,184,1) 35%) !important;
     background-size: 150%;
     background-attachment: fixed;
-    border-radius: 20px;
+    
 
     /* border: solid 2px; */
 }
 
 .desc {
+    padding: 2em;
     clear: left;
     height: auto;
     background: white;
-    border-top: solid 2px;
-    border-bottom-left-radius: 20px; 
-    border-bottom-right-radius: 20px; 
     width: auto; 
     height: 278.5px;
     color: black;
 }
 
+#descItem {
+    text-align: center;
+    height: auto;
+    width: auto; 
+    color: black;
+    display: table-cell;
+    vertical-align: middle;
+}
 .seeAll {
     position: relative;    
     
@@ -260,6 +291,7 @@ text-align: center;
 
 #col {
     padding: 0;
+    margin:.5em;
 }
 
 
@@ -277,7 +309,22 @@ text-align: center;
 }
 
 .card-body2 {
+    position: absolute;
     margin-top: 1em;
+    top: 200px;
+    width: 20em;
+}
+
+.card2 {
+    padding: 1em;
+    width: 100%;
+    height: 350px;
+    background: linear-gradient(164deg, rgba(31,31,31,1) 0%, rgba(189,184,184,1) 35%) ;
+    background-size: 100%;
+    background-attachment: fixed;
+    border-radius: 20px;
+
+    max-height: 500px;
 }
 
 .card2::before {
@@ -297,6 +344,47 @@ text-align: center;
     margin: 0;
 }
 
+.card-title2 {
+    position: absolute;
+    top: 300px;
+    right: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    text-align: end;
+ }
+
+#date {
+    position: absolute;
+    top: -100px;
+    left: 0;
+}
+
+.img-title2 {
+    left: 0;
+
+    position: absolute;
+    width: 100%;
+    font-weight: 900;
+    font-size: 2em;
+    top: 1em;
+    text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+.desc2 {
+    position: absolute;
+    top: 200px;
+    padding: 2em;
+    clear: left;
+    height: auto;
+    
+    
+    width: auto; 
+    height: 278.5px;
+    color: black;
+}
 
                                                                     /* end other last events */
 
@@ -311,9 +399,7 @@ text-align: center;
     background-attachment: fixed;
     margin: 2em 2em 2em 0;
     padding: 10px;
-    border-radius: 20px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    
     border-top: solid 2px;
     border-bottom: solid 2px;
     border-right: solid 2px;
@@ -328,9 +414,7 @@ text-align: center;
     }
 
     .card-img-top2 {
-        border-radius: 20px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+        
         margin: 0;
         height: 30%;
         width: auto;
@@ -380,16 +464,11 @@ text-align: center;
     background-image: url(/image/bgdiv.png);
     background-size: 150%;
     background-attachment: fixed;
-    border-radius: 20px;
-    /* border-bottom-right-radius: 0; /
-    / border: solid 2px; */
-    border-radius: 20px;
+    
     margin-top: 1em;
 }
 .card-img-top3 {
-    border-radius: 20px;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
+    
     height: 450px;
     /* width: 42.4%; /
     max-width: 450px;

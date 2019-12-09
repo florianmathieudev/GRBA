@@ -52,7 +52,7 @@ class EventRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('e')
                     ->leftJoin('e.type', 't')
-                    ->where("t.code=5 OR t.code=6") 
+                    ->where("t.code!=1 AND t.code!=2 AND t.code!=3 AND t.code!=4") 
                     ->andWhere("e.date > CURRENT_TIMESTAMP()")                   
                     ->orderBy('e.date', 'ASC')
                     ->setMaxResults(6)

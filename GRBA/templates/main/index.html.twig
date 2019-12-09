@@ -22,18 +22,24 @@
                                                     <figcaption class="img-title">{{ event.type }}</figcaption>    
                                                 </figure>
                                                 <div class="card-body">
-                                                    <h5 class="card-title">{{ event.place }}</h5>
-                                                        <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : '' }}</p> 
+                                                    <p>le {{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM')}} à {{ event.date ? event.date|date('H:i') : '' }}</p> 
                                                 </div>
+                                                <h5 class="card-title">
+                                                        <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>
+                                                        {{ event.place }}</h5>
                                             </div>
                                         </div>                            
                                         <div class="myBack">
                                             <div class="cardReverse" >      
-                                                <div class="card-body" id="des">
-                                                    <h5 class="card-title">{{ event.place }}</h5>
-                                                        <p>le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i:s') : '' }}</p>
+                                                <div class="back-card-body" id="des">
+                                                    <h5 class="back-card-title">{{ event.place }}</h5>
+                                                        <h6>{{ event.date|localizeddate('none', 'none', null, null, 'EEEE')}} à {{ event.date ? event.date|date('H:i:s') : '' }}</h6>
                                                         <div class="desc" >
-                                                            <p class="card-text">{{ event.description }}</p>
+                                                            <div id="descItem">
+                                                                <div>
+                                                                    {{ event.description|truncate(180) }}
+                                                                </div>
+                                                            </div>
                                                         </div>                
                                                 </div>
                                             </div>
@@ -59,22 +65,22 @@
                     <div class="col-lg-11 col-md-12 ">   
                         <div class="row">
                             {% for event in findOtherEvents %}
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-12" id="col">  
-                                        <div class="myContainer2"> 
-                                            <div class="myCard">
-                                                <div class="card2 " > 
-                                                    <figure>
-                                                        <figcaption class="img-title blend">{{ event.type }}</figcaption>
-                                                        <div class="card-body card-body2">
-                                                        <h5 class="card-title ">{{ event.place }}</h5>
-                                                            <p class="">le {{ event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : '' }}</p> 
-                                                    </div>    
-                                                    </figure>
-                                                    
-                                                </div>                             
-                                            </div>
-                                        </div>  
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-12" id="col">  
+                                    <div class="card2 " > 
+                                        
+                                            <div class="img-title2">{{ event.type }}</div>
+                                        
+                                        <div class="card-body card-body2">
+                                            <p id="date">le {{ event.date|localizeddate('none', 'none', null, null, 'EEEE d MMMM')}} à {{ event.date ? event.date|date('H:i') : '' }} </p>
+                                        </div>
+                                        <div class="desc2" >
+                                            {{ event.description|truncate(180) }}
+                                        </div>   
+                                        <h5 class="card-title2">
+                                                <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i>{{ event.place }}</span>
+                                            </h5>     
                                     </div>
+                                </div>
                             {% endfor %}
                         </div>
                     </div>
@@ -97,12 +103,14 @@
                         {% for event in findPastEvents %}
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="card">
-                                    <img src="{{asset('uploads/' ~  event.type.picture)}}" class="card-img-top2" alt="...">
+                                    <figure>
+                                        <img src="{{asset('uploads/' ~  event.type.picture)}}" class="card-img-top" alt="...">
+                                        <figcaption class="img-title">{{ event.type }}</figcaption>    
+                                    </figure>
                                     <div class="card-body">
                                         <h5 class="card-title">{{ event.place }}</h5>
-                                        <h6>{{ event.type }}</h6>
-                                            <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
-                                            <p class="card-text">{{ event.content|truncate(150) }}</p>
+                                            <p>{{ event.date|localizeddate('none', 'none', 'none', null, 'EEEE dd MMMM')}}</p>
+                                            <p class="card-text">{{ event.content|truncate(50) }}</p>
                                             
                                     </div>
                                     <button href="#" class="btn btn-primary">Voir plus</button>
