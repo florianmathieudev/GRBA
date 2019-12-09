@@ -3,11 +3,18 @@
 {% block title %}Éditer Type{% endblock %}
 
 {% block body %}
-    <h1>Éditer Type</h1>
-
-    {{ include('back/type/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-
-    <a href="{{ path('type_index') }}">Revenir à la liste</a>
-
-    {{ include('back/type/_delete_form.html.twig') }}
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test col-12'>
+                    <h1>Éditer Type</h1>
+                    {{ include('back/type/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+                    {{ include('back/type/_delete_form.html.twig') }}
+                    <a href="{{ path('event_index') }}">Revenir à la liste</a>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>    
 {% endblock %}

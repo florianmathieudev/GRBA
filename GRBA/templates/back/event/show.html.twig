@@ -3,32 +3,46 @@
 {% block title %}Évènement{% endblock %}
 
 {% block body %}
-    <h1>Évènement</h1>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test col-12'>
+                    <h1>Évènement</h1>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Lieu</th>
+                                <td>{{ event.place }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ event.description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Contenu</th>
+                                <td>{{ event.content }}</td>
+                            </tr>            
+                            <tr>
+                                <th>Images</th>
+                                {% for picture in pictures %}
+                                    <td><img class="col-3" src="{{asset('uploads/' ~  event.pictures)}}" class="card-img-top" alt="..."></td>
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="{{ path('event_edit', {'id': event.id}) }}">Éditer</a>
+                    {{ include('back/event/_delete_form.html.twig') }}
+                    <a href="{{ path('event_index') }}">Revenir à la liste</a>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>    
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Titre</th>
-                <td>{{ event.title }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ event.description }}</td>
-            </tr>
-            <tr>
-                <th>Contenu</th>
-                <td>{{ event.content }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('event_index') }}">Revenir à la liste</a>
-
-    <a href="{{ path('event_edit', {'id': event.id}) }}">Éditer</a>
-
-    {{ include('back/event/_delete_form.html.twig') }}
 {% endblock %}

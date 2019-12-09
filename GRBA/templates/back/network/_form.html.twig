@@ -1,4 +1,7 @@
 {{ form_start(networkForm) }}
-    {{ form_widget(networkForm) }}
+    {{ form_row(networkForm.facebook, {'attr': {'placeholder': 'Entrer une url Facebook ...'}} )}}
+    {{ form_row(networkForm.twitter, {'attr': {'placeholder': 'Entrer une url Twitter ...'}} )}}
+    {{ form_row(networkForm.instagram, {'attr': {'placeholder': 'Entrer une url Instagram ...'}} )}}
+    {{ form_row(networkForm.linkedin, {'attr': {'placeholder': 'Entrer une url LunkedIn ...'}} )}}
     <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
-{{ form_end(networkForm) }}
+{{ form_end(networkForm)}}

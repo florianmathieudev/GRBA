@@ -3,11 +3,19 @@
 {% block title %}Éditer User{% endblock %}
 
 {% block body %}
-    <h1>Éditer User</h1>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test col-12'>
+                    <h1>Éditer User</h1>
+                    {{ include('back/user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+                    {{ include('back/user/_delete_form.html.twig') }}
+                    <a href="{{ path('user_index') }}">Revenir à la liste</a>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>    
 
-    {{ include('back/user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-
-    <a href="{{ path('user_index') }}">Revenir à la liste</a>
-
-    {{ include('back/user/_delete_form.html.twig') }}
 {% endblock %}

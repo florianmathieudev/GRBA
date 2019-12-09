@@ -89,6 +89,6 @@ class ContactController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('contact_index');
+        return $this->redirectToRoute('header_index');
     }
 }

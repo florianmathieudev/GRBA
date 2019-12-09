@@ -4,77 +4,90 @@
 
 {% block body %}
 
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test col-md-12 col-lg-9'>
+                    <h1>Liste des Roles</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Code</th>
+                                <th>Nom</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for role in roles %}
+                            <tr>
+                                <td>{{ role.id }}</td>
+                                <td>{{ role.code }}</td>
+                                <td>{{ role.name }}</td>
+                                <td>
+                                    <a href="{{ path('role_show', {'id': role.id}) }}">Voir</a>
+                                    <a href="{{ path('role_edit', {'id': role.id}) }}">Éditer</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">Aucun Role</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class='test2 col-md-12 col-lg-3'>
+                <h1>Ajoutez un Role</h1>
+                {{ include('back/role/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>    
 
-    <h1>Créer un nouveau Role</h1>
-    {{ include('back/role/_form.html.twig') }}
-    <a href="{{ path('role_index') }}">Revenir à la liste</a>
-
-
-    <h1>Liste des Roles</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Code</th>
-                <th>Nom</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for role in roles %}
-            <tr>
-                <td>{{ role.id }}</td>
-                <td>{{ role.code }}</td>
-                <td>{{ role.name }}</td>
-                <td>
-                    <a href="{{ path('role_show', {'id': role.id}) }}">Voir</a>
-                    <a href="{{ path('role_edit', {'id': role.id}) }}">Éditer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Aucun Role</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="{{ path('role_new') }}">Créer un nouveau Role </a>
-
-
-    <h1>Créer un nouvel Utilisateur</h1>
-    {{ include('back/user/_form.html.twig') }}
-    <a href="{{ path('user_index') }}">Revenir à la liste</a>
-
-
-    <h1>Liste des Utilisateurs</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Mot de passe</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.password }}</td>
-                <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">Voir</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">Éditer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Aucun Utilisateur</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="{{ path('user_new') }}">Créer un nouveau Utilisateur</a>
-
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test2 col-md-12 col-lg-9'>
+                    <h1>Liste des Utilisateurs</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Email</th>
+                                <th>Mot de passe</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.password }}</td>
+                                <td>
+                                    <a href="{{ path('user_show', {'id': user.id}) }}">Voir</a>
+                                    <a href="{{ path('user_edit', {'id': user.id}) }}">Éditer</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">Aucun Utilisateur</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class='test col-md-12 col-lg-3'>
+                    <h1>Ajoutez un Utilisateur</h1>
+                    {{ include('back/user/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>
     
 {% endblock %}

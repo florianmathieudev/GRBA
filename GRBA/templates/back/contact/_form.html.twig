@@ -1,4 +1,6 @@
 {{ form_start(contactForm) }}
-    {{ form_widget(contactForm) }}
-    <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
-{{ form_end(contactForm) }}
+    {{ form_row(contactForm.phone, {'attr': {'placeholder': 'Entrer un numero de telephone ...'}} )}}
+    {{ form_row(contactForm.email, {'attr': {'placeholder': 'Entrer une adresse email ...'}} )}}
+    {{ form_row(contactForm.adresse, {'attr': {'placeholder': 'Entrer une adresse postale ...'}} )}}
+    <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
+{{ form_end(contactForm)}}

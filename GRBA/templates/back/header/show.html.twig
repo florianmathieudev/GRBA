@@ -3,28 +3,34 @@
 {% block title %}Header{% endblock %}
 
 {% block body %}
-    <h1>Header</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ header.id }}</td>
-            </tr>
-            <tr>
-                <th>Onglet</th>
-                <td>{{ header.tab }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ header.title }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('header_index') }}">Revenir à la liste</a>
-
-    <a href="{{ path('header_edit', {'id': header.id}) }}">Éditer</a>
-
-    {{ include('back/header/_delete_form.html.twig') }}
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test col-12'>
+                    <h1>Header</h1>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ header.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Onglet</th>
+                                <td>{{ header.tab }}</td>
+                            </tr>
+                            <tr>
+                                <th>Titre</th>
+                                <td>{{ header.title }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="{{ path('header_edit', {'id': header.id}) }}">Éditer</a>
+                    {{ include('back/header/_delete_form.html.twig') }}
+                    <a href="{{ path('header_index') }}">Revenir à la liste</a>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>    
 {% endblock %}

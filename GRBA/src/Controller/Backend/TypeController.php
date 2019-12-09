@@ -89,6 +89,6 @@ class TypeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('type_index');
+        return $this->redirectToRoute('event_index');
     }
 }

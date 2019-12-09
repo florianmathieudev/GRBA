@@ -3,11 +3,19 @@
 {% block title %}Éditer Évènement{% endblock %}
 
 {% block body %}
-    <h1>Éditer Évènement</h1>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test col-12'>
+                    <h1>Éditer l'Évènement</h1>
+                    {{ include('back/event/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+                    {{ include('back/event/_delete_form.html.twig') }}
+                    <a href="{{ path('event_index') }}">Revenir à la liste</a>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>    
 
-    {{ include('back/event/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-
-    <a href="{{ path('event_index') }}">Revenir à la liste</a>
-
-    {{ include('back/event/_delete_form.html.twig') }}
 {% endblock %}

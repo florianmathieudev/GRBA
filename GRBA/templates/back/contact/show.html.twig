@@ -3,32 +3,38 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-    <h1>Contact</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ contact.id }}</td>
-            </tr>
-            <tr>
-                <th>Numéro</th>
-                <td>{{ contact.phone }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ contact.email }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ contact.adresse }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('contact_index') }}">Revenir à la liste</a>
-
-    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Éditer</a>
-
-    {{ include('back/contact/_delete_form.html.twig') }}
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test col-12'>
+                    <h1>Contact</h1>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ contact.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Numéro</th>
+                                <td>{{ contact.phone }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ contact.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse</th>
+                                <td>{{ contact.adresse }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Éditer</a>
+                    {{ include('back/contact/_delete_form.html.twig') }}
+                    <a href="{{ path('header_index') }}">Revenir à la liste</a>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div> 
 {% endblock %}

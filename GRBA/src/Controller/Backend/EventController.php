@@ -8,6 +8,7 @@ use App\Repository\EventRepository;
 use App\Repository\TypeRepository;
 use App\Entity\Type;
 use App\Form\TypeType;
+use App\Repository\PictureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -78,10 +79,11 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="event_show", methods={"GET"})
      */
-    public function show(Event $event): Response
+    public function show(Event $event, PictureRepository $pictures): Response
     {
         return $this->render('back/event/show.html.twig', [
             'event' => $event,
+            'pictures' => $pictures,
         ]);
     }
 

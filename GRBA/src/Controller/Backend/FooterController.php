@@ -89,6 +89,6 @@ class FooterController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('footer_index');
+        return $this->redirectToRoute('header_index');
     }
 }

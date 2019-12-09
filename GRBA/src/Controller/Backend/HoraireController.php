@@ -89,6 +89,6 @@ class HoraireController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('horaire_index');
+        return $this->redirectToRoute('header_index');
     }
 }
