@@ -100,9 +100,10 @@
                                     <img src="{{asset('uploads/' ~  event.type.picture)}}" class="card-img-top2" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ event.place }}</h5>
+                                        <h6>{{ event.type }}</h6>
                                             <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
-                                            <p class="card-text">{{ event.content }}</p>
-                                            <h6>{{ event.type }}</h6>
+                                            <p class="card-text">{{ event.content|truncate(150) }}</p>
+                                            
                                     </div>
                                     <button href="#" class="btn btn-primary">Voir plus</button>
                                 </div>
