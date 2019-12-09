@@ -89,6 +89,6 @@ class NetworkController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('network_index');
+        return $this->redirectToRoute('header_index');
     }
 }

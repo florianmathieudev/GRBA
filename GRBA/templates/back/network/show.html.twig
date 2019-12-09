@@ -3,36 +3,42 @@
 {% block title %}Network{% endblock %}
 
 {% block body %}
-    <h1>Network</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ network.id }}</td>
-            </tr>
-            <tr>
-                <th>Facebook</th>
-                <td>{{ network.facebook }}</td>
-            </tr>
-            <tr>
-                <th>Twitter</th>
-                <td>{{ network.twitter }}</td>
-            </tr>
-            <tr>
-                <th>Instagram</th>
-                <td>{{ network.instagram }}</td>
-            </tr>
-            <tr>
-                <th>Linkedin</th>
-                <td>{{ network.linkedin }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('network_index') }}">Revenir à la liste</a>
-
-    <a href="{{ path('network_edit', {'id': network.id}) }}">Éditer</a>
-
-    {{ include('back/network/_delete_form.html.twig') }}
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test col-12'>
+                    <h1>Network</h1>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ network.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Facebook</th>
+                                <td>{{ network.facebook }}</td>
+                            </tr>
+                            <tr>
+                                <th>Twitter</th>
+                                <td>{{ network.twitter }}</td>
+                            </tr>
+                            <tr>
+                                <th>Instagram</th>
+                                <td>{{ network.instagram }}</td>
+                            </tr>
+                            <tr>
+                                <th>Linkedin</th>
+                                <td>{{ network.linkedin }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="{{ path('network_edit', {'id': network.id}) }}">Éditer</a>
+                    {{ include('back/network/_delete_form.html.twig') }}
+                    <a href="{{ path('header_index') }}">Revenir à la liste</a>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>    
 {% endblock %}

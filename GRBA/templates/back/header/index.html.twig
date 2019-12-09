@@ -8,11 +8,7 @@
     <div class="row ">
         <div class="col-lg-12 col-md-12 ">  
             <div class="row ">
-            <div class='test col-3'>
-                <h1>Créer une nouvelle Entête</h1>
-                {{ include('back/header/_form.html.twig') }}
-            </div>
-            <div class='test2 col-9'>
+            <div class='test col-md-12 col-lg-9'>
                 <h1>Liste des Entêtes</h1>
                 <table class="table">
                     <thead>
@@ -40,6 +36,10 @@
                     </tbody>
                 </table>
             </div>
+            <div class='test2 col-md-12 col-lg-3'>
+                <h1>Ajoutez une Entête</h1>
+                {{ include('back/header/_form.html.twig') }}
+            </div>
             </div>
         </div>
     </div>      
@@ -50,11 +50,7 @@
     <div class="row ">
         <div class="col-lg-12 col-md-12 ">  
             <div class="row ">
-            <div class='test2 col-3'>
-                <h1>Créer un nouveau Pied de page</h1>
-                {{ include('back/footer/_form.html.twig') }}
-            </div>
-            <div class='test col-9'>
+            <div class='test2 col-md-12 col-lg-9'>
                 <h1>Liste des Pieds de page</h1>
                 <table class="table">
                     <thead>
@@ -82,6 +78,10 @@
                     </tbody>
                 </table>
             </div>
+            <div class='test col-md-12 col-lg-3'>
+                <h1>Ajoutez un Pied de page</h1>
+                {{ include('back/footer/_form.html.twig') }}
+            </div>
             </div>
         </div>
     </div>      
@@ -92,11 +92,7 @@
     <div class="row ">
         <div class="col-lg-12 col-md-12 ">  
             <div class="row ">
-            <div class='test col-3'>
-                <h1>Créer un nouveau Contact</h1>
-                {{ include('back/contact/_form.html.twig') }}
-            </div>
-            <div class='test2 col-9'>
+            <div class='test col-md-12 col-lg-9'>
                 <h1>Liste des Contacts</h1>
                 <table class="table">
                     <thead>
@@ -126,6 +122,10 @@
                     </tbody>
                 </table>
             </div>
+            <div class='test2 col-md-12 col-lg-3'>
+                <h1>Ajoutez un Contact</h1>
+                {{ include('back/contact/_form.html.twig') }}
+            </div>
             </div>
         </div>
     </div>      
@@ -135,11 +135,7 @@
     <div class="row ">
         <div class="col-lg-12 col-md-12 ">  
             <div class="row ">
-                <div class='test2 col-3'>
-                    <h1>Créer un nouveau Réseau social</h1>
-                    {{ include('back/network/_form.html.twig') }}
-                </div>
-                <div class='test col-9'>
+                <div class='test2 col-md-12 col-lg-9'>
                     <h1>Liste des Réseaux sociaux</h1>
                     <table class="table">
                         <thead>
@@ -171,6 +167,10 @@
                         </tbody>
                     </table>
                 </div>
+                <div class='test col-md-12 col-lg-3'>
+                    <h1>Ajoutez un Réseau social</h1>
+                    {{ include('back/network/_form.html.twig') }}
+                </div>
             </div>
             </div>
         </div>
@@ -182,11 +182,7 @@
     <div class="row ">
         <div class="col-lg-12 col-md-12 ">  
             <div class="row ">
-                <div class='test col-3'>
-                    <h1>Créer un nouvel Horaire</h1>
-                    {{ include('back/horaire/_form.html.twig') }}
-                </div>
-                <div class='test2 col-9'>
+                <div class='test col-md-12 col-lg-9'>
                     <h1>Liste des Horaires</h1>
                     <table class="table">
                         <thead>
@@ -215,6 +211,17 @@
                         {% endfor %}
                         </tbody>
                     </table>
+                </div>
+                <div class='test2 col-md-12 col-lg-3'>
+                    <h1>Ajoutez un Horaire</h1>
+                    {{ form_start(horaireForm) }}
+                        {{ form_row(horaireForm.opening, {'attr': {'placeholder': 'Entrer un horaire d\'ouverture ...'}} )}}
+                        {{ form_row(horaireForm.closing, {'attr': {'placeholder': 'Entrer un horaire de fermeture ...'}} )}}
+                        <div class='d-none'>
+                            {{ form_row(horaireForm.open)}}
+                        </div>
+                        <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
+                    {{ form_end(horaireForm)}}
                 </div>
             </div>
         </div>

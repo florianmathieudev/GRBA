@@ -1,4 +1,6 @@
 {{ form_start(footerForm) }}
-    {{ form_widget(footerForm) }}
+    {{ form_row(footerForm.text, {'attr': {'placeholder': 'Entrer un onglet ...'}} )}}
+    {{ form_row(footerForm.information, {'attr': {'placeholder': 'Entrer un titre ...'}} )}}
+    {{ form_row(footerForm.picture, {'attr': {'placeholder': 'Selectionner une image ...'}} )}}
     <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
-{{ form_end(footerForm) }}
+{{ form_end(footerForm)}}

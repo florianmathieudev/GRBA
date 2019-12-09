@@ -1,4 +1,5 @@
 {{ form_start(roleForm) }}
-    {{ form_widget(roleForm) }}
+    {{ form_row(roleForm.code, {'attr': {'placeholder': 'Entrer un code ...'}} )}}
+    {{ form_row(roleForm.name, {'attr': {'placeholder': 'Entrer un nom pour le role ...'}} )}}
     <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
-{{ form_end(roleForm) }}
+{{ form_end(roleForm)}}

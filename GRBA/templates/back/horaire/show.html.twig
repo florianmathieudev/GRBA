@@ -3,32 +3,38 @@
 {% block title %}Horaire{% endblock %}
 
 {% block body %}
-    <h1>Horaire</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ horaire.id }}</td>
-            </tr>
-            <tr>
-                <th>Ouverture</th>
-                <td>{{ horaire.opening }}</td>
-            </tr>
-            <tr>
-                <th>Fermeture</th>
-                <td>{{ horaire.closing }}</td>
-            </tr>
-            <tr>
-                <th>Ouvert</th>
-                <td>{{ horaire.open ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('horaire_index') }}">Revenir à la liste</a>
-
-    <a href="{{ path('horaire_edit', {'id': horaire.id}) }}">Éditer</a>
-
-    {{ include('back/horaire/_delete_form.html.twig') }}
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test col-12'>
+                    <h1>Horaire</h1>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ horaire.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Ouverture</th>
+                                <td>{{ horaire.opening }}</td>
+                            </tr>
+                            <tr>
+                                <th>Fermeture</th>
+                                <td>{{ horaire.closing }}</td>
+                            </tr>
+                            <tr>
+                                <th>Ouvert</th>
+                                <td>{{ horaire.open ? 'Yes' : 'No' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="{{ path('horaire_edit', {'id': horaire.id}) }}">Éditer</a>
+                    {{ include('back/horaire/_delete_form.html.twig') }}
+                    <a href="{{ path('header_index') }}">Revenir à la liste</a>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>   
 {% endblock %}

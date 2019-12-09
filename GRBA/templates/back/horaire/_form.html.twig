@@ -1,4 +1,6 @@
 {{ form_start(horaireForm) }}
-    {{ form_widget(horaireForm) }}
+    {{ form_row(horaireForm.opening, {'attr': {'placeholder': 'Entrer un horaire d\'ouverture ...'}} )}}
+    {{ form_row(horaireForm.closing, {'attr': {'placeholder': 'Entrer un horaire de fermeture ...'}} )}}
+    {{ form_row(horaireForm.open, {'attr': {'placeholder': 'Selectionner une image ...'}} )}}
     <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
-{{ form_end(horaireForm) }}
+{{ form_end(horaireForm)}}

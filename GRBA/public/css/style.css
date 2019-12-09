@@ -8,7 +8,8 @@ background: linear-gradient(155deg, rgba(180,255,133,1) 0%, rgba(120,177,120,1) 
                                                     /* header */
 
 .navbar {
-    background: linear-gradient(164deg, rgba(49,49,49,1) 0%, rgba(152,185,128,1) 35%);
+    background: rgb(0,0,0);
+    background: linear-gradient(155deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 100%);
     font-size: 1em;
 
 }
