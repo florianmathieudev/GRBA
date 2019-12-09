@@ -19,6 +19,7 @@ class TypeType extends AbstractType
             ->add('picture', EntityType::class, [
                 'class' => Picture::class,
                 'choice_label' => 'name',
+                'required'   => false,
             ])
         ;
     }

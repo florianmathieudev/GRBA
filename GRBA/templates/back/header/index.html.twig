@@ -17,7 +17,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Onglet</th>
                             <th>Titre</th>
                             <th>Actions</th>
@@ -26,7 +25,6 @@
                     <tbody>
                     {% for header in headers %}
                         <tr>
-                            <td>{{ header.id }}</td>
                             <td>{{ header.tab }}</td>
                             <td>{{ header.title }}</td>
                             <td>
@@ -61,7 +59,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Texte</th>
                             <th>Information</th>
                             <th>Actions</th>
@@ -70,7 +67,6 @@
                     <tbody>
                     {% for footer in footers %}
                         <tr>
-                            <td>{{ footer.id }}</td>
                             <td>{{ footer.text }}</td>
                             <td>{{ footer.information }}</td>
                             <td>
@@ -105,7 +101,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Numéro</th>
                             <th>Email</th>
                             <th>Adresse</th>
@@ -115,7 +110,6 @@
                     <tbody>
                     {% for contact in contacts %}
                         <tr>
-                            <td>{{ contact.id }}</td>
                             <td>{{ contact.phone }}</td>
                             <td>{{ contact.email }}</td>
                             <td>{{ contact.adresse }}</td>
@@ -150,7 +144,6 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Facebook</th>
                                 <th>Twitter</th>
                                 <th>Instagram</th>
@@ -161,7 +154,6 @@
                         <tbody>
                         {% for network in networks %}
                             <tr>
-                                <td>{{ network.id }}</td>
                                 <td>{{ network.facebook }}</td>
                                 <td>{{ network.twitter }}</td>
                                 <td>{{ network.instagram }}</td>
@@ -199,7 +191,6 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Ouverture</th>
                                 <th>Fermeture</th>
                                 <th>Ouvert</th>
@@ -209,7 +200,6 @@
                         <tbody>
                         {% for horaire in horaires %}
                             <tr>
-                                <td>{{ horaire.id }}</td>
                                 <td>{{ horaire.opening }}</td>
                                 <td>{{ horaire.closing }}</td>
                                 <td>{{ horaire.open ? 'Yes' : 'No' }}</td>

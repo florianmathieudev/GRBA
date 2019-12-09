@@ -21,6 +21,8 @@ class EventType extends AbstractType
             ->add('type')
             ->add('pictures', EntityType::class, [
                 'class' => Picture::class,
+                'required'   => false,
+                'mapped' => false,
                 'choice_label' => 'name',
             ])
         ;
