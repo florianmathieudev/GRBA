@@ -458,38 +458,16 @@ text-align: center;
 
                                                         /* end footer */
 
-.card3 {
-    width: 100%;
-    height: 100%;
-    background-image: url(/image/bgdiv.png);
-    background-size: 150%;
-    background-attachment: fixed;
-    
-    margin-top: 1em;
-}
-.card-img-top3 {
-    
-    height: 450px;
-    /* width: 42.4%; /
-    max-width: 450px;
-    / object-fit:cover; */
-}
+                                                        /* all next events */
 
-.test {
-    background-color: #2D2D2D;
-    color: white;
-    padding: 2em 5em 2em 5em;
-    font-size: 0.7em;
-
+.base {
+    background-image: url(image/bgdiv.png);
+    height: 400px;
+    margin: 1em;
 }
-
-.test2 {
-    background-color:  white;
-    color: #2D2D2D;
-    padding: 2em 5em 2em 5em;
-    font-size: 0.7em;
-}
-
-.test2 table {
-    text-decoration-color: white !important;
+.imgAllNE{
+    height: 400px;
+    width: 200px;
+    max-width: auto;
+    object-fit:cover;
 }
