@@ -3,73 +3,105 @@
 
 {% block body %}
 
-    <h1>Créer un nouveau Type</h1>
-    {{ include('back/type/_form.html.twig') }}
-    <a href="{{ path('type_index') }}">Revenir à la liste</a>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12 col-md-12 ">  
+            <div class="row ">
+                <div class='test col-3'>
+                    <h1>Créer un nouveau Type</h1>
+                    {{ include('back/type/_form.html.twig') }}
+                </div>
+                <div class='test2 col-9'>
+                <h1>Liste des Types</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Titre</th>
+                            <th>Code</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for type in types %}
+                        <tr>
+                            <td>{{ type.id }}</td>
+                            <td>{{ type.title }}</td>
+                            <td>{{ type.code }}</td>
+                            <td>
+                                <a href="{{ path('type_show', {'id': type.id}) }}">Voir</a>
+                                <a href="{{ path('type_edit', {'id': type.id}) }}">Éditer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucun Type</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>
 
-    <h1>Liste des Types</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Code</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for type in types %}
-            <tr>
-                <td>{{ type.id }}</td>
-                <td>{{ type.title }}</td>
-                <td>{{ type.code }}</td>
-                <td>
-                    <a href="{{ path('type_show', {'id': type.id}) }}">Voir</a>
-                    <a href="{{ path('type_edit', {'id': type.id}) }}">Éditer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Aucun Type</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <h1>Créer un nouvel Évènement</h1>
-    {{ include('back/event/_form.html.twig') }}
-    <a href="{{ path('event_index') }}">Revenir à la liste</a>
-
-    <h1>Liste des Évènements</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Contenu</th>
-                <th>Type</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for event in events %}
-            <tr>
-                <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ event.description }}</td>
-                <td>{{ event.content }}</td>
-                <td>{{ event.type }}</td>
-                <td>
-                    <a href="{{ path('event_show', {'id': event.id}) }}">Voir</a>
-                    <a href="{{ path('event_edit', {'id': event.id}) }}">Éditer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">Aucun Évènement</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="{{ path('event_new') }}">Créer un nouvel Évènement</a>
-
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12 col-md-12 ">  
+            <div class="row ">
+                <div class='test2 col-3'>
+                    <h1>Créer un nouvel Évènement</h1>
+                        {{ form_start(eventForm) }}
+                            {{ form_row(eventForm.date)}}
+                            {{ form_row(eventForm.place)}}
+                            {{ form_row(eventForm.description)}}
+                            {{ form_row(eventForm.content)}}
+                            {{ form_row(eventForm.type)}}
+                            <div class="d-none">
+                                {{ form_row(eventForm.pictures)}}
+                            </div>
+                            <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
+                        {{ form_end(eventForm)}}
+                    <a href="{{ path('event_index') }}">Revenir à la liste</a>
+                </div>
+                <div class='test col-9'>
+                    <h1>Liste des Évènements</h1>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Place</th>
+                                <th>Description</th>
+                                <th>Contenu</th>                
+                                <th>Type</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for event in events %}
+                            <tr>
+                                <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ event.place }}</td>                
+                                <td>{{ event.description }}</td>
+                                <td>{{ event.content }}</td>
+                                <td>{{ event.type }}</td>                
+                                <td>
+                                    <a href="{{ path('event_show', {'id': event.id}) }}">Voir</a>
+                                    <a href="{{ path('event_edit', {'id': event.id}) }}">Éditer</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">Aucun Évènement</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <a href="{{ path('event_new') }}">Créer un nouvel Évènement</a>
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>
 {% endblock %}

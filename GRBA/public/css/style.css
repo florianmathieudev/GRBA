@@ -400,7 +400,7 @@ text-align: center;
     color: white;
     padding: 2em 5em 2em 5em;
     font-size: 0.7em;
-    /* text-decoration-color: white !important; */
+
 }
 
 .test2 {
@@ -408,4 +408,8 @@ text-align: center;
     color: #2D2D2D;
     padding: 2em 5em 2em 5em;
     font-size: 0.7em;
+}
+
+.test2 table {
+    text-decoration-color: white !important;
 }

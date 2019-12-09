@@ -46,6 +46,7 @@ class Event
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="event")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $pictures;
 

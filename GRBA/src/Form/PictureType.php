@@ -19,10 +19,10 @@ class PictureType extends AbstractType
             ->add('path', FileType::class, array('data_class' => null,'required' => false))
             ->add('name')
             ->add('description')
-            ->add('event', EntityType::class, [
-                'class' => Event::class,
-                'choice_label' => 'place',
-            ])
+            // ->add('event', EntityType::class, [
+            //     'class' => Event::class,
+            //     'choice_label' => 'place',
+            // ])
         ;
     }
 
