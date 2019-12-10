@@ -142,7 +142,7 @@ class Event
 
     public function __toString()
     {
-        return $this->title;
+        return $this->place;
     }    
     
 

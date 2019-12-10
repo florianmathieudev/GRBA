@@ -69,7 +69,7 @@ class FooterController extends AbstractController
         if ($footerForm->isSubmitted() && $footerForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('footer_index');
+            return $this->redirectToRoute('header_index');
         }
 
         return $this->render('back/footer/edit.html.twig', [

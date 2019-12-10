@@ -14,8 +14,9 @@
     <h3>Contenu</h3>
     <p>{{ event.content }}</p>
     <h3>Images</h3>
+    
     {% for picture in pictures %}
-        <td><img class="col-3" src="{{asset('uploads/' ~  event.picture)}}" class="card-img-top" alt="..."></td>
+        <img src="{{ asset('uploads/' ~ picture.path ) }}" height="80em" >
     {% endfor %}
 <a href="{{ path('main') }}">Revenir à la page principale</a>
 

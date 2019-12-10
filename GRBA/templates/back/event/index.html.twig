@@ -14,6 +14,7 @@
                             <tr>
                                 <th>Titre</th>
                                 <th>Code</th>
+                                <th>Image</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -22,6 +23,7 @@
                             <tr>
                                 <td>{{ type.title }}</td>
                                 <td>{{ type.code }}</td>
+                                <td><img src="{{ asset('uploads/' ~ type.picture ) }}" height="80em" ></td>
                                 <td>
                                     <a href="{{ path('type_show', {'id': type.id}) }}">Voir</a>
                                     <a href="{{ path('type_edit', {'id': type.id}) }}">Éditer</a>
@@ -58,6 +60,7 @@
                                 <th>Description</th>
                                 <th>Contenu</th>                
                                 <th>Type</th>
+                                <th>Images</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -68,7 +71,12 @@
                                 <td>{{ event.place }}</td>                
                                 <td>{{ event.description }}</td>
                                 <td>{{ event.content }}</td>
-                                <td>{{ event.type }}</td>                
+                                <td>{{ event.type }}</td>
+                                <td>
+                                {% for picture in pictures %}
+                                    <img src="{{ asset('uploads/' ~ picture.path ) }}" height="80em" >
+                                {% endfor %}
+                                </td>
                                 <td>
                                     <a href="{{ path('event_show', {'id': event.id}) }}">Voir</a>
                                     <a href="{{ path('event_edit', {'id': event.id}) }}">Éditer</a>

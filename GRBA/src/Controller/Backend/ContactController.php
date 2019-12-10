@@ -69,7 +69,7 @@ class ContactController extends AbstractController
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('contact_index');
+            return $this->redirectToRoute('header_index');
         }
 
         return $this->render('back/contact/edit.html.twig', [
