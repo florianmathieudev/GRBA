@@ -4,10 +4,13 @@ namespace App\Form;
 
 use App\Entity\Type;
 use App\Entity\Picture;
+use Doctrine\DBAL\Types\StringType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TypeType extends AbstractType
 {
@@ -21,6 +24,7 @@ class TypeType extends AbstractType
                 'choice_label' => 'name',
                 'required'   => false,
             ])
+
         ;
     }
 

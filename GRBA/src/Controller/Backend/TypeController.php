@@ -69,7 +69,7 @@ class TypeController extends AbstractController
         if ($typeForm->isSubmitted() && $typeForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('type_index');
+            return $this->redirectToRoute('event_index');
         }
 
         return $this->render('back/type/edit.html.twig', [

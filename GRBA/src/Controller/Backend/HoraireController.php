@@ -69,7 +69,7 @@ class HoraireController extends AbstractController
         if ($horaireForm->isSubmitted() && $horaireForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('horaire_index');
+            return $this->redirectToRoute('header_index');
         }
 
         return $this->render('back/horaire/edit.html.twig', [

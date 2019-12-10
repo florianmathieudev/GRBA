@@ -69,7 +69,7 @@ class NetworkController extends AbstractController
         if ($networkForm->isSubmitted() && $networkForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('network_index');
+            return $this->redirectToRoute('header_index');
         }
 
         return $this->render('back/network/edit.html.twig', [

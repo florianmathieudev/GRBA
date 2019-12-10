@@ -14,6 +14,7 @@
                             <tr>
                                 <th>Titre</th>
                                 <th>Code</th>
+                                <th>Image</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -22,6 +23,7 @@
                             <tr>
                                 <td>{{ type.title }}</td>
                                 <td>{{ type.code }}</td>
+                                <td><img src="{{ asset('uploads/' ~ type.picture ) }}" height="80em" ></td>
                                 <td>
                                     <a href="{{ path('type_show', {'id': type.id}) }}">Voir</a>
                                     <a href="{{ path('type_edit', {'id': type.id}) }}">Éditer</a>
