@@ -61,7 +61,7 @@ class MainController extends AbstractController
     {
         return $this->render('main/currentEvent.html.twig', [
             'event' => $event,
-            'pictures' => $pictureRepository,
+            'pictures' => $event->getPictures(),
         ]);
     }
 

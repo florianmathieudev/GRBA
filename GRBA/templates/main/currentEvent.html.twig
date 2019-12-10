@@ -14,6 +14,7 @@
     <h3>Contenu</h3>
     <p>{{ event.content }}</p>
     <h3>Images</h3>
+    
     {% for picture in pictures %}
         <img src="{{ asset('uploads/' ~ picture.path ) }}" height="80em" >
     {% endfor %}
