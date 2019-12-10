@@ -2,22 +2,27 @@
 
 {% block title %}GRBA - Groupe des Randonneurs et Baliseurs Aubois{% endblock %}
 
-{% block body %}  
+{% block body %}
+    <div class="container"> 
+        <div class="picture">
+            <ul>
+                <li>
+                    <span>
+                        {% for picture in pictures %}
+                            <img src="{{ asset('uploads/' ~ picture.path ) }}" height="80em" >
+                        {% endfor %}
+                    </span>
+                </li>
+            </ul>   
+            
+        </div>
+        <div class="content">
+            <p> le {{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM')}} à {{ event.date ? event.date|date('H:i') : '' }}</p>
+            <p>{{ event.content }}</p>
 
-<h1>Coucouille voici la page de cet Évènement</h1>
-    <h3>Lieu</h3>
-    <p>{{ event.place }}</p>
-    <h3>Date</h3>
-    <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
-    <h3>Description</h3>
-    <p>{{ event.description }}</p>
-    <h3>Contenu</h3>
-    <p>{{ event.content }}</p>
-    <h3>Images</h3>
-    
-    {% for picture in pictures %}
-        <img src="{{ asset('uploads/' ~ picture.path ) }}" height="80em" >
-    {% endfor %}
+        </div>
+    </div> 
+
 <a href="{{ path('main') }}">Revenir à la page principale</a>
 
 {% endblock %}
