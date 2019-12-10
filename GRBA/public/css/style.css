@@ -352,7 +352,7 @@ text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
     text-align: end;
- }
+}
 
 #date {
     position: absolute;
@@ -491,6 +491,10 @@ text-align: center;
     font-size: 0.7em;
 }
 
-.test2 table {
-    text-decoration-color: white !important;
+.test table {
+    color: white;
 }
+
+/* .test btn {
+    color: white;
+} */

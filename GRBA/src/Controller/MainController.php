@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Event;
+use App\Repository\TypeRepository;
 use App\Repository\EventRepository;
 use App\Repository\ContactRepository;
-use App\Repository\TypeRepository;
+use App\Repository\PictureRepository;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MainController extends AbstractController
 {
@@ -48,6 +51,17 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
             'events' => $eventRepository->findAll(),
             'findNextEvents' => $eventRepository->findNextEvents(),
+        ]);
+    }
+
+    /**
+     * @Route("/evenement/{id}", name="event_show", methods={"GET"})
+     */
+    public function show(Event $event, PictureRepository $pictures): Response
+    {
+        return $this->render('main/currentEvent.html.twig', [
+            'event' => $event,
+            'pictures' => $pictures,
         ]);
     }
 

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GRBA - Groupe des Randonneurs et Baliseurs Aubois{% endblock %}
+
+{% block body %}  
+
+<h1>Coucouille voici la page de cet Évènement</h1>
+    <h3>Lieu</h3>
+    <p>{{ event.place }}</p>
+    <h3>Date</h3>
+    <p>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
+    <h3>Description</h3>
+    <p>{{ event.description }}</p>
+    <h3>Contenu</h3>
+    <p>{{ event.content }}</p>
+    <h3>Images</h3>
+    {% for picture in pictures %}
+        <td><img class="col-3" src="{{asset('uploads/' ~  event.picture)}}" class="card-img-top" alt="..."></td>
+    {% endfor %}
+<a href="{{ path('main') }}">Revenir à la page principale</a>
+
+{% endblock %}

@@ -113,7 +113,7 @@
                                             <p class="card-text">{{ event.content|truncate(50) }}</p>
                                             
                                     </div>
-                                    <button href="#" class="btn btn-primary">Voir plus</button>
+                                    <a href="{{ path('event_show', {'id': event.id}) }}" class="btn btn-primary">Voir plus</a>
                                 </div>
                             </div>
                             {% endfor %}
