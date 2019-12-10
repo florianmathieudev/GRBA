@@ -57,7 +57,7 @@ class MainController extends AbstractController
     /**
      * @Route("/evenement/{id}", name="event_show", methods={"GET"})
      */
-    public function show(Event $event, PictureRepository $pictureRepository): Response
+    public function show(Event $event): Response
     {
         return $this->render('main/currentEvent.html.twig', [
             'event' => $event,

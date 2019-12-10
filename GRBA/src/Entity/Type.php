@@ -34,7 +34,7 @@ class Type
     private $events;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"remove"})
      */
     private $picture;
 

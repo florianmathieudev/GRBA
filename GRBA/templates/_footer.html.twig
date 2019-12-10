@@ -8,11 +8,11 @@
                     <ul>
                         {% for contact in contacts %}
                         <li><a href="">{{ contact.phone }}</a></li>
-                        {% endfor %}
-                        {% for contact in contacts %}
+                        {# {% endfor %}
+                        {% for contact in contacts %} #}
                         <li><a href="mailto:#">{{ contact.email }}</a></li>
-                        {% endfor %}
-                        {% for contact in contacts %}
+                        {# {% endfor %}
+                        {% for contact in contacts %} #}
                         <li><a href="https://www.google.fr/maps/place/Maison+des+Associations/@48.3022338,4.060545,17z/data=!3m1!4b1!4m5!3m4!1s0x47ee985b554ce31f:0xe61ecee0c59eec95!8m2!3d48.3022303!4d4.0627337">{{ contact.adresse }}</a></li>
                         {% endfor %}                        
                     </ul>
@@ -20,17 +20,24 @@
             <div class="network col-lg-4 col-md-12">
                 <h3>Réseaux sociaux</h3>
                     <span style="font-size: 20px; color: aliceblue;">
-                        <a href="https://www.facebook.com/grba10/"><i class="fab fa-facebook-f"></i></a>
+                        {% for network in networks %}
+                            <a href="{{ network.facebook }}"><i class="fab fa-facebook-f"></i></a>
+                        {% endfor %}  
                     </span>       
                                 
             </div>
             <div class="about col-lg-4 col-md-12">
                 <h3 id="about">A propos</h3>
-                    <p>L’Association a pour but d’exercer et promouvoir la randonnée pédestre et les activités de plein air agréées par la FFRandonnée,de participer facultativement aux actions menées par le Comité départemental de la randonnée.</p>
+                    {% for footer in footers %}
+                        <p>{{ footer.text }}</p>
+                    {% endfor %}  
             </div>
         </div>
         <div class="row">
-            <p id="ovh">Hébergé chez OVH SAS - Siège social : 140 Quai du Sartel, 59100 Roubaix, France. - téléphone : 1007</p>
+            <p id="ovh">                    
+                {% for footer in footers %}
+                    <p>{{ footer.information }}</p>
+                {% endfor %}  </p>
         </div>
         <div class="row">
             <p id="us">©️2019, Corentin Tournaire, Florian Mathieu, Franck Valet</p>

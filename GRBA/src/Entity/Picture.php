@@ -24,11 +24,6 @@ class Picture
     private $path;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $description;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="pictures")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -62,18 +57,6 @@ class Picture
     public function setPath($path): self
     {
         $this->path = $path;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
 
         return $this;
     }

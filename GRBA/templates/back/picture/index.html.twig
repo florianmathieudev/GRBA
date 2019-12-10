@@ -15,7 +15,6 @@
                             <tr>
                                 <th>Chemin</th>
                                 <th>Nom</th>
-                                <th>Description</th>
                                 <th>Image</th>
                                 <th>Actions</th>
                             </tr>
@@ -25,7 +24,6 @@
                             <tr>
                                 <td>{{ picture.path }}</td>
                                 <td>{{ picture.name }}</td>
-                                <td>{{ picture.description }}</td>
                                 <td><img src="{{ asset('uploads/' ~ picture.path ) }}" height="80em" ></td>
                                 <td>
                                 <a href="{{ path('picture_edit', {'id': picture.id}) }}">Éditer</a>

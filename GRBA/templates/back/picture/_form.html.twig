@@ -1,7 +1,6 @@
 {{ form_start(pictureForm) }}
     {{ form_row(pictureForm.path, {'attr': {'placeholder': 'Selectioner l\'image ...'}} )}}
     {{ form_row(pictureForm.name, {'attr': {'placeholder': 'Entrer un nom pour l\'image ...'}} )}}
-    {{ form_row(pictureForm.description, {'attr': {'placeholder': 'Entrer une description ...'}} )}}
     {# {{ form_row(pictureForm.event, {'attr': {'placeholder': 'Selectionnez un evenement ...'}} )}} #}
     <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
 {{ form_end(pictureForm)}}
