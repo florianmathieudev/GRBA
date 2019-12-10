@@ -60,6 +60,7 @@
                                 <th>Description</th>
                                 <th>Contenu</th>                
                                 <th>Type</th>
+                                <th>Images</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -70,7 +71,12 @@
                                 <td>{{ event.place }}</td>                
                                 <td>{{ event.description }}</td>
                                 <td>{{ event.content }}</td>
-                                <td>{{ event.type }}</td>                
+                                <td>{{ event.type }}</td>
+                                <td>
+                                {% for picture in pictures %}
+                                    <img src="{{ asset('uploads/' ~ picture.path ) }}" height="80em" >
+                                {% endfor %}
+                                </td>
                                 <td>
                                     <a href="{{ path('event_show', {'id': event.id}) }}">Voir</a>
                                     <a href="{{ path('event_edit', {'id': event.id}) }}">Éditer</a>

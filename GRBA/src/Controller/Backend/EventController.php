@@ -23,7 +23,7 @@ class EventController extends AbstractController
     /**
      * @Route("/", name="event_index", methods={"GET","POST"})
      */
-    public function index(EventRepository $eventRepository, Request $request, TypeRepository $typeRepository): Response
+    public function index(PictureRepository $pictureRepository, EventRepository $eventRepository, Request $request, TypeRepository $typeRepository): Response
     {
         $event = new Event();
         $eventForm = $this->createForm(EventType::class, $event);
@@ -50,6 +50,7 @@ class EventController extends AbstractController
             'event' => $event,
             'typeForm' => $typeform->createView(),            
             'eventForm' => $eventForm->createView(),
+            'pictures' => $pictureRepository->findAll(),
         ]);
     }
 
@@ -79,11 +80,11 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="event_show", methods={"GET"})
      */
-    public function show(Event $event, PictureRepository $pictures): Response
+    public function show(Event $event, PictureRepository $pictureRepository): Response
     {
         return $this->render('back/event/show.html.twig', [
             'event' => $event,
-            'pictures' => $pictures,
+            'pictures' => $pictureRepository,
         ]);
     }
 
