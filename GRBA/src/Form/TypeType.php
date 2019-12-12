@@ -17,12 +17,17 @@ class TypeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('code')
+            ->add('title', TextType::class, array(
+                'label' => 'Titre du Type'
+            ))
+            ->add('code', TextType::class, array(
+                'label' => 'Code du Type'
+            ))
             ->add('picture', EntityType::class, [
                 'class' => Picture::class,
                 'choice_label' => 'name',
                 'required'   => false,
+                'label' => 'Selectionner l\'Image du Type'
             ])
 
         ;
