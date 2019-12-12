@@ -14,7 +14,6 @@ class FooterType extends AbstractType
         $builder
             ->add('text')
             ->add('information')
-            ->add('picture')
         ;
     }
 
