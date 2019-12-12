@@ -2,24 +2,50 @@
 {% block title %}Les prochaines randonnées{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <h2>Les prochaines randonnées</h2>
-            {% for event in findNextEvents  %}
-                <div class="myContainer">
-                    <div class="card3">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="{{asset('uploads/' ~  event.type.picture)}}" class="card-img-top3" alt="">
-                            </div>
-                            <div class="col-8">
-                                <h5 class="card-title2 col-12">{{ event.place}}</h5>
-                                <p class="col-12"> Le {{event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : ''}}</p>
-                                <h6 class="col-12">{{ event.type}}</h6>
-                                <p class="card-text2 col-12">{{event.description}}</p>
-                            </div>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-11 col-md-12 ">   
+            <div class="row">         
+            {% for event in findNextEvents %}                     
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12" >  
+                    <div class="myContainer">
+                        <div class="myCard">                      
+                            <div class="myFront">
+                                <div class="card " > 
+                                    <figure>
+                                        <img src="{{asset('uploads/' ~  event.type.picture)}}" class="card-img-top" alt="...">
+                                        <figcaption class="img-title">{{ event.type }}</figcaption>    
+                                    </figure>
+                                    <div class="card-body">
+                                        <p>le {{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM')}} à {{ event.date ? event.date|date('H:i') : '' }}</p> 
+                                    </div>
+                                    <h5 class="card-title">
+                                            <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>
+                                            {{ event.place }}</h5>
+                                </div>
+                            </div>                            
+                            <div class="myBack">
+                                <div class="cardReverse" >      
+                                    <div class="back-card-body" id="des">
+                                        <h5 class="back-card-title">{{ event.place }}</h5>
+                                            <h6>{{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM')}} à {{ event.date ? event.date|date('H:i:s') : '' }}</h6>
+                                            <div class="desc" >
+                                                <div id="descItem">
+                                                    <div>
+                                                        {{ event.description|truncate(180) }}
+                                                    </div>
+                                                </div>
+                                            </div>                
+                                    </div>
+                                </div>
+                            </div>                                    
                         </div>
-                    </div>
+                    </div>  
                 </div>
             {% endfor %}
-    </div>
+            </div> 
+        </div>
+        
+    </div>           
+</div>
 {% endblock %}

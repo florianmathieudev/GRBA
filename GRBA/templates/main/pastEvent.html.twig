@@ -2,25 +2,33 @@
 {% block title %}Les précédents évenements{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <h2>Les précédents évenements</h2>
-            {% for event in findPastEvents  %}
-                <div class="myContainer">
-                    <div class="card3">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="{{asset('uploads/' ~  event.type.picture)}}" class="card-img-top3" alt="">
-                            </div>
-                            <div class="col-8">
-                                <h5 class="card-title2 col-12">{{ event.place}}</h5>
-                                <p class="col-12"> Le {{event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : ''}}</p>
-                                <h6 class="col-12">{{ event.type}}</h6>
-                                <p class="card-text2 col-12">{{event.description}}</p>
-                                <p class="card-text2 col-12">{{event.content}}</p>
+<div class="content previousLastEvents">
+    <h2>Précédents Évènements</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-11 col-md-12 "> 
+                    <div class="row"> 
+                    {% for event in findPastEvents %}
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card">
+                                <figure>
+                                    <img src="{{asset('uploads/' ~  event.type.picture)}}" class="card-img-top" alt="...">
+                                    <figcaption class="img-title">{{ event.type }}</figcaption>    
+                                </figure>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ event.place }}</h5>
+                                        <p>{{ event.date|localizeddate('none', 'none', 'none', null, 'EEEE dd MMMM')}}</p>
+                                        <p class="card-text">{{ event.content|truncate(50) }}</p>
+                                        
+                                </div>
+                                <a href="{{ path('event_show', {'id': event.id}) }}" class="btn btn-primary">Voir plus</a>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
-            {% endfor %}
-    </div>
+                
+            </div>
+        </div>
+</div>
 {% endblock %}
