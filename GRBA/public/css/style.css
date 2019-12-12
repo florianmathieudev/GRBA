@@ -184,10 +184,10 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
 }
 
 .card-title {
-   text-align: end;
-   font-family: 'Montserrat', sans-serif;
-   font-weight: 900;
-   margin-right: 3px;
+    text-align: end;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    margin-right: 3px;
 }
 
 .back-card-title {
@@ -324,7 +324,6 @@ text-align: center;
     background-size: 100%;
     background-attachment: fixed;
     border-radius: 20px;
-
     max-height: 500px;
 }
 
@@ -436,7 +435,7 @@ text-align: center;
 
                                                         /* footer */
 
-#footer {
+footer {
     background-color: #2D2D2D;
     color: white;
     padding: 2em 5em 2em 5em;
