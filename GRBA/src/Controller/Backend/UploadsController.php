@@ -28,23 +28,24 @@ class UploadsController extends AbstractController
         $pictureForm = $this->createForm(PictureType::class, $picture);
         $pictureForm->handleRequest($request);
         if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
-            $file = $picture->getPath();
-            $filePath = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move($this->getParameter('upload_picture_directory'), $filePath);
+            $pictureFile = $picture->getPath();
+            $filePath = md5(uniqid()).'.'.$pictureFile->guessExtension();
+            $pictureFile->move($this->getParameter('upload_picture_directory'), $filePath);
             $picture->setPath($filePath);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($picture);
             $entityManager->flush();
             return $this->redirectToRoute('uploads_index');
         }
+
         $file = new File();
         $fileForm = $this->createForm(FilesType::class, $file);
         $fileForm->handleRequest($request);
         if ($fileForm->isSubmitted() && $fileForm->isValid()) {
-            $file = $file->getPath();
-            $filePath = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move($this->getParameter('upload_file_directory'), $filePath);
-            $picture->setPath($filePath);
+            $fileFile = $file->getPath();
+            $filePath = md5(uniqid()).'.'.$fileFile->guessExtension();
+            $fileFile->move($this->getParameter('upload_file_directory'), $filePath);
+            $file->setPath($filePath);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($file);
             $entityManager->flush();
