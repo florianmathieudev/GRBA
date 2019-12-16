@@ -13,7 +13,6 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Code</th>
                                 <th>Nom</th>
                                 <th>Actions</th>
@@ -22,7 +21,6 @@
                         <tbody>
                         {% for role in roles %}
                             <tr>
-                                <td>{{ role.id }}</td>
                                 <td>{{ role.code }}</td>
                                 <td>{{ role.name }}</td>
                                 <td>
@@ -56,7 +54,6 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Email</th>
                                 <th>Mot de passe</th>
                                 <th>Actions</th>
@@ -65,7 +62,6 @@
                         <tbody>
                         {% for user in users %}
                             <tr>
-                                <td>{{ user.id }}</td>
                                 <td>{{ user.email }}</td>
                                 <td>{{ user.password }}</td>
                                 <td>

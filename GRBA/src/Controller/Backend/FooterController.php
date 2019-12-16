@@ -16,39 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class FooterController extends AbstractController
 {
     /**
-     * @Route("/", name="footer_index", methods={"GET"})
-     */
-    public function index(FooterRepository $footerRepository): Response
-    {
-        return $this->render('back/footer/index.html.twig', [
-            'footers' => $footerRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="footer_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $footer = new Footer();
-        $footerForm = $this->createForm(FooterType::class, $footer);
-        $footerForm->handleRequest($request);
-
-        if ($footerForm->isSubmitted() && $footerForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($footer);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('footer_index');
-        }
-
-        return $this->render('back/footer/new.html.twig', [
-            'footer' => $footer,
-            'footerForm' => $footerForm->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="footer_show", methods={"GET"})
      */
     public function show(Footer $footer): Response

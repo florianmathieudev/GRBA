@@ -16,39 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class NetworkController extends AbstractController
 {
     /**
-     * @Route("/", name="network_index", methods={"GET"})
-     */
-    public function index(NetworkRepository $networkRepository): Response
-    {
-        return $this->render('back/network/index.html.twig', [
-            'networks' => $networkRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="network_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $network = new Network();
-        $networkForm = $this->createForm(NetworkType::class, $network);
-        $networkForm->handleRequest($request);
-
-        if ($networkForm->isSubmitted() && $networkForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($network);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('network_index');
-        }
-
-        return $this->render('back/network/new.html.twig', [
-            'network' => $network,
-            'networkForm' => $networkForm->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="network_show", methods={"GET"})
      */
     public function show(Network $network): Response

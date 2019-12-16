@@ -16,39 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     /**
-     * @Route("/", name="contact_index", methods={"GET"})
-     */
-    public function index(ContactRepository $contactRepository): Response
-    {
-        return $this->render('back/contact/index.html.twig', [
-            'contacts' => $contactRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="contact_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $contact = new Contact();
-        $contactForm = $this->createForm(ContactType::class, $contact);
-        $contactForm->handleRequest($request);
-
-        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($contact);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('contact_index');
-        }
-
-        return $this->render('back/contact/new.html.twig', [
-            'contact' => $contact,
-            'contactForm' => $contactForm->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="contact_show", methods={"GET"})
      */
     public function show(Contact $contact): Response

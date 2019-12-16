@@ -16,39 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class HoraireController extends AbstractController
 {
     /**
-     * @Route("/", name="horaire_index", methods={"GET"})
-     */
-    public function index(HoraireRepository $horaireRepository): Response
-    {
-        return $this->render('back/horaire/index.html.twig', [
-            'horaires' => $horaireRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="horaire_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $horaire = new Horaire();
-        $horaireForm = $this->createForm(HoraireType::class, $horaire);
-        $horaireForm->handleRequest($request);
-
-        if ($horaireForm->isSubmitted() && $horaireForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($horaire);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('horaire_index');
-        }
-
-        return $this->render('back/horaire/new.html.twig', [
-            'horaire' => $horaire,
-            'horaireForm' => $horaireForm->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="horaire_show", methods={"GET"})
      */
     public function show(Horaire $horaire): Response

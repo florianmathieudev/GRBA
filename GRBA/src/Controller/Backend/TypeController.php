@@ -16,39 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class TypeController extends AbstractController
 {
     /**
-     * @Route("/", name="type_index", methods={"GET"})
-     */
-    public function index(TypeRepository $typeRepository): Response
-    {
-        return $this->render('back/type/index.html.twig', [
-            'types' => $typeRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="type_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $type = new Type();
-        $typeForm = $this->createForm(TypeType::class, $type);
-        $typeForm->handleRequest($request);
-
-        if ($typeForm->isSubmitted() && $typeForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($type);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('type_index');
-        }
-
-        return $this->render('back/type/new.html.twig', [
-            'type' => $type,
-            'typeForm' => $typeForm->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="type_show", methods={"GET"})
      */
     public function show(Type $type): Response

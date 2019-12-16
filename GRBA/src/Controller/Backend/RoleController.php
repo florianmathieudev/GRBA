@@ -16,39 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class RoleController extends AbstractController
 {
     /**
-     * @Route("/", name="role_index", methods={"GET"})
-     */
-    public function index(RoleRepository $roleRepository): Response
-    {
-        return $this->render('back/role/index.html.twig', [
-            'roles' => $roleRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="role_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $role = new Role();
-        $roleForm = $this->createForm(RoleType::class, $role);
-        $roleForm->handleRequest($request);
-
-        if ($roleForm->isSubmitted() && $roleForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($role);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('role_index');
-        }
-
-        return $this->render('back/role/new.html.twig', [
-            'role' => $role,
-            'roleForm' => $roleForm->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="role_show", methods={"GET"})
      */
     public function show(Role $role): Response
