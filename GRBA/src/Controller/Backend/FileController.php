@@ -30,18 +30,18 @@ class FileController extends AbstractController
      */
     public function edit(Request $request, File $file): Response
     {
-        $form = $this->createForm(FilesType::class, $file);
-        $form->handleRequest($request);
+        $fileForm = $this->createForm(FilesType::class, $file);
+        $fileForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($fileForm->isSubmitted() && $fileForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('file_index');
+            return $this->redirectToRoute('uploads_index');
         }
 
         return $this->render('back/uploads/file/edit.html.twig', [
             'file' => $file,
-            'form' => $form->createView(),
+            'fileForm' => $fileForm->createView(),
         ]);
     }
 
@@ -56,6 +56,6 @@ class FileController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('file_index');
+        return $this->redirectToRoute('uploads_index');
     }
 }
