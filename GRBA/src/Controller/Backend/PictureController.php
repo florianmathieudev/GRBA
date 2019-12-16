@@ -16,62 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class PictureController extends AbstractController
 {
     /**
-     * @Route("/", name="picture_index", methods={"GET", "POST"})
-     */
-    public function index(PictureRepository $pictureRepository, Request $request): Response
-    {
-        $picture = new Picture();
-        $pictureForm = $this->createForm(PictureType::class, $picture);
-        $pictureForm->handleRequest($request);
-
-        if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
-            $file = $picture->getPath();
-            $filePath = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move($this->getParameter('upload_directory'), $filePath);
-            $picture->setPath($filePath);
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($picture);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('picture_index');
-        }
-
-        return $this->render('back/picture/index.html.twig', [
-            'pictures' => $pictureRepository->findAll(),
-            'pictureForm' => $pictureForm->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="picture_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $picture = new Picture();
-        $pictureForm = $this->createForm(PictureType::class, $picture);
-        $pictureForm->handleRequest($request);
-
-        if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
-            $file = $picture->getPath();
-            $filePath = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move($this->getParameter('upload_directory'), $filePath);
-            $picture->setPath($filePath);
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($picture);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('picture_index');
-        }
-
-        return $this->render('back/picture/new.html.twig', [
-            'picture' => $picture,
-            'pictureForm' => $pictureForm->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="picture_show", methods={"GET"})
      */
     public function show(Picture $picture): Response

@@ -30,7 +30,7 @@
                             <tr>
                                 <th>Images</th>
                                 {% for picture in pictures %}
-                                    <td><img class="col-3" src="{{asset('uploads/' ~  event.picture)}}" class="card-img-top" alt="..."></td>
+                                    <td><img class="col-3" src="{{asset('uploads/pictures/' ~  event.picture)}}" class="card-img-top" alt="..."></td>
                                 {% endfor %}
                             </tr>
                         </tbody>

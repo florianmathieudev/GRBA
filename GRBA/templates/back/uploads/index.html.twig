@@ -1,0 +1,90 @@
+{% extends 'back_base.html.twig' %}
+
+{% block title %}Liste des Fichiers{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test col-md-12 col-lg-9'>
+                    <h1>Liste des Images</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Chemin</th>
+                                <th>Nom</th>
+                                <th>Image</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for picture in pictures %}
+                            <tr>
+                                <td>{{ picture.path }}</td>
+                                <td>{{ picture.name }}</td>
+                                <td><img src="{{ asset('uploads/pictures/' ~ picture.path ) }}" height="80em" ></td>
+                                <td>
+                                <a href="{{ path('picture_edit', {'id': picture.id}) }}">Éditer</a>
+                                {{ include('back/uploads/picture/_delete_form.html.twig') }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">Aucune Image</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class='test2 col-md-12 col-lg-3'>
+                    <h1>Ajoutez une Image</h1>
+                    {{ include('back/uploads/picture/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>    
+
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test2 col-md-12 col-lg-9'>
+                    <h1>Liste des Fichiers</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Path</th>
+                                <th>Name</th>
+                                <th>actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for file in files %}
+                            <tr>
+                                <td>{{ file.path }}</td>
+                                <td>{{ file.name }}</td>
+                                <td>
+                                    <a href="{{ path('file_show', {'id': file.id}) }}">show</a>
+                                    <a href="{{ path('file_edit', {'id': file.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">Aucun Fichier</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class='test col-md-12 col-lg-3'>
+                    <h1>Ajouter un Fichier</h1>
+                    {{ include('back/uploads/file/_form.html.twig') }}
+            </div>
+        </div>
+    </div>      
+</div>
+
+{% endblock %}
