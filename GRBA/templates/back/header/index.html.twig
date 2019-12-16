@@ -24,7 +24,7 @@
                         <tr>
                             <td>{{ header.tab }}</td>
                             <td>{{ header.title }}</td>
-                            <td><img src="{{ asset('uploads/' ~ header.picture ) }}" height="80em" ></td>
+                            <td><img src="{{ asset('uploads/pictures/' ~ header.picture ) }}" height="80em" ></td>
                             <td>
                                 <a href="{{ path('header_show', {'id': header.id}) }}">Voir</a>
                                 <a href="{{ path('header_edit', {'id': header.id}) }}">Éditer</a>

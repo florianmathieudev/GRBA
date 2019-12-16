@@ -23,7 +23,7 @@
                             <tr>
                                 <td>{{ type.title }}</td>
                                 <td>{{ type.code }}</td>
-                                <td><img src="{{ asset('uploads/' ~ type.picture ) }}" height="80em" ></td>
+                                <td><img src="{{ asset('uploads/pictures/' ~ type.picture ) }}" height="80em" ></td>
                                 <td>
                                     <a href="{{ path('type_show', {'id': type.id}) }}">Voir</a>
                                     <a href="{{ path('type_edit', {'id': type.id}) }}">Éditer</a>
@@ -74,7 +74,7 @@
                                 <td>{{ event.type }}</td>
                                 <td>
                                 {% for picture in pictures %}
-                                    <img src="{{ asset('uploads/' ~ picture.path ) }}" height="80em" >
+                                    <img src="{{ asset('uploads/pictures/' ~ picture.path ) }}" height="80em" >
                                 {% endfor %}
                                 </td>
                                 <td>

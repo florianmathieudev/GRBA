@@ -1,0 +1,6 @@
+{{ form_start(fileForm) }}
+    {{ form_row(fileForm.path, {'attr': {'placeholder': 'Selectioner le Fichier ...'}} )}}
+    {{ form_row(fileForm.name, {'attr': {'placeholder': 'Entrer un nom pour le Fichier ...'}} )}}
+    
+    <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
+{{ form_end(fileForm)}}
