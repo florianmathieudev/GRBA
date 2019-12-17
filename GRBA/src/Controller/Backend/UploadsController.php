@@ -111,8 +111,8 @@ class UploadsController extends AbstractController
      */
     public function showFile(File $file): Response
     {
-        return $this->render('back/uploads/picture/show.html.twig', [
-            'picture' => $file,
+        return $this->render('back/uploads/file/show.html.twig', [
+            'file' => $file,
         ]);
     }
 
@@ -130,8 +130,8 @@ class UploadsController extends AbstractController
             return $this->redirectToRoute('uploads_index');
         }
 
-        return $this->render('back/uploads/picture/edit.html.twig', [
-            'picture' => $file,
+        return $this->render('back/uploads/file/edit.html.twig', [
+            'file' => $file,
             'fileForm' => $fileForm->createView(),
         ]);
     }
