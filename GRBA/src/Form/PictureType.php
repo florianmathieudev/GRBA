@@ -18,7 +18,8 @@ class PictureType extends AbstractType
         $builder
             ->add('path', FileType::class, array(
                 'data_class' => null,
-                'label' => 'Chemin de l\'Image'
+                'label' => 'Chemin de l\'Image',
+                'multiple' => true
                 ))            
             ->add('name', TextType::class, array(
                 'label' => 'Nom de l\'Image'

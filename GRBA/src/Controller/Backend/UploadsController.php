@@ -29,12 +29,23 @@ class UploadsController extends AbstractController
         $pictureForm = $this->createForm(PictureType::class, $picture);
         $pictureForm->handleRequest($request);
         if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
-            $pictureFile = $picture->getPath();
-            $filePath = md5(uniqid()).'.'.$pictureFile->guessExtension();
-            $pictureFile->move($this->getParameter('upload_picture_directory'), $filePath);
-            $picture->setPath($filePath);
+            $pictureFiles = $picture->getPath();
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($picture);
+            $pictureName = $picture->getName();
+            $i = 0;
+            foreach ($pictureFiles as $pictureFile)
+            {
+                $i++;
+                
+                $picture = new Picture();
+                $filePath = md5(uniqid()).'.'.$pictureFile->guessExtension();
+                $pictureFile->move($this->getParameter('upload_picture_directory'), $filePath);
+                $picture->setPath($filePath);
+                $picture->setName($pictureName . "-" .$i);
+                $entityManager->persist($picture);
+            }
+            
+          
             $entityManager->flush();
             return $this->redirectToRoute('uploads_index');
         }
