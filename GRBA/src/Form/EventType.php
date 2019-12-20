@@ -35,6 +35,7 @@ class EventType extends AbstractType
                 'required'   => false,
                 'mapped' => false,
                 'choice_label' => 'name',
+                'multiple' => true
             ])
         ;
     }
