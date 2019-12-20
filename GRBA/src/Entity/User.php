@@ -52,11 +52,8 @@ class User implements UserInterface
      */
     private $username;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isValid;
-
+    
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -116,15 +113,5 @@ class User implements UserInterface
     public function getSalt() {}
     public function eraseCredentials() {}
 
-    public function getIsValid(): ?bool
-    {
-        return $this->isValid;
-    }
-
-    public function setIsValid(bool $isValid): self
-    {
-        $this->isValid = $isValid;
-
-        return $this;
-    }
+    
 }

@@ -64,8 +64,8 @@ class UserController extends AbstractController
 
         if ($userForm->isSubmitted() && $userForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            // $role =$entityManager->getRepository(Role::class)->findOneBy(["name" => "user"]);
-            // $user->setRole($role);//  pour formulaire visiteur
+            $role =$entityManager->getRepository(Role::class)->findOneBy(["code" => "1"]);
+            $user->setRole($role);//  pour formulaire visiteur
             $entityManager->persist($user);
             $entityManager->flush();
 
