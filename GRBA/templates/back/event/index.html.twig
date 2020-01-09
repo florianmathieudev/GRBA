@@ -96,12 +96,10 @@
                         {{ form_row(eventForm.date, {'attr': {'placeholder': 'Selectioner la date ...'}} )}}
                         {{ form_row(eventForm.place, {'attr': {'placeholder': 'Entrer le lieu ...'}} )}}
                         {{ form_row(eventForm.description, {'attr': {'placeholder': 'Entrer une description ...'}} )}}
-                        <div class='d-none'>
-                            {{ form_row(eventForm.content, {'attr': {'placeholder': 'Entrer le contenu ...'}} )}}
-                        </div>
+                        {{ form_row(eventForm.content, {'attr': {'placeholder': 'Entrer le contenu ...'}} )}}
+                        
                         {{ form_row(eventForm.type, {'attr': {'placeholder': 'Choisisser le type ...'}} )}}
-                        <div class="d-none">
-                            {{ form_row(eventForm.pictures)}}
+                        {{ form_row(eventForm.pictures)}}
                         </div>
                         <button class="btn text-white">{{ button_label|default('Sauvergarder') }}</button>
                     {{ form_end(eventForm)}}
