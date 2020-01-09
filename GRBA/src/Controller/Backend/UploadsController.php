@@ -36,7 +36,6 @@ class UploadsController extends AbstractController
             foreach ($pictureFiles as $pictureFile)
             {
                 $i++;
-                
                 $picture = new Picture();
                 $filePath = md5(uniqid()).'.'.$pictureFile->guessExtension();
                 $pictureFile->move($this->getParameter('upload_picture_directory'), $filePath);
@@ -45,7 +44,6 @@ class UploadsController extends AbstractController
                 $entityManager->persist($picture);
             }
             
-          
             $entityManager->flush();
             return $this->redirectToRoute('uploads_index');
         }
@@ -74,7 +72,7 @@ class UploadsController extends AbstractController
 
 
     /**
-     * @Route("/{id}", name="picture_show", methods={"GET"})
+     * @Route("/picture/{id}", name="picture_show", methods={"GET"})
      */
     public function showPicture(Picture $picture): Response
     {
@@ -84,27 +82,7 @@ class UploadsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="picture_edit", methods={"GET","POST"})
-     */
-    public function editPicture(Request $request, Picture $picture): Response
-    {
-        $pictureForm = $this->createForm(PictureType::class, $picture);
-        $pictureForm->handleRequest($request);
-
-        if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('uploads_index');
-        }
-
-        return $this->render('back/uploads/picture/edit.html.twig', [
-            'picture' => $picture,
-            'pictureForm' => $pictureForm->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="picture_delete", methods={"DELETE"})
+     * @Route("/picture/{id}", name="picture_delete", methods={"DELETE"})
      */
     public function deletePicture(Request $request, Picture $picture): Response
     {
@@ -118,7 +96,7 @@ class UploadsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="file_show", methods={"GET"})
+     * @Route("/file/{id}", name="file_show", methods={"GET"})
      */
     public function showFile(File $file): Response
     {
@@ -128,27 +106,7 @@ class UploadsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="file_edit", methods={"GET","POST"})
-     */
-    public function editFile(Request $request, File $file): Response
-    {
-        $fileForm = $this->createForm(FileType::class, $file);
-        $fileForm->handleRequest($request);
-
-        if ($fileForm->isSubmitted() && $fileForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('uploads_index');
-        }
-
-        return $this->render('back/uploads/file/edit.html.twig', [
-            'file' => $file,
-            'fileForm' => $fileForm->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="file_delete", methods={"DELETE"})
+     * @Route("/file/{id}", name="file_delete", methods={"DELETE"})
      */
     public function deleteFile(Request $request, File $file): Response
     {
