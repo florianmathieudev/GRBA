@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+    <div class="contact col-lg-4 col-md-12">
+        <h3>CONTACT</h3>
+            <ul>
+                {% for contact in contacts %}
+                <li><a href="">{{ contact.phone }}</a></li>
+                {# {% endfor %}
+                {% for contact in contacts %} #}
+                <li><a href="mailto:#">{{ contact.email }}</a></li>
+                {# {% endfor %}
+                {% for contact in contacts %} #}
+                <li><a href="https://www.google.fr/maps/place/Maison+des+Associations/@48.3022338,4.060545,17z/data=!3m1!4b1!4m5!3m4!1s0x47ee985b554ce31f:0xe61ecee0c59eec95!8m2!3d48.3022303!4d4.0627337">{{ contact.adresse }}</a></li>
+                {% endfor %}                        
+            </ul>
+    </div>
+    <p>Permanence chaque samedi de 9 h 30 à 11 h 30 à la maison des associations</p>
+{% endblock %}
