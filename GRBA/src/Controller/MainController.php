@@ -55,6 +55,18 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/autres-evenements", name="allOtherEvents")
+     *
+     */
+    public function otherEvents(EventRepository $eventRepository){
+        return $this->render('main/nextEvent.html.twig', [
+            'controller_name' => 'MainController',
+            'events' => $eventRepository->findAll(),
+            'findNextEvents' => $eventRepository->findOtherEvents(),
+        ]);
+    }
+
+    /**
      * @Route("/evenement/{id}", name="event_show", methods={"GET"})
      */
     public function show(Event $event): Response

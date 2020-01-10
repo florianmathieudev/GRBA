@@ -81,6 +81,17 @@ class EventRepository extends ServiceEntityRepository
                     ->getResult();
     }
 
+    public function findOtherEvents()
+    {
+        return $this->createQueryBuilder('e')
+                    ->leftJoin('e.type', 't')
+                    ->where("t.code!=1 AND t.code!=2 AND t.code!=3 AND t.code!=4") 
+                    ->andWhere("e.date > CURRENT_TIMESTAMP()")                   
+                    ->orderBy('e.date', 'ASC')
+                    ->getQuery()
+                    ->getResult();
+    }
+
     // public function findOtherEvents()
     // {
     //     return $this->createQueryBuilder('e')
