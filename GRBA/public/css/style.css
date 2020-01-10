@@ -8,11 +8,29 @@ background: linear-gradient(155deg, rgba(180,255,133,1) 0%, rgba(120,177,120,1) 
 
                                                     /* header */
 
+
+#head {
+    position: relative;
+}
+
+#logo {
+    position: absolute;
+    top: 80px;
+    left: 30px;
+}
+
+#logoimg {
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+}
+
+
+
 .navbar {
     background: rgb(0,0,0);
     background: linear-gradient(155deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 100%);
     font-size: 1em;
-
+    height: 50px;
 }
 
 .nav-link{
@@ -31,6 +49,12 @@ background: linear-gradient(155deg, rgba(180,255,133,1) 0%, rgba(120,177,120,1) 
     max-height: 60vh;
 }
                                                     /* end header */
+
+
+
+#description {
+    background-color: white;
+}
 
 
 .container {
