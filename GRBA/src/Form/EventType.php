@@ -25,7 +25,7 @@ class EventType extends AbstractType
             ->add('description', TextType::class, array(
                 'label' => 'Description de l\'Evenement'
             ))
-            ->add('content', TextType::class, array(
+            ->add('content', TextType::class, array( 
                 'label' => 'Contenu de l\'Evenement'
             ))
             ->add('type')
