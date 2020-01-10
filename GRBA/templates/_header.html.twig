@@ -18,10 +18,16 @@
                     {% if not app.user %}
                         <li class="nav-item">
                             <a class="btn btn-outline-secondary" href="{{ path('security_login') }}">Connexion</a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a class="btn btn-outline-secondary" href="{{ path('security_registration') }}">Inscription</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
                             <a class="btn btn-outline-secondary" href="{{ path('security_logout') }}">Déconnexion</a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a class="btn btn-outline-secondary" href="{{ path('file') }}">Téléchargements</a>
                         </li>
                     {% endif %}
                 </ul>

@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="contact col-lg-4 col-md-12">
-                <h3>CONTACT</h3>
+                <h3><a href="{{ path('contact') }}" id="btnSeeAll">CONTACT</a></h3>
                     <ul>
                         {% for contact in contacts %}
                         <li><a href="">{{ contact.phone }}</a></li>
@@ -40,7 +40,7 @@
                 {% endfor %}</p>
         </div>
         <div class="row">
-            <p id="us">©️2019, Corentin Tournaire, Florian Mathieu, Franck Valet</p>
+            <p id="us">©️2019, Corentin Tournaire, Florian Mathieu, Franck Valet - <a href="{{ path('legalNotice') }}" class="btn btn-secondary" id="btnSeeAll">Mentions légales</a></p>
         </div>
     </div>
 
