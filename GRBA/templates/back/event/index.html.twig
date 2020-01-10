@@ -97,10 +97,8 @@
                         {{ form_row(eventForm.place, {'attr': {'placeholder': 'Entrer le lieu ...'}} )}}
                         {{ form_row(eventForm.description, {'attr': {'placeholder': 'Entrer une description ...'}} )}}
                         {{ form_row(eventForm.content, {'attr': {'placeholder': 'Entrer le contenu ...'}} )}}
-                        
                         {{ form_row(eventForm.type, {'attr': {'placeholder': 'Choisisser le type ...'}} )}}
                         {{ form_row(eventForm.pictures)}}
-                        </div>
                         <button class="btn text-white">{{ button_label|default('Sauvergarder') }}</button>
                     {{ form_end(eventForm)}}
                 </div>
