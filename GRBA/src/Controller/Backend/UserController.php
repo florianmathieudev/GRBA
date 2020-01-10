@@ -3,6 +3,7 @@
 namespace App\Controller\Backend;
 
 use App\Entity\User;
+use App\Form\UserRoleType;
 use App\Form\UserType;
 use App\Entity\Role;
 use App\Form\RoleType;
@@ -93,10 +94,16 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user): Response
     {
-        $userForm = $this->createForm(UserType::class, $user);
-        $userForm->handleRequest($request);
+        
+        $passwordHash = $user->getPassword();
+        
+        $user->setConfirmPassword($passwordHash);
+        
+        $userRoleForm = $this->createForm(UserRoleType::class, $user);
+        $userRoleForm->handleRequest($request);
 
-        if ($userForm->isSubmitted() && $userForm->isValid()) {
+        if ($userRoleForm->isSubmitted() && $userRoleForm->isValid()) {
+           
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_index');
@@ -104,7 +111,7 @@ class UserController extends AbstractController
 
         return $this->render('back/user/edit.html.twig', [
             'user' => $user,
-            'userForm' => $userForm->createView(),
+            'userRoleForm' => $userRoleForm->createView(),
         ]);
     }
 

@@ -1,8 +1,4 @@
-{{ form_start(userForm) }}
-    {{ form_row(userForm.email, {'attr': {'placeholder': 'Entrer un email ...'}} )}}
-    {{ form_row(userForm.username, {'attr': {'placeholder': 'Entrer un nom d\'utilisateur ...'}} )}}
-    {{ form_row(userForm.password, {'attr': {'placeholder': 'Entrer un mot de passe ...'}} )}}
-    {{ form_row(userForm.confirm_password, {'attr': {'placeholder': 'Confirmer le mot de passe ...'}} )}}
-    {{ form_row(userForm.role, {'attr': {'placeholder': 'Selectionner un role ...'}} )}}
+{{ form_start(userRoleForm) }}
+    {{ form_row(userRoleForm.role, {'attr': {'placeholder': 'Selectionner un role ...'}} )}}
     <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
-{{ form_end(userForm)}}
+{{ form_end(userRoleForm)}}
