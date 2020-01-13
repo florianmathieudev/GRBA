@@ -13,5 +13,20 @@
                 {% endfor %}                        
             </ul>
     </div>
-    <p>Permanence chaque samedi de 9 h 30 à 11 h 30 à la maison des associations</p>
+    <div>
+        <p>Permanence chaque samedi de 9 h 30 à 11 h 30 à la maison des associations</p>
+            {% for message in app.flashes('success') %}
+                {{ message }}
+            {% endfor %}
+        <h3>FORMULAIRE DE CONTACT</h3>
+        {{ form_start(contactForm) }}
+            {{ form_row(contactForm.firstname)}}
+            {{ form_row(contactForm.lastname)}}
+            {{ form_row(contactForm.phone)}}
+            {{ form_row(contactForm.email)}}
+            {{ form_row(contactForm.message)}}
+            <button class="btn">{{ button_label|default('Envoyer') }}</button>
+        {{ form_end(contactForm) }}
+
+    </div>
 {% endblock %}
