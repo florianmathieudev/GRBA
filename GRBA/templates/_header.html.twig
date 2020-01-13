@@ -17,18 +17,24 @@
                 <ul class="navbar-nav ml-auto">
                     {% if not app.user %}
                         <li class="nav-item">
+                            <a class="btn btn-outline-secondary" href="{{ path('security_registration') }}">Inscription</a>
+                        </li>                        
+                        <li class="nav-item">
                             <a class="btn btn-outline-secondary" href="{{ path('security_login') }}">Connexion</a>
                         </li>                        
                         <li class="nav-item">
-                            <a class="btn btn-outline-secondary" href="{{ path('security_registration') }}">Inscription</a>
+                            <a class="btn btn-outline-secondary" href="{{ path('contact') }}">Contact</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="btn btn-outline-secondary" href="{{ path('security_logout') }}">Déconnexion</a>
-                        </li>                        
+                            <a class="btn btn-outline-secondary" href="{{ path('contact') }}">Contact</a>
+                        </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-secondary" href="{{ path('file') }}">Téléchargements</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-secondary" href="{{ path('security_logout') }}">Déconnexion</a>
+                        </li>                        
                     {% endif %}
                 </ul>
             </div>
