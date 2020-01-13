@@ -1,0 +1,6 @@
+{{ form_start(approachForm) }}
+    {{ form_row(approachForm.phone, {'attr': {'placeholder': 'Entrer un numero de telephone ...'}} )}}
+    {{ form_row(approachForm.email, {'attr': {'placeholder': 'Entrer une adresse email ...'}} )}}
+    {{ form_row(approachForm.adresse, {'attr': {'placeholder': 'Entrer une adresse postale ...'}} )}}
+    <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
+{{ form_end(approachForm)}}

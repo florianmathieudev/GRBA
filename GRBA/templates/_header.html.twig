@@ -9,11 +9,6 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                {# <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul> #}
                 <ul class="navbar-nav ml-auto">
                     {% if not app.user %}
                         <li class="nav-item">
@@ -23,11 +18,11 @@
                             <a class="btn btn-outline-secondary" href="{{ path('security_login') }}">Connexion</a>
                         </li>                        
                         <li class="nav-item">
-                            <a class="btn btn-outline-secondary" href="{{ path('contact') }}">Contact</a>
+                            <a class="btn btn-outline-secondary" href="{{ path('approach') }}">Contact</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="btn btn-outline-secondary" href="{{ path('contact') }}">Contact</a>
+                            <a class="btn btn-outline-secondary" href="{{ path('approach') }}">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-outline-secondary" href="{{ path('file') }}">Téléchargements</a>

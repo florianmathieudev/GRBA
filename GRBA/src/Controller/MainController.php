@@ -6,7 +6,7 @@ use App\Entity\Event;
 use App\Repository\FileRepository;
 use App\Repository\TypeRepository;
 use App\Repository\EventRepository;
-use App\Repository\ContactRepository;
+use App\Repository\ApproachRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +16,7 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="main")
      */
-    public function index(EventRepository $eventRepository, ContactRepository $contactRepository, TypeRepository $typeRepository)
+    public function index(EventRepository $eventRepository, ApproachRepository $approachRepository, TypeRepository $typeRepository)
     {
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
@@ -24,7 +24,7 @@ class MainController extends AbstractController
             'findNextEvents' => $eventRepository->findNextEventsMP(),
             'findPastEvents' => $eventRepository->findPastEventsMP(),
             'findOtherEvents' => $eventRepository->findOtherEventsMP(),
-            'contacts' => $contactRepository->findAll(),
+            'approachs' => $approachRepository->findAll(),
             'type' => $typeRepository->findAll(),
         ]);
     }
@@ -95,11 +95,11 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/contact", name="contact", methods={"GET"})
+     * @Route("/approach", name="approach", methods={"GET"})
      */
-    public function contact(ContactRepository $contactRepository){
-        return $this->render('main/contact.html.twig', [
-            'contacts' => $contactRepository->findAll(),
+    public function approach(ApproachRepository $approachRepository){
+        return $this->render('main/approach.html.twig', [
+            'approachs' => $approachRepository->findAll(),
         ]);
     }
 }

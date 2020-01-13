@@ -4,17 +4,17 @@ namespace App\Controller\Backend;
 
 use App\Entity\Header;
 use App\Entity\Footer;
-use App\Entity\Contact;
+use App\Entity\Approach;
 use App\Entity\Network;
 use App\Entity\Horaire;
 use App\Form\HeaderType;
 use App\Form\FooterType;
-use App\Form\ContactType;
+use App\Form\ApproachType;
 use App\Form\NetworkType;
 use App\Form\HoraireType;
 use App\Repository\HeaderRepository;
 use App\Repository\FooterRepository;
-use App\Repository\ContactRepository;
+use App\Repository\ApproachRepository;
 use App\Repository\NetworkRepository;
 use App\Repository\HoraireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,7 +30,7 @@ class HeaderController extends AbstractController
     /**
      * @Route("/", name="header_index", methods={"GET","POST"})
      */
-    public function index(HeaderRepository $headerRepository, FooterRepository $footerRepository, ContactRepository $contactRepository, NetworkRepository $networkRepository, HoraireRepository $horaireRepository, Request $request): Response
+    public function index(HeaderRepository $headerRepository, FooterRepository $footerRepository, ApproachRepository $approachRepository, NetworkRepository $networkRepository, HoraireRepository $horaireRepository, Request $request): Response
     {
 
         $header = new Header();
@@ -53,12 +53,12 @@ class HeaderController extends AbstractController
             return $this->redirectToRoute('header_index');
         }
 
-        $contact = new Contact();
-        $contactForm = $this->createForm(ContactType::class, $contact);
-        $contactForm->handleRequest($request);
-        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
+        $approach = new Approach();
+        $approachForm = $this->createForm(ApproachType::class, $approach);
+        $approachForm->handleRequest($request);
+        if ($approachForm->isSubmitted() && $approachForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($contact);
+            $entityManager->persist($approach);
             $entityManager->flush();
             return $this->redirectToRoute('header_index');
         }
@@ -86,15 +86,15 @@ class HeaderController extends AbstractController
         return $this->render('back/header/index.html.twig', [
             'headers' => $headerRepository->findAll(),
             'footers' => $footerRepository->findAll(),
-            'contacts' => $contactRepository->findAll(),
+            'approachs' => $approachRepository->findAll(),
             'networks' => $networkRepository->findAll(),
             'horaires' => $horaireRepository->findAll(),
             'header' => $header,
             'headerForm' => $headerForm->createView(),
             'footer' => $footer,
             'footerForm' => $footerForm->createView(),
-            'contact' => $contact,
-            'contactForm' => $contactForm->createView(),
+            'approach' => $approach,
+            'approachForm' => $approachForm->createView(),
             'network' => $network,
             'networkForm' => $networkForm->createView(),
             'horaire' => $horaire,
