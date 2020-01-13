@@ -535,3 +535,31 @@ footer {
 /* .test btn {
     color: white;
 } */
+
+#legalNotice {
+    margin: 2em 1em 2em 2em;
+    background-image: url(/image/bgdiv.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: auto;
+    border-top: solid 2px;
+    border-bottom: solid 2px;
+    border-right: solid 2px;    
+    border-left: solid 2px;
+    padding: 20px;
+}
+
+#rgpd {
+    margin: 2em 2em 2em 1em;
+    background-image: url(/image/bgdiv.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: auto;
+    border-top: solid 2px;
+    border-bottom: solid 2px;
+    border-right: solid 2px;    
+    border-left: solid 2px;
+    padding: 20px;
+}

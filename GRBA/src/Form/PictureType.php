@@ -27,7 +27,7 @@ class PictureType extends AbstractType
             ->add('event', EntityType::class, [
                 'class' => Event::class,
                 'label' => 'Evenement lie a cette Image',
-                'placeholder' => 'Choisisser l\'Image ...',
+                'placeholder' => 'Choisisser l\'Evenement ...',
                 'choice_label' => 'place',
                 'required'   => false,
                 'empty_data' => null,
