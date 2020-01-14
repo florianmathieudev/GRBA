@@ -1,7 +1,7 @@
 {% block body %}
 
 <header>
-    <div id="header">
+    <!-- <div id="header">
         <nav class="navbar fixed-top navbar-expand-md navbar-light" data-spy="affix" data-offset-top="197">
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,11 +9,6 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                {# <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul> #}
                 <ul class="navbar-nav ml-auto">
                     {% if not app.user %}
                         <li class="nav-item">
@@ -44,6 +39,46 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
+    </div>  -->
+
+    
+      <div class="section">
+          <div class="oop"></div>
+        <div class="fixed">
+            <h3>Chaque semaine :</h3>
+            <ul>
+                <li>mercredi, rando environ 12 km</li>
+                <li>jeudi matin, marche nordique</li>
+                <li>jeudi après-midi, rando douce 7 km max.</li>
+                <li>dimanche toute la journée, rando entre 20 et 25 km</li>
+            </ul>
+        </div>
+      </div>
+      <div class="section">
+        <div class="p fixed">
+            <h3>Permanence le samedi matin à la Maison des Associations à Troyes de 9h30 à 11h30 sauf durant la période des congés scolaires</h3>
+            <h4>Encadrement :</h4>
+            <ul>
+                <li>9 animateurs de randonnée Niveau 1</li>
+                <li>4 animateurs de randonnée Niveau 2 (Brevet Fédéral)</li>
+                <li>3 animateurs de marche nordique</li>
+                <li>3 animateurs rando-santé</li>
+            </ul></div>
+      </div>
+      <div class="section">
+        <div class="p fixed">
+            <h3>Rapport d’activité 2018/2019</h3> 
+            <h4>52600 km parcourus en 209 sorties dont :</h4>
+            <ul>
+                <li>50 sorties en marche nordique</li>
+                <li>50 randos douces</li>
+                <li>58 randos en semaine</li>
+                <li>51 randos le dimanche</li>
+            </ul>
+        </div>
+      </div>
+      
+    
+
 </header> 
 {% endblock %}
