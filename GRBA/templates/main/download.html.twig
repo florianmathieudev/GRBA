@@ -4,7 +4,7 @@
 {% block body %} 
     {% for file in files %}                     
         <div>
-            <a href="{{ file.path }}" download="{{ file.path }}">{{ file.name }}</a> 
+            <a href="{{asset('uploads/files/' ~  file.path)}}">{{ file.name }}</a> 
         </div>                                   
     {% endfor %}
 {% endblock %}
