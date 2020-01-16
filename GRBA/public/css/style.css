@@ -118,7 +118,7 @@ header {
 
 .section:nth-child(1) {
     box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
-    /* background-image: url(/image/img1.jpg); */
+    /* background-image: url(/image/img1.jpg);  */
     color: #fff;
     background-size: cover;
     background-repeat: no-repeat;
@@ -132,7 +132,7 @@ header {
 
 .section:nth-child(2) {
     box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
-    /* background-image: url(/image/img2.jpg); */
+    /* background-image: url(/image/img2.jpg);  */
     color: #fff;
     background-size: cover;
     background-repeat: no-repeat;
@@ -146,7 +146,7 @@ header {
 
 .section:nth-child(3) {
     box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
-    /* background-image: url(/image/img3.jpg); */
+    /* background-image: url(/image/img3.jpg);  */
     color: #fff;
     background-size: cover;
     background-repeat: no-repeat;
@@ -158,7 +158,7 @@ header {
     transform: translate(-50%, -50%);
 }
 
-.section:nth-child(4) {
+/* .section:nth-child(4) {
     box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
     background-color: #85c20a;
     color: #fff;
@@ -167,10 +167,10 @@ header {
 }
 .section:nth-child(4) .fixed {
     transform: translate(-50%, -50%);
-}
+} */
 
 #bg1 {
-    box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
+    /* box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14); */
     color: #fff;
     top: 0;
     z-index: 1;
@@ -181,9 +181,9 @@ header {
 }
 
 #bg2 {
-    box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
+    /* box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14); */
     color: #fff;
-    top: 0;
+    top: 100vh;
     z-index: 1;
 }
 
@@ -192,9 +192,9 @@ header {
 }
 
 #bg3 {
-    box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
+    /* box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14); */
     color: #fff;
-    top: 0;
+    top: 200vh;
     z-index: 1;
 }
 

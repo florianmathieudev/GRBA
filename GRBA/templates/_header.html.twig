@@ -88,30 +88,31 @@
     </div>  -->
     
     <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ headers.picture ) }}"></img>
+        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ headers.picture ) }}">
         <div class="fixed">
-            <div class="bg1">
+            <div id="bg1">
                 <p>{{ headers.text }}</p>
             </div>
         </div>
     </div>
     <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ headers.picture2 ) }}"></img>
+        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ headers.picture2 ) }}">
         <div class="fixed">
-            <div class="bg2">
+            <div id="bg2">
                 <p>{{ headers.text2 }}</p>
             </div>
         </div>
     </div>
     <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ headers.picture3 ) }}"></img>
+        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ headers.picture3 ) }}">
         <div class="fixed">
-            <div class="bg3">
+            <div id="bg3">
                 <p>{{ headers.text3 }}</p>
             </div>
         </div>
     </div>
     
 </header>
+
 
 {% endblock %}
