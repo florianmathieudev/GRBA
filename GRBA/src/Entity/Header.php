@@ -39,6 +39,31 @@ class Header
      */
     private $pictures;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
+     */
+    private $picture2;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
+     */
+    private $picture3;
+
+    /**
+     * @ORM\Column(type="text", length=1000, nullable=true)
+     */
+    private $text;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $text2;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $text3;
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
@@ -109,6 +134,66 @@ class Header
             $this->pictures->removeElement($picture);
             $picture->removeHeader($this);
         }
+
+        return $this;
+    }
+
+    public function getPicture2(): ?Picture
+    {
+        return $this->picture2;
+    }
+
+    public function setPicture2(?Picture $picture2): self
+    {
+        $this->picture2 = $picture2;
+
+        return $this;
+    }
+
+    public function getPicture3(): ?Picture
+    {
+        return $this->picture3;
+    }
+
+    public function setPicture3(?Picture $picture3): self
+    {
+        $this->picture3 = $picture3;
+
+        return $this;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(?string $text): self
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    public function getText2(): ?string
+    {
+        return $this->text2;
+    }
+
+    public function setText2(?string $text2): self
+    {
+        $this->text2 = $text2;
+
+        return $this;
+    }
+
+    public function getText3(): ?string
+    {
+        return $this->text3;
+    }
+
+    public function setText3(?string $text3): self
+    {
+        $this->text3 = $text3;
 
         return $this;
     }

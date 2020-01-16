@@ -13,6 +13,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>id</th>
                             <th>Onglet</th>
                             <th>Titre</th>
                             <th>Image</th>
@@ -22,6 +23,7 @@
                     <tbody>
                     {% for header in headers %}
                         <tr>
+                            <td>{{ header.id }}</td>
                             <td>{{ header.tab }}</td>
                             <td>{{ header.title }}</td>
                             <td><img src="{{ asset('uploads/pictures/' ~ header.picture ) }}" height="80em" ></td>
