@@ -13,7 +13,7 @@ class HeaderController extends AbstractController
     {
         return $this->render('/_header.html.twig', [
             'controller_name' => 'HeaderController',
-            'headers' => $headerRepository->findAll()
+            'headers' => $headerRepository->findOneById(3)
         ]);
     }
 
@@ -21,7 +21,7 @@ class HeaderController extends AbstractController
     {
         return $this->render('/back_base.html.twig', [
             'controller_name' => 'HeaderController',
-            'headers' => $headerRepository->findAll()
+            'headers' => $headerRepository->findById(3)
         ]);
     }
 }

@@ -2,45 +2,99 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\ContactRepository")
- */
 class Contact
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string|null
+     * @Assert\NotBlank()
+     * @Assert\Length(min=2, max=100)
+     */
+    private $firstname;
+
+    /**
+     * @var string|null
+     * @Assert\NotBlank()
+     * @Assert\Length(min=2, max=100)
+     */
+    private $lastname;
+
+    /**
+     * @var string|null
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     * pattern="/[0-9]{10}/"
+     * )
      */
     private $phone;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string|null
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string|null
+     * @Assert\NotBlank()
+     * @Assert\Length(min=10)
      */
-    private $adresse;
+    private $message;
 
-    public function getId(): ?int
+
+    /*
+     * @return null|string
+     */
+    public function getFirstname(): ?string
     {
-        return $this->id;
+        return $this->firstname;
     }
 
+    /*
+     * @param null|string $firstname
+     * @return Contact
+     */
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /*
+     * @return null|string
+     */
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    /*
+     * @param null|string $lastname
+     * @return Contact
+     */
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /*
+     * @return null|string
+     */
     public function getPhone(): ?string
     {
         return $this->phone;
     }
 
+    /*
+     * @param null|string $phone
+     * @return Contact
+     */
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
@@ -48,11 +102,18 @@ class Contact
         return $this;
     }
 
+    /*
+     * @return null|string
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /*
+     * @param null|string $email
+     * @return Contact
+     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -60,15 +121,23 @@ class Contact
         return $this;
     }
 
-    public function getAdresse(): ?string
+    /*
+     * @return null|string
+     */
+    public function getMessage(): ?string
     {
-        return $this->adresse;
+        return $this->message;
     }
 
-    public function setAdresse(string $adresse): self
+    /*
+     * @param null|string $message
+     * @return Contact
+     */
+    public function setMessage(string $message): self
     {
-        $this->adresse = $adresse;
+        $this->message = $message;
 
         return $this;
     }
+
 }

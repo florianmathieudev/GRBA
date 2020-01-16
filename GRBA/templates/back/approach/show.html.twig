@@ -13,24 +13,24 @@
                         <tbody>
                             <tr>
                                 <th>Id</th>
-                                <td>{{ contact.id }}</td>
+                                <td>{{ approach.id }}</td>
                             </tr>
                             <tr>
                                 <th>Numéro</th>
-                                <td>{{ contact.phone }}</td>
+                                <td>{{ approach.phone }}</td>
                             </tr>
                             <tr>
                                 <th>Email</th>
-                                <td>{{ contact.email }}</td>
+                                <td>{{ approach.email }}</td>
                             </tr>
                             <tr>
                                 <th>Adresse</th>
-                                <td>{{ contact.adresse }}</td>
+                                <td>{{ approach.adresse }}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Éditer</a>
-                    {{ include('back/contact/_delete_form.html.twig') }}
+                    <a href="{{ path('approach_edit', {'id': approach.id}) }}">Éditer</a>
+                    {{ include('back/approach/_delete_form.html.twig') }}
                     <a href="{{ path('header_index') }}">Revenir à la liste</a>
                 </div>
             </div>

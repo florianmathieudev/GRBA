@@ -95,13 +95,10 @@ class EventController extends AbstractController
     {
         $eventForm = $this->createForm(EventType::class, $event);
         $eventForm->handleRequest($request);
-
         if ($eventForm->isSubmitted() && $eventForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('event_index');
         }
-
         return $this->render('back/event/edit.html.twig', [
             'event' => $event,
             'eventForm' => $eventForm->createView(),

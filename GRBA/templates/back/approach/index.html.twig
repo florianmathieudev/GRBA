@@ -16,24 +16,25 @@
             </tr>
         </thead>
         <tbody>
-        {% for contact in contacts %}
+        {% for approach in approachs %}
             <tr>
-                <td>{{ contact.id }}</td>
-                <td>{{ contact.phone }}</td>
-                <td>{{ contact.email }}</td>
-                <td>{{ contact.adresse }}</td>
+                <td>{{ approach.id }}</td>
+                <td>{{ approach.phone }}</td>
+                <td>{{ approach.email }}</td>
+                <td>{{ approach.adresse }}</td>
                 <td>
-                    <a href="{{ path('contact_show', {'id': contact.id}) }}">Voir</a>
-                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">Éditer</a>
+                    <a href="{{ path('approach_show', {'id': approach.id}) }}">Voir</a>
+                    <a href="{{ path('approach_edit', {'id': approach.id}) }}">Éditer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
+                <td colspan="5">Aucun Contact</td>
                 <td colspan="5">Aucun Contact</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('contact_new') }}">Créer un nouveau Contact</a>
+    <a href="{{ path('approach_new') }}">Créer un nouveau Contact</a>
 {% endblock %}

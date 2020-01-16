@@ -3,10 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\Contact;
+use App\Form\ContactType;
 use App\Repository\FileRepository;
 use App\Repository\TypeRepository;
 use App\Repository\EventRepository;
-use App\Repository\ContactRepository;
+use App\Repository\HeaderRepository;
+use App\Repository\ApproachRepository;
+use App\Notification\ContactNotification;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +21,7 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="main")
      */
-    public function index(EventRepository $eventRepository, ContactRepository $contactRepository, TypeRepository $typeRepository)
+    public function index(HeaderRepository $headerRepository, EventRepository $eventRepository, ApproachRepository $approachRepository, TypeRepository $typeRepository)
     {
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
@@ -24,8 +29,9 @@ class MainController extends AbstractController
             'findNextEvents' => $eventRepository->findNextEventsMP(),
             'findPastEvents' => $eventRepository->findPastEventsMP(),
             'findOtherEvents' => $eventRepository->findOtherEventsMP(),
-            'contacts' => $contactRepository->findAll(),
+            'approachs' => $approachRepository->findAll(),
             'type' => $typeRepository->findAll(),
+            'header' => $headerRepository->findById(3)
         ]);
     }
 
@@ -95,11 +101,21 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/contact", name="contact", methods={"GET"})
+     * @Route("/contact", name="contact", methods={"GET", "POST"})
      */
-    public function contact(ContactRepository $contactRepository){
+    public function contact(ApproachRepository $approachRepository, Request $request, ContactNotification $contactNotification){
+        $contact = new Contact();
+        $contactForm= $this->createForm(ContactType::class, $contact);
+        $contactForm->handleRequest($request);
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
+            $contactNotification->notify($contact);
+            $this->addFlash('success', 'Votre message a bien ete envoye');
+            return $this->redirectToRoute('contact');
+        };
+
         return $this->render('main/contact.html.twig', [
-            'contacts' => $contactRepository->findAll(),
+            'approachs' => $approachRepository->findAll(),
+            'contactForm' => $contactForm->createView()
         ]);
     }
 }
