@@ -27,6 +27,27 @@ class HeaderType extends AbstractType
                 'choice_label' => 'name',
                 'required'   => false,
             ])
+            ->add('picture2', EntityType::class, [
+                'label' => 'Deuxieme Image principale du Site (Facultatif)',
+                'class' => Picture::class,
+                'choice_label' => 'name',
+                'required'   => false,
+            ])
+            ->add('picture3', EntityType::class, [
+                'label' => 'Troisieme Image principale du Site (Facultatif)',
+                'class' => Picture::class,
+                'choice_label' => 'name',
+                'required'   => false,
+            ])
+            ->add('text', TextType::class, array(
+                'label' => 'Texte sur la premiere image'
+            ))
+            ->add('text2', TextType::class, array(
+                'label' => 'Texte sur la deuxieme image'
+            ))
+            ->add('text3', TextType::class, array(
+                'label' => 'Texte sur la troisieme image'
+            ))
         ;
     }
 

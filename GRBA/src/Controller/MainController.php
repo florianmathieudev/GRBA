@@ -8,6 +8,7 @@ use App\Form\ContactType;
 use App\Repository\FileRepository;
 use App\Repository\TypeRepository;
 use App\Repository\EventRepository;
+use App\Repository\HeaderRepository;
 use App\Repository\ApproachRepository;
 use App\Notification\ContactNotification;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,7 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="main")
      */
-    public function index(EventRepository $eventRepository, ApproachRepository $approachRepository, TypeRepository $typeRepository)
+    public function index(HeaderRepository $headerRepository, EventRepository $eventRepository, ApproachRepository $approachRepository, TypeRepository $typeRepository)
     {
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
@@ -30,6 +31,7 @@ class MainController extends AbstractController
             'findOtherEvents' => $eventRepository->findOtherEventsMP(),
             'approachs' => $approachRepository->findAll(),
             'type' => $typeRepository->findAll(),
+            'header' => $headerRepository->findById(3)
         ]);
     }
 
