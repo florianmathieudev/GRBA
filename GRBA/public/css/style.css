@@ -2,7 +2,7 @@ body, html  {
     background-color: rgb(97, 97, 97);
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden; 
-    
+    scroll-behavior: smooth;
 }
 
                                                     /* header */
@@ -245,7 +245,7 @@ header {
                                                     /* fin paralax */
 
 .main {
-    margin-top: 180em;
+    margin-top: 175em;
     
 }
                                                     /* end description */
@@ -253,11 +253,19 @@ header {
     margin: 0;
 }
 
+.cont {
+    height: 110vh;
+}
+
+#nextLastEvents h2 {
+    padding-top: 3em;
+}
 
 h2 {
     color: white;
     font-weight: 300;
     font-size: 3em;
+    
 }
 
 /*.container-fluid{
@@ -311,8 +319,7 @@ figcaption {
     object-fit:cover;
 }
 .nextLastEvents {
-background: linear-gradient(117deg, rgba(49,49,49,1) 0%, rgba(129,159,129,1) 61%);
-
+    background: #666666;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -328,6 +335,11 @@ background: linear-gradient(117deg, rgba(49,49,49,1) 0%, rgba(129,159,129,1) 61%
     -webkit-box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
     -moz-box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
     box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
+    }
+
+    #nextLastEvents {
+        padding-top: 10em;
+        background-image: linear-gradient(to right top, #7a7a7a, #7d8591, #7394a5, #61a4ae, #5bb3a7, #5abca0, #63c493, #76cb83, #6ed27e, #65d878, #5cdf71, #50e56a);
     }
     
 .myContainer {
@@ -616,7 +628,7 @@ text-align: center;
 
 
 .previousLastEvents {
-    background: linear-gradient(117deg, rgba(129,159,129,1) 39%, rgba(49,49,49,1) 100%);
+    background: #666666;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -648,6 +660,15 @@ text-align: center;
 
     .previousLastEvents h2 {
         text-align: right;
+        
+    }
+
+    #previousLastEvents h2 {
+        padding-top: 3em;
+    }
+
+    #previousLastEvents {
+        background-image: linear-gradient(to right top, #535353, #59595e, #5f606a, #646776, #676e82, #636f8c, #5f6f95, #5a709f, #4f69a8, #4661b0, #4059b7, #3f4fbc);
     }
 
     .card-img-top2 {
