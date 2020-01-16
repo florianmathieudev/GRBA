@@ -40,13 +40,16 @@ class HeaderType extends AbstractType
                 'required'   => false,
             ])
             ->add('text', TextType::class, array(
-                'label' => 'Texte sur la premiere image'
+                'label' => 'Texte sur la premiere image',
+                'required'   => false,
             ))
             ->add('text2', TextType::class, array(
-                'label' => 'Texte sur la deuxieme image'
+                'label' => 'Texte sur la deuxieme image',
+                'required'   => false,
             ))
             ->add('text3', TextType::class, array(
-                'label' => 'Texte sur la troisieme image'
+                'label' => 'Texte sur la troisieme image',
+                'required'   => false,
             ))
         ;
     }
