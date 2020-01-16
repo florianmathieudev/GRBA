@@ -1,5 +1,41 @@
 {% block body %}
 
+<nav class="navbar fixed-top navbar-expand-md navbar-light">
+            
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="btn btn-outline-light" href="#nextLastEvents">Prochaines randonnées</a>
+            </li> 
+            <li class="nav-item">
+                <a class="btn btn-outline-light" href="#otherLastEvents">Autres évènements</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-light" href="#previousLastEvents">Précédents évènements</a>
+            </li>
+            {% if not app.user %}
+                <li class="nav-item">
+                    <a class="btn btn-outline-light" href="{{ path('security_login') }}">Connexion</a>
+                </li>                        
+                <li class="nav-item">
+                    <a class="btn btn-outline-light" href="{{ path('security_registration') }}">Inscription</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="btn btn-outline-light" href="{{ path('security_logout') }}">Déconnexion</a>
+                </li>                        
+                <li class="nav-item">
+                    <a class="btn btn-outline-light" href="{{ path('file') }}">Téléchargements</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
 <header>
     <!-- <div id="header">
         <nav class="navbar fixed-top navbar-expand-md navbar-light" data-spy="affix" data-offset-top="197">
@@ -50,6 +86,7 @@
     
       <div class="section">
           <div class="oop"></div>
+          
         <div class="fixed">
             <h3>Chaque semaine :</h3>
             <ul>
