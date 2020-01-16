@@ -12,12 +12,13 @@ body, html  {
     position: relative;
 }
 
-#logo {
+.logo {
     position: absolute;
     top: 3em;
     left: calc(50% - 5%);
     height: 10%;
     width: 10%;
+    z-index: 2;
 }
 
 
@@ -118,7 +119,9 @@ header {
 .section:nth-child(1) {
     background-image: url(/image/img1.jpg);
     color: #fff;
-    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     top: 0;
     z-index: 1;
 }
@@ -130,6 +133,9 @@ header {
     box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
     background-image: url(/image/img2.jpg);
     color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     top: 100vh;
     z-index: 2;
 }
@@ -141,6 +147,9 @@ header {
     box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
     background-image: url(/image/img3.jpg);
     color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     top: 200vh;
     z-index: 3;
 }
@@ -235,6 +244,7 @@ header {
     backdrop-filter: blur(20px);
     border-radius: 20px;
     padding: 1em;
+    font-size: .5em;
 }
     
     
@@ -245,7 +255,7 @@ header {
                                                     /* fin paralax */
 
 .main {
-    margin-top: 175em;
+    margin-top: 300vh;
     
 }
                                                     /* end description */
@@ -254,12 +264,11 @@ header {
 }
 
 .cont {
-    height: 110vh;
+    min-height: 100vh;
+    height: auto;
 }
 
-#nextLastEvents h2 {
-    padding-top: 3em;
-}
+
 
 h2 {
     color: white;
@@ -760,3 +769,31 @@ footer {
 /* .test btn {
     color: white;
 } */
+
+#legalNotice {
+    margin: 2em 1em 2em 2em;
+    background-image: url(/image/bgdiv.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: auto;
+    border-top: solid 2px;
+    border-bottom: solid 2px;
+    border-right: solid 2px;    
+    border-left: solid 2px;
+    padding: 20px;
+}
+
+#rgpd {
+    margin: 2em 2em 2em 1em;
+    background-image: url(/image/bgdiv.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: auto;
+    border-top: solid 2px;
+    border-bottom: solid 2px;
+    border-right: solid 2px;    
+    border-left: solid 2px;
+    padding: 20px;
+}

@@ -1,14 +1,14 @@
 {% block body %}
 
-<nav class="navbar fixed-top navbar-expand-md navbar-light">
+<nav class="navbar fixed-top navbar-expand-md  navbar-inverse">
             
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ml">
                 <a class="btn btn-outline-light" href="#nextLastEvents">Prochaines randonnées</a>
             </li> 
             <li class="nav-item">
@@ -17,8 +17,10 @@
             <li class="nav-item">
                 <a class="btn btn-outline-light" href="#previousLastEvents">Précédents évènements</a>
             </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
             {% if not app.user %}
-                <li class="nav-item">
+                <li class="nav-item ml">
                     <a class="btn btn-outline-light" href="{{ path('security_login') }}">Connexion</a>
                 </li>                        
                 <li class="nav-item">
@@ -35,6 +37,8 @@
         </ul>
     </div>
 </nav>
+
+
 
 <header>
     <!-- <div id="header">
@@ -76,11 +80,16 @@
             </div>
         </div>
     </div>  -->
-
     
-      <div class="section">
-          <div class="oop"></div>
-          
+    {# <div id="head">
+        <div id="logo">
+            <a href="{{ path('main') }}">  
+            <img id="logoimg" src="{{asset('image/GBRA.svg')}}" alt="logo" height="200em"></a>
+        </div>
+        
+    </div> #}
+    <div class="section">
+        <div class="oop"></div>  
         <div class="fixed">
             <h3>Chaque semaine :</h3>
             <ul>
@@ -90,8 +99,10 @@
                 <li>dimanche toute la journée, rando entre 20 et 25 km</li>
             </ul>
         </div>
-      </div>
-      <div class="section">
+    </div>
+    
+
+    <div class="section">
         <div class="p fixed">
             <h3>Permanence le samedi matin à la Maison des Associations à Troyes de 9h30 à 11h30 sauf durant la période des congés scolaires</h3>
             <h4>Encadrement :</h4>
@@ -100,9 +111,12 @@
                 <li>4 animateurs de randonnée Niveau 2 (Brevet Fédéral)</li>
                 <li>3 animateurs de marche nordique</li>
                 <li>3 animateurs rando-santé</li>
-            </ul></div>
-      </div>
-      <div class="section">
+            </ul>
+        </div>
+    </div>
+    
+
+    <div class="section">
         <div class="p fixed">
             <h3>Rapport d’activité 2018/2019</h3> 
             <h4>52600 km parcourus en 209 sorties dont :</h4>
@@ -113,9 +127,9 @@
                 <li>51 randos le dimanche</li>
             </ul>
         </div>
-      </div>
-      
+    </div>      
+        
     
+</header>
 
-</header> 
 {% endblock %}
