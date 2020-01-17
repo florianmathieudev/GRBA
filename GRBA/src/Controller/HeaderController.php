@@ -11,13 +11,25 @@ class HeaderController extends AbstractController
 
     public function index(HeaderRepository $headerRepository)
     {
-        $variables['url'] = $_SERVER['REQUEST_URI'];
-        $variables['#cache']['contexts'][] = 'url.path';
+        
         return $this->render('/_header.html.twig', [
             'controller_name' => 'HeaderController',
+            'header' => $headerRepository->findOneById(5),
+            
+        ]);
+    } public function indexMain(HeaderRepository $headerRepository)
+    {
+        
+        return $this->render('/_headerMain.html.twig', [
+            'controller_name' => 'HeaderController',
             'header' => $headerRepository->findOneById(3),
+        ]);
+    } public function indexBack(HeaderRepository $headerRepository)
+    {
+       
+        return $this->render('/_headerBack.html.twig', [
+            'controller_name' => 'HeaderController',
             'backHeader' => $headerRepository->findOneById(4),
-            'url' => $variables
         ]);
     }
 
