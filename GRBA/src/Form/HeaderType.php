@@ -15,12 +15,12 @@ class HeaderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tab', TextType::class, array(
-                'label' => 'Onglet du Site'
-            ))
-            ->add('title', TextType::class, array(
-                'label' => 'Titre du site'
-            ))
+            // ->add('tab', TextType::class, array(
+            //     'label' => 'Onglet du Site'
+            // ))
+            // ->add('title', TextType::class, array(
+            //     'label' => 'Titre du site'
+            // ))
             ->add('picture', EntityType::class, [
                 'label' => 'Image principale du Site',
                 'class' => Picture::class,
