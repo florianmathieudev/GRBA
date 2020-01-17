@@ -1,10 +1,18 @@
 {% block body %}
 
 
-{% if ('/admin') in url %}
+{# {% set url = url('admin') %}
+{{ url }}
+{% if 'admin' in url %} #}
 
+{% if app.request.attributes.get('_route') == 'admin' %}
+
+    <header>
+        <div class="section">
+            <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ backHeader.picture ) }}"></img>
+        </div>
+    </header>
     <nav class="navbar fixed-top navbar-expand-md  navbar-inverse">
-                
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,7 +38,7 @@
         </div>
     </nav>
 
-{% else %}
+{% elseif app.request.attributes.get('_route') == 'allPastEvents' or app.request.attributes.get('_route') == 'allNextEvents' or app.request.attributes.get('_route') == 'allOtherEvents' in url %}
 
     <nav class="navbar fixed-top navbar-expand-md  navbar-inverse">
                 
@@ -69,9 +77,7 @@
         </div>
     </nav>
 
-{% endif %}
-
-{% if '/' in url %}
+{% else %}
 
     <header>
         <div class="section">
@@ -100,13 +106,7 @@
         </div>
     </header>
 
-{% elseif '/admin' in url  %}
 
-    <header>
-        <div class="section">
-            <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ backHeader.picture ) }}"></img>
-        </div>
-    </header>
 
 {% endif %}
 
