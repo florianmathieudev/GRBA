@@ -20,10 +20,12 @@
         
     </head>
     <body>
-        
+        {% if app.request.attributes.get('_route') == 'allPastEvents' or app.request.attributes.get('_route') == 'allNextEvents' or app.request.attributes.get('_route') == 'allOtherEvents' or app.request.attributes.get('_route') == 'contact'  or app.request.attributes.get('_route') == 'security_registration'  or app.request.attributes.get('_route') == 'security_login' %}
         {{ render(controller('App\\Controller\\HeaderController::index'))}}
-
-
+        {% else %}
+        {{ render(controller('App\\Controller\\HeaderController::indexMain'))}}
+        {% endif %}
+        
         {% block body %}   
         {% endblock %}
 
