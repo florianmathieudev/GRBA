@@ -65,10 +65,10 @@ class MainController extends AbstractController
      *
      */
     public function otherEvents(EventRepository $eventRepository){
-        return $this->render('main/nextEvent.html.twig', [
+        return $this->render('main/otherEvent.html.twig', [
             'controller_name' => 'MainController',
             'events' => $eventRepository->findAll(),
-            'findNextEvents' => $eventRepository->findOtherEvents(),
+            'findOtherEvents' => $eventRepository->findOtherEvents(),
         ]);
     }
 
