@@ -2,12 +2,33 @@
 {% block title %}Les prochaines randonnées{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
+{# <div class="container-fluid">
     <div class="row ">
         <div class="col-lg-11 col-md-12 ">   
-            <div class="row">         
-            {% for event in findNextEvents %}                     
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12" >  
+            <div class="row">          #}
+            {% for type in types %}    
+            <br>
+                <div>
+                    <p>Type:</p>
+                    {{ type.title }}
+                </div>   
+                <div>
+                {% for event in type.events %}
+                    <div>
+                        {{ event.place }}
+                    </div>
+                    <div>
+                        {{ event.date|localizeddate('none', 'none', 'none', null, 'EEEE dd MMMM') }}
+                    </div>
+                    <div>
+                        {{ event.description }}
+                    </div>
+                    <div>
+                        {{ event.content }}
+                    </div>
+                </div>
+                <br>
+                {# <div class="col-lg-3 col-md-6 col-sm-6 col-12" >  
                     <div class="myContainer">
                         <div class="myCard">                      
                             <div class="myFront">
@@ -41,11 +62,12 @@
                             </div>                                    
                         </div>
                     </div>  
-                </div>
+                </div> #}
+                {% endfor %}
             {% endfor %}
-            </div> 
+            {# </div> 
         </div>
         
     </div>           
-</div>
+</div> #}
 {% endblock %}

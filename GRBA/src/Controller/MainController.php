@@ -52,11 +52,11 @@ class MainController extends AbstractController
      * @Route("/prochaines-randonnees", name="allNextEvents")
      *
      */
-    public function nextEvents(EventRepository $eventRepository){
+    public function nextEvents(EventRepository $eventRepository, TypeRepository $typeRepository){
         return $this->render('main/nextEvent.html.twig', [
             'controller_name' => 'MainController',
-            'events' => $eventRepository->findAll(),
-            'findNextEvents' => $eventRepository->findNextEvents(),
+            // 'findNextEvents' => $eventRepository->findNextEvents(),
+            'types' => $typeRepository->findNextEventsByType()
         ]);
     }
 
