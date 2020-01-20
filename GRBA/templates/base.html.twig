@@ -10,7 +10,6 @@
         <style>@import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap');
                 </style>
         
-       
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         
         <link rel="stylesheet" href="/css/style.css">
@@ -20,7 +19,7 @@
         
     </head>
     <body>
-        {% if app.request.attributes.get('_route') == 'allPastEvents' or app.request.attributes.get('_route') == 'allNextEvents' or app.request.attributes.get('_route') == 'allOtherEvents' or app.request.attributes.get('_route') == 'contact'  or app.request.attributes.get('_route') == 'security_registration'  or app.request.attributes.get('_route') == 'security_login' %}
+        {% if app.request.attributes.get('_route') == 'allPastEvents' or app.request.attributes.get('_route') == 'allNextEvents' or app.request.attributes.get('_route') == 'allOtherEvents' or app.request.attributes.get('_route') == 'contact'  or app.request.attributes.get('_route') == 'security_registration'  or app.request.attributes.get('_route') == 'security_login' or app.request.attributes.get('_route') == 'event_show' %}
         {{ render(controller('App\\Controller\\HeaderController::index'))}}
         {% else %}
         {{ render(controller('App\\Controller\\HeaderController::indexMain'))}}
