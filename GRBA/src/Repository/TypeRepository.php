@@ -30,6 +30,27 @@ class TypeRepository extends ServiceEntityRepository
                     ->getResult();
     }
 
+    public function findOtherEventsByType()
+    {
+        return $this->createQueryBuilder('t')
+                    ->leftJoin('t.events', 'e')
+                    ->where("t.code!=1 AND t.code!=2 AND t.code!=3 AND t.code!=4")             
+                    ->andWhere("e.date > CURRENT_TIMESTAMP()")
+                    ->orderBy('e.date', 'ASC')
+                    ->getQuery()
+                    ->getResult();
+    }
+
+    public function findPastEventsByType()
+    {
+        return $this->createQueryBuilder('t')
+                    ->leftJoin('t.events', 'e')
+                    ->andWhere("e.date > CURRENT_TIMESTAMP()")
+                    ->orderBy('e.date', 'ASC')
+                    ->getQuery()
+                    ->getResult();
+    }
+
     // /**
     //  * @return Type[] Returns an array of Type objects
     //  */
