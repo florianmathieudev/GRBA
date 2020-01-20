@@ -19,6 +19,17 @@ class TypeRepository extends ServiceEntityRepository
         parent::__construct($registry, Type::class);
     }
 
+    public function findNextEventsByType()
+    {
+        return $this->createQueryBuilder('t')
+                    ->leftJoin('t.events', 'e')
+                    ->where("t.code=1 OR t.code=2 OR t.code=3 OR t.code=4")             
+                    ->andWhere("e.date > CURRENT_TIMESTAMP()")
+                    ->orderBy('e.date', 'ASC')
+                    ->getQuery()
+                    ->getResult();
+    }
+
     // /**
     //  * @return Type[] Returns an array of Type objects
     //  */
