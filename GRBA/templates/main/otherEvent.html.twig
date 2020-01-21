@@ -2,24 +2,45 @@
 {% block title %}Les autres évenements{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <h2>Les autres évenements</h2>
-            {% for event in findOtherEvents  %}
-                <div class="myContainer">
-                    <div class="card3">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="{{asset('uploads/pictures/' ~  event.type.picture)}}" class="card-img-top3" alt="">
+<div class="container-fluid">
+    <div class="cont" id="otherLastEvents">
+        <h1>Prochaines Evènements</h1>
+        
+        {% for type in types %}  
+        <div class="container-fluid otherLastEvents">
+        <h2>{{ type.title }}</h2>
+            
+            <div id="carousel">
+                <div class="your-class">
+                    
+                    {% for event in type.events %}
+                    
+                        <div class="nextEventCard">
+                            <div class="nextEventCard-title">
+                                <div >
+                                    {{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM')}}                
+                                </div>
+                                <div>
+                                    {{ event.date ? event.date|date('H:i') : '' }}
+                                </div>
                             </div>
-                            <div class="col-8">
-                                <h5 class="card-title2 col-12">{{ event.place }}</h5>
-                                <p class="col-12"> Le {{event.date ? event.date|date('d-m-Y') : '' }} à {{ event.date ? event.date|date('H:i') : ''}}</p>
-                                <h6 class="col-12">{{ event.type}}</h6>
-                                <p class="card-text2 col-12">{{event.description}}</p>
+                            <hr>
+                            <div class="nextEvent-desc">
+                                {{ event.description }}
+                                <div class="nextEventCard-local">
+                                    <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>
+                                    {{ event.place }}
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            
+                        </div> 
+                    
+                    {% endfor %}
+                    
                 </div>
-            {% endfor %}
+            </div>    
+            </div>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}

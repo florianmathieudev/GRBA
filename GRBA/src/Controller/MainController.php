@@ -39,12 +39,10 @@ class MainController extends AbstractController
      * @Route("/precedents-evenements", name="allPastEvents")
      *
      */
-    public function pastEvents(EventRepository $eventRepository){
+    public function pastEvents(EventRepository $eventRepository, TypeRepository $typeRepository){
         return $this->render('main/pastEvent.html.twig', [
             'controller_name' => 'MainController',
-            'events' => $eventRepository->findAll(),
-            'findPastEvents' => $eventRepository->findPastEvents(),
-            'findPrevious'
+            'types' => $typeRepository->findPastEventsByType()
         ]);
     }
 
@@ -64,11 +62,10 @@ class MainController extends AbstractController
      * @Route("/autres-evenements", name="allOtherEvents")
      *
      */
-    public function otherEvents(EventRepository $eventRepository){
+    public function otherEvents(EventRepository $eventRepository, TypeRepository $typeRepository){
         return $this->render('main/otherEvent.html.twig', [
             'controller_name' => 'MainController',
-            'events' => $eventRepository->findAll(),
-            'findOtherEvents' => $eventRepository->findOtherEvents(),
+            'types' => $typeRepository->findOtherEventsByType()
         ]);
     }
 

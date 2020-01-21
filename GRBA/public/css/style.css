@@ -915,6 +915,13 @@ hr {
     font-size: 50px;
 }
 
+#btn {
+    position: absolute;
+    width: 6em;
+    height: 2em;
+    font-size: .5em;
+}
+
 
 @media only screen and (max-width: 400px) {
     .slick-prev:before, .slick-next:before {
