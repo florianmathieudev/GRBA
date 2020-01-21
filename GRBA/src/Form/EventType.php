@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class EventType extends AbstractType
 {
@@ -26,17 +27,18 @@ class EventType extends AbstractType
                 'label' => 'Description de l\'Evenement'
                 
             ))
-            ->add('content', TextType::class, array( 
+            ->add('content', TextareaType::class, array( 
                 'label' => 'Contenu de l\'Evenement',
                 'required'   => false,
             ))
             ->add('type')
             ->add('pictures', EntityType::class, [
-                'label' => 'Selectionner une Image',
                 'class' => Picture::class,
+                'choice_label' => 'name',
+                'label' => 'Selectionner une Image',
                 'required'   => false,
                 'mapped' => false,
-                'choice_label' => 'name',
+                'multiple' => true
             ])
         ;
     }
