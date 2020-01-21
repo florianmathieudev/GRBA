@@ -4,7 +4,7 @@
 {% block body %}
 <div class="container-fluid">
     <div class="cont" id="nextLastEvents">
-        <h1>Prochaines Randonnées</h1>
+        <h1>Evènements Précédents </h1>
         
         {% for type in types %}  
         <div class="container-fluid nextEvent">
@@ -45,4 +45,8 @@
         {% endfor %}
     </div>
 </div>
+
+{% for type in types %}
+{{ type.title }}
+{% endfor %}
 {% endblock %}
