@@ -71,7 +71,6 @@ class TypeController extends AbstractController
 
             return $this->redirectToRoute('event_index');
         }
-
         return $this->render('back/type/edit.html.twig', [
             'type' => $type,
             'typeForm' => $typeForm->createView(),

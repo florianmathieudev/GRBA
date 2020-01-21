@@ -80,6 +80,26 @@ class UploadsController extends AbstractController
     }
 
     /**
+     * @Route("picture/{id}/edit", name="picture_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Picture $picture): Response
+    {
+        $pictureForm = $this->createForm(PictureType::class, $picture);
+        $pictureForm->handleRequest($request);
+
+        if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('picture_index');
+        }
+
+        return $this->render('back/picture/edit.html.twig', [
+            'picture' => $picture,
+            'pictureForm' => $pictureForm->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/picture/{id}", name="picture_delete", methods={"DELETE"})
      */
     public function deletePicture(Request $request, Picture $picture): Response

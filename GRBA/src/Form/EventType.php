@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Event;
+use App\Entity\File;
 use App\Entity\Picture;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -35,9 +36,17 @@ class EventType extends AbstractType
                 'label' => 'Selectionner une Image',
                 'class' => Picture::class,
                 'required'   => false,
-                'mapped' => false,
+                // 'mapped' => false,
                 'choice_label' => 'name',
-            ])
+                'multiple' => true, ])
+            ->add('files', EntityType::class, [
+                'label' => 'Selectionner une Image',
+                'class' => File::class,
+                'required'   => false,
+                // 'mapped' => false,
+                'choice_label' => 'name',
+                'multiple' => true, ])
+            
         ;
     }
 

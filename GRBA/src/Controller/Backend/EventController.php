@@ -3,6 +3,7 @@
 namespace App\Controller\Backend;
 
 use App\Entity\Event;
+use App\Entity\Picture;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use App\Repository\TypeRepository;
@@ -64,6 +65,9 @@ class EventController extends AbstractController
         $eventForm->handleRequest($request);
 
         if ($eventForm->isSubmitted() && $eventForm->isValid()) {
+
+            
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($event);
             $entityManager->flush();
@@ -95,8 +99,23 @@ class EventController extends AbstractController
     {
         $eventForm = $this->createForm(EventType::class, $event);
         $eventForm->handleRequest($request);
+
         if ($eventForm->isSubmitted() && $eventForm->isValid()) {
+
+            $pictures = $event->getPictures();
+            
+            
+            
+            
+            foreach($pictures as $picture){
+               // $this->getDoctrine()->getManager()->detach($picture);
+                $event->addPicture($picture);
+                
+                // dd($picture);
+            }
+            // dd($event);
             $this->getDoctrine()->getManager()->flush();
+            
             return $this->redirectToRoute('event_index');
         }
         return $this->render('back/event/edit.html.twig', [

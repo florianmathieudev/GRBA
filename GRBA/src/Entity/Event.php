@@ -46,7 +46,6 @@ class Event
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="event")
-     * @ORM\JoinColumn(nullable=true)
      */
     private $pictures;
 
@@ -55,11 +54,17 @@ class Event
      */
     private $files;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture2", mappedBy="event")
+     */
+    private $picture2s;
+
 
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
         $this->files = new ArrayCollection();
+        $this->picture2s = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -124,10 +129,21 @@ class Event
     }
 
     public function addPicture(Picture $picture): self
-    {
+    {  
         if (!$this->pictures->contains($picture)) {
+            
             $this->pictures[] = $picture;
             $picture->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAllPicture(): self
+    {
+        foreach ($this->pictures as $picture) {
+            $this->pictures->removeElement($picture);
+            
         }
 
         return $this;
@@ -189,6 +205,37 @@ class Event
             // set the owning side to null (unless already changed)
             if ($file->getEvent() === $this) {
                 $file->setEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Picture2[]
+     */
+    public function getPicture2s(): Collection
+    {
+        return $this->picture2s;
+    }
+
+    public function addPicture2(Picture2 $picture2): self
+    {
+        if (!$this->picture2s->contains($picture2)) {
+            $this->picture2s[] = $picture2;
+            $picture2->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removePicture2(Picture2 $picture2): self
+    {
+        if ($this->picture2s->contains($picture2)) {
+            $this->picture2s->removeElement($picture2);
+            // set the owning side to null (unless already changed)
+            if ($picture2->getEvent() === $this) {
+                $picture2->setEvent(null);
             }
         }
 
