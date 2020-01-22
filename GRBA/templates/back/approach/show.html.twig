@@ -12,10 +12,6 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th>Id</th>
-                                <td>{{ approach.id }}</td>
-                            </tr>
-                            <tr>
                                 <th>Numéro</th>
                                 <td>{{ approach.phone }}</td>
                             </tr>
@@ -31,7 +27,7 @@
                     </table>
                     <a href="{{ path('approach_edit', {'id': approach.id}) }}">Éditer</a>
                     {{ include('back/approach/_delete_form.html.twig') }}
-                    <a href="{{ path('header_index') }}">Revenir à la liste</a>
+                    <a href="{{ path('approach_index') }}">Revenir à la liste</a>
                 </div>
             </div>
         </div>

@@ -18,10 +18,21 @@ class NetworkController extends AbstractController
     /**
      * @Route("/", name="network_index", methods={"GET"})
      */
-    public function index(NetworkRepository $networkRepository): Response
+    public function index(NetworkRepository $networkRepository, Request $request): Response
     {
+        $network = new Network();
+        $networkForm = $this->createForm(NetworkType::class, $network);
+        $networkForm->handleRequest($request);
+        if ($networkForm->isSubmitted() && $networkForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($network);
+            $entityManager->flush();
+            return $this->redirectToRoute('network_index');
+        }
         return $this->render('back/network/index.html.twig', [
             'networks' => $networkRepository->findAll(),
+            'network' => $network,
+            'networkForm' => $networkForm->createView(),
         ]);
     }
 
@@ -69,7 +80,7 @@ class NetworkController extends AbstractController
         if ($networkForm->isSubmitted() && $networkForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('header_index');
+            return $this->redirectToRoute('network_index');
         }
 
         return $this->render('back/network/edit.html.twig', [
@@ -89,6 +100,6 @@ class NetworkController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('header_index');
+        return $this->redirectToRoute('network_index');
     }
 }

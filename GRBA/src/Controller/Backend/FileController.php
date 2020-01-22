@@ -15,12 +15,54 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class FileController extends AbstractController
 {
+
+    /**
+     * @Route("/", name="file_index", methods={"GET", "POST"})
+     */
+    public function index(FileRepository $fileRepository, Request $request): Response
+    {       
+        $file = new File();
+        $fileForm = $this->createForm(FilesType::class, $file);
+        $fileForm->handleRequest($request);
+        if ($fileForm->isSubmitted() && $fileForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($file);
+            $entityManager->flush();
+            return $this->redirectToRoute('file_index');
+        }
+        return $this->render('back/file/index.html.twig', [
+            'files' => $fileRepository->findAll(),
+            'file' => $file,
+            'fileForm' => $fileForm->createView(),
+        ]);
+    }    
+    
+    /**
+     * @Route("/", name="file_new", methods={"GET", "POST"})
+     */
+    public function new(Request $request): Response
+    {       
+        $file = new File();
+        $fileForm = $this->createForm(FilesType::class, $file);
+        $fileForm->handleRequest($request);
+        if ($fileForm->isSubmitted() && $fileForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($file);
+            $entityManager->flush();
+            return $this->redirectToRoute('file_index');
+        }
+        return $this->render('back/file/index.html.twig', [
+            'file' => $file,
+            'fileForm' => $fileForm->createView(),
+        ]);
+    }
+
     /**
      * @Route("/{id}", name="file_show", methods={"GET"})
      */
     public function show(File $file): Response
     {
-        return $this->render('back/uploads/file/show.html.twig', [
+        return $this->render('back/file/show.html.twig', [
             'file' => $file,
         ]);
     }
@@ -36,10 +78,10 @@ class FileController extends AbstractController
         if ($fileForm->isSubmitted() && $fileForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('uploads_index');
+            return $this->redirectToRoute('file_index');
         }
 
-        return $this->render('back/uploads/file/edit.html.twig', [
+        return $this->render('back/file/edit.html.twig', [
             'file' => $file,
             'fileForm' => $fileForm->createView(),
         ]);
@@ -56,6 +98,6 @@ class FileController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('uploads_index');
+        return $this->redirectToRoute('file_index');
     }
 }

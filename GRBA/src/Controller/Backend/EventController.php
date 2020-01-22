@@ -5,9 +5,6 @@ namespace App\Controller\Backend;
 use App\Entity\Event;
 use App\Form\EventType;
 use App\Repository\EventRepository;
-use App\Repository\TypeRepository;
-use App\Entity\Type;
-use App\Form\TypeType;
 use App\Repository\PictureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +20,7 @@ class EventController extends AbstractController
     /**
      * @Route("/", name="event_index", methods={"GET","POST"})
      */
-    public function index(EventRepository $eventRepository, Request $request, TypeRepository $typeRepository): Response
+    public function index(EventRepository $eventRepository, Request $request): Response
     {
         $event = new Event();
         $eventForm = $this->createForm(EventType::class, $event);
@@ -34,21 +31,9 @@ class EventController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('event_index');
         };
-
-        $type = new Type();
-        $typeform = $this->createForm(TypeType::class, $type);
-        $typeform->handleRequest($request);
-        if ($typeform->isSubmitted() && $typeform->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($type);
-            $entityManager->flush();
-            return $this->redirectToRoute('event_index');
-        }
         return $this->render('back/event/index.html.twig', [
             'events' => $eventRepository->findAll(),
-            'types' => $typeRepository->findAll(),
-            'event' => $event,
-            'typeForm' => $typeform->createView(),            
+            'event' => $event,        
             'eventForm' => $eventForm->createView(),
             'pictures' => $event->getPictures(),
         ]);
@@ -78,7 +63,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="event_show", methods={"GET"})
+     * @Route("/{id}", name="event_show_back", methods={"GET"})
      */
     public function show(Event $event, PictureRepository $pictureRepository): Response
     {

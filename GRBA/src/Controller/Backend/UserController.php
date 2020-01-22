@@ -33,23 +33,10 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_index');
         }
 
-        $role = new Role();
-        $roleForm = $this->createForm(RoleType::class, $role);
-        $roleForm->handleRequest($request);
-        if ($roleForm->isSubmitted() && $roleForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($role);
-            $entityManager->flush();
-            return $this->redirectToRoute('user_index');
-        }
-
         return $this->render('back/user/index.html.twig', [
             'users' => $userRepository->findAll(),
             'user' => $user,
             'userForm' => $userForm->createView(),
-            'role' => $role,
-            'roleForm' => $roleForm->createView(),
-            'roles' => $roleRepository->findAll(),
         ]);
     }
 

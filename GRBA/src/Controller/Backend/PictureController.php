@@ -15,6 +15,70 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PictureController extends AbstractController
 {
+
+    /**
+     * @Route("/", name="picture_index", methods={"GET", "POST"})
+     */
+    public function index(PictureRepository $pictureRepository, Request $request): Response
+    {       
+        $picture = new Picture();
+        $pictureForm = $this->createForm(PictureType::class, $picture);
+        $pictureForm->handleRequest($request);
+        if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
+            $pictureFiles = $picture->getPath();
+            $entityManager = $this->getDoctrine()->getManager();
+            $pictureName = $picture->getName();
+            $i = 0;
+            foreach ($pictureFiles as $pictureFile)
+            {
+                $i++;
+                $picture = new Picture();
+                $filePath = md5(uniqid()).'.'.$pictureFile->guessExtension();
+                $pictureFile->move($this->getParameter('upload_picture_directory'), $filePath);
+                $picture->setPath($filePath);
+                $picture->setName($pictureName . "-" .$i);
+                $entityManager->persist($picture);
+            }
+            
+            $entityManager->flush();
+            return $this->redirectToRoute('picture_index');
+        }
+        return $this->render('back/picture/index.html.twig', [
+            'pictures' => $pictureRepository->findAll(),
+            'picture' => $picture,
+            'pictureForm' => $pictureForm->createView(),
+        ]);
+    }    
+    
+    /**
+     * @Route("/", name="picture_new", methods={"GET", "POST"})
+     */
+    public function new(Request $request): Response
+    {       
+        $picture = new Picture();
+        $pictureForm = $this->createForm(PictureType::class, $picture);
+        $pictureForm->handleRequest($request);
+        if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
+            $pictureFiles = $picture->getPath();
+            $entityManager = $this->getDoctrine()->getManager();
+            $pictureName = $picture->getName();
+            $i = 0;
+            foreach ($pictureFiles as $pictureFile)
+            {
+                $i++;
+                $picture = new Picture();
+                $filePath = md5(uniqid()).'.'.$pictureFile->guessExtension();
+                $pictureFile->move($this->getParameter('upload_picture_directory'), $filePath);
+                $picture->setPath($filePath);
+                $picture->setName($pictureName . "-" .$i);
+                $entityManager->persist($picture);
+            }
+            
+            $entityManager->flush();
+            return $this->redirectToRoute('picture_index');
+        }
+    }
+
     /**
      * @Route("/{id}", name="picture_show", methods={"GET"})
      */

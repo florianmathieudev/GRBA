@@ -18,10 +18,21 @@ class RoleController extends AbstractController
     /**
      * @Route("/", name="role_index", methods={"GET"})
      */
-    public function index(RoleRepository $roleRepository): Response
+    public function index(RoleRepository $roleRepository, Request $request): Response
     {
+        $role = new Role();
+        $roleForm = $this->createForm(RoleType::class, $role);
+        $roleForm->handleRequest($request);
+        if ($roleForm->isSubmitted() && $roleForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($role);
+            $entityManager->flush();
+            return $this->redirectToRoute('role_index');
+        }
         return $this->render('back/role/index.html.twig', [
             'roles' => $roleRepository->findAll(),
+            'role' => $role,
+            'roleForm' => $roleForm->createView(),
         ]);
     }
 
@@ -69,7 +80,7 @@ class RoleController extends AbstractController
         if ($roleForm->isSubmitted() && $roleForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('role_index');
         }
 
         return $this->render('back/role/edit.html.twig', [
@@ -89,6 +100,6 @@ class RoleController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('user_index');
+        return $this->redirectToRoute('role_index');
     }
 }

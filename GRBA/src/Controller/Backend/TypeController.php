@@ -18,10 +18,23 @@ class TypeController extends AbstractController
     /**
      * @Route("/", name="type_index", methods={"GET"})
      */
-    public function index(TypeRepository $typeRepository): Response
+    public function index(TypeRepository $typeRepository, Request $request): Response
     {
+        $type = new Type();
+        $typeForm = $this->createForm(TypeType::class, $type);
+        $typeForm->handleRequest($request);
+
+        if ($typeForm->isSubmitted() && $typeForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($type);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('type_index');
+        }
         return $this->render('back/type/index.html.twig', [
             'types' => $typeRepository->findAll(),
+            'type' => $type,
+            'typeForm' => $typeForm->createView()
         ]);
     }
 
@@ -69,7 +82,7 @@ class TypeController extends AbstractController
         if ($typeForm->isSubmitted() && $typeForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('event_index');
+            return $this->redirectToRoute('type_index');
         }
 
         return $this->render('back/type/edit.html.twig', [
@@ -89,6 +102,6 @@ class TypeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('event_index');
+        return $this->redirectToRoute('type_index');
     }
 }

@@ -1,5 +1,0 @@
-<form method="post" action="{{ path('horaire_delete', {'id': horaire.id}) }}" onsubmit="return confirm('Voulez-vous supprimer cet Horaire?');">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ horaire.id) }}">
-    <button class="btn">Supprimer</button>
-</form>

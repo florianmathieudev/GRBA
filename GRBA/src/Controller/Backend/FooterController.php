@@ -18,10 +18,21 @@ class FooterController extends AbstractController
     /**
      * @Route("/", name="footer_index", methods={"GET"})
      */
-    public function index(FooterRepository $footerRepository): Response
+    public function index(FooterRepository $footerRepository, Request $request): Response
     {
+        $footer = new Footer();
+        $footerForm = $this->createForm(FooterType::class, $footer);
+        $footerForm->handleRequest($request);
+        if ($footerForm->isSubmitted() && $footerForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($footer);
+            $entityManager->flush();
+            return $this->redirectToRoute('footer_index');
+        }
         return $this->render('back/footer/index.html.twig', [
             'footers' => $footerRepository->findAll(),
+            'footer' => $footer,
+            'footerForm' => $footerForm->createView(),
         ]);
     }
 
@@ -69,7 +80,7 @@ class FooterController extends AbstractController
         if ($footerForm->isSubmitted() && $footerForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('header_index');
+            return $this->redirectToRoute('footer_index');
         }
 
         return $this->render('back/footer/edit.html.twig', [
@@ -89,6 +100,6 @@ class FooterController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('header_index');
+        return $this->redirectToRoute('footer_index');
     }
 }
