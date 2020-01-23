@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FooterController extends AbstractController
 {
     /**
-     * @Route("/", name="footer_index", methods={"GET"})
+     * @Route("/", name="footer_index", methods={"GET", "POST"})
      */
     public function index(FooterRepository $footerRepository, Request $request): Response
     {

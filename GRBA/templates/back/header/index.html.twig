@@ -26,7 +26,11 @@
                             <td>{{ header.id }}</td>
                             <td>{{ header.tab }}</td>
                             <td>{{ header.title }}</td>
-                            <td><img src="{{ asset('uploads/pictures/' ~ header.picture ) }}" height="80em" ></td>
+                                {# {% for picture in header.pictures %}
+                                    <td><img src="{{ asset('uploads/pictures/header/' ~ picture.path ) }}" height="80em" ></td>
+                                {% endfor %} #}
+
+                            {# <td><img src="{{ asset('uploads/pictures/header/' ~ header.pictures.path ) }}" height="80em" ></td> #}
                             <td>
                                 <a href="{{ path('header_show', {'id': header.id}) }}">Voir</a>
                                 <a href="{{ path('header_edit', {'id': header.id}) }}">Éditer</a>

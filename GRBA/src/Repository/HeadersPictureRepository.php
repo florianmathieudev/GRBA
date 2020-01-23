@@ -2,33 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Header;
+use App\Entity\HeadersPicture;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Header|null find($id, $lockMode = null, $lockVersion = null)
- * @method Header|null findOneBy(array $criteria, array $orderBy = null)
- * @method Header[]    findAll()
- * @method Header[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method HeadersPicture|null find($id, $lockMode = null, $lockVersion = null)
+ * @method HeadersPicture|null findOneBy(array $criteria, array $orderBy = null)
+ * @method HeadersPicture[]    findAll()
+ * @method HeadersPicture[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class HeaderRepository extends ServiceEntityRepository
+class HeadersPictureRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Header::class);
-    }
-
-    public function findMainHeader()
-    {
-        return $this->createQueryBuilder('h')
-                    ->leftJoin('h.pictures', 'p')
-                    ->getQuery()
-                    ->getResult();
+        parent::__construct($registry, HeadersPicture::class);
     }
 
     // /**
-    //  * @return Header[] Returns an array of Header objects
+    //  * @return HeadersPicture[] Returns an array of HeadersPicture objects
     //  */
     /*
     public function findByExampleField($value)
@@ -45,7 +37,7 @@ class HeaderRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Header
+    public function findOneBySomeField($value): ?HeadersPicture
     {
         return $this->createQueryBuilder('h')
             ->andWhere('h.exampleField = :val')

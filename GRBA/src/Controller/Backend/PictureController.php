@@ -25,7 +25,7 @@ class PictureController extends AbstractController
         $pictureForm = $this->createForm(PictureType::class, $picture);
         $pictureForm->handleRequest($request);
         if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
-            $pictureFiles = $picture->getPath();
+            $pictureFiles = $pictureForm->get('path')->getData();
             $entityManager = $this->getDoctrine()->getManager();
             $pictureName = $picture->getName();
             $i = 0;

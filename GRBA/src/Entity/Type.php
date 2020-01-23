@@ -34,7 +34,7 @@ class Type
     private $events;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\TypesPicture", cascade={"remove"})
      */
     private $picture;
 
@@ -107,13 +107,22 @@ class Type
 
         return $this;
     }
+    
 
-    public function getPicture(): ?Picture
+    /**
+     * Get the value of picture
+     */ 
+    public function getPicture()
     {
         return $this->picture;
     }
 
-    public function setPicture(?Picture $picture): self
+    /**
+     * Set the value of picture
+     *
+     * @return  self
+     */ 
+    public function setPicture($picture)
     {
         $this->picture = $picture;
 

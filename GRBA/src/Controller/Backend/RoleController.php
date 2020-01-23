@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RoleController extends AbstractController
 {
     /**
-     * @Route("/", name="role_index", methods={"GET"})
+     * @Route("/", name="role_index", methods={"GET", "POST"})
      */
     public function index(RoleRepository $roleRepository, Request $request): Response
     {

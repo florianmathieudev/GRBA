@@ -28,27 +28,28 @@ class Header
      */
     private $title;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $picture;
+    // /**
+    //  * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
+    //  * @ORM\JoinColumn(nullable=false)
+    //  */
+    // private $picture;
 
+    
+    // /**
+    //  * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
+    //  */
+    // private $picture2;
+    
+    // /**
+    //  * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
+    //  */
+    // private $picture3;
+    
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Picture", mappedBy="header")
      */
     private $pictures;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
-     */
-    private $picture2;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"persist", "remove"})
-     */
-    private $picture3;
-
+    
     /**
      * @ORM\Column(type="text", length=1000, nullable=true)
      */
@@ -64,10 +65,17 @@ class Header
      */
     private $text3;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\HeadersPicture", mappedBy="header")
+     */
+    private $headersPictures;
+
     public function __construct()
     {
-        $this->pictures = new ArrayCollection();
+        $this->headersPictures = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -98,18 +106,48 @@ class Header
         return $this;
     }
 
-    public function getPicture(): ?Picture
+    // public function getPicture(): ?Picture
+    // {
+    //     return $this->picture;
+    // }
+
+    // public function setPicture(Picture $picture): self
+    // {
+    //     $this->picture = $picture;
+
+    //     return $this;
+    // }
+
+    
+    // public function getPicture2(): ?Picture
+    // {
+    //     return $this->picture2;
+    // }
+    
+    // public function setPicture2(?Picture $picture2): self
+    // {
+    //     $this->picture2 = $picture2;
+        
+    //     return $this;
+    // }
+    
+    // public function getPicture3(): ?Picture
+    // {
+    //     return $this->picture3;
+    // }
+    
+    // public function setPicture3(?Picture $picture3): self
+    // {
+    //     $this->picture3 = $picture3;
+
+    //     return $this;
+    // }
+    
+    public function getText(): ?string
     {
-        return $this->picture;
+        return $this->text;
     }
-
-    public function setPicture(Picture $picture): self
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
+    
     /**
      * @return Collection|Picture[]
      */
@@ -137,36 +175,7 @@ class Header
 
         return $this;
     }
-
-    public function getPicture2(): ?Picture
-    {
-        return $this->picture2;
-    }
-
-    public function setPicture2(?Picture $picture2): self
-    {
-        $this->picture2 = $picture2;
-
-        return $this;
-    }
-
-    public function getPicture3(): ?Picture
-    {
-        return $this->picture3;
-    }
-
-    public function setPicture3(?Picture $picture3): self
-    {
-        $this->picture3 = $picture3;
-
-        return $this;
-    }
-
-    public function getText(): ?string
-    {
-        return $this->text;
-    }
-
+    
     public function setText(?string $text): self
     {
         $this->text = $text;
@@ -197,4 +206,37 @@ class Header
 
         return $this;
     }
+
+
+    /**
+     * @return Collection|HeadersPicture[]
+     */
+    public function getHeadersPictures(): Collection
+    {
+        return $this->headersPictures;
+    }
+
+    public function addHeadersPicture(HeadersPicture $headersPicture): self
+    {
+        if (!$this->headersPictures->contains($headersPicture)) {
+            $this->headersPictures[] = $headersPicture;
+            $headersPicture->setHeader($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHeadersPicture(HeadersPicture $headersPicture): self
+    {
+        if ($this->headersPictures->contains($headersPicture)) {
+            $this->headersPictures->removeElement($headersPicture);
+            // set the owning side to null (unless already changed)
+            if ($headersPicture->getHeader() === $this) {
+                $headersPicture->setHeader(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

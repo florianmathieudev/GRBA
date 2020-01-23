@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class NetworkController extends AbstractController
 {
     /**
-     * @Route("/", name="network_index", methods={"GET"})
+     * @Route("/", name="network_index", methods={"GET", "POST"})
      */
     public function index(NetworkRepository $networkRepository, Request $request): Response
     {

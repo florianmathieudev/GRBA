@@ -1,8 +1,19 @@
 {% block body %}
 
 <header>
+
+{% for picture in header.pictures %}
     <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ header.picture ) }}">
+        <img class="imgHeader" src="{{ asset('uploads/pictures/header/' ~ header.picture.path ) }}">
+        <div class="fixed">
+            <div class="bg1">
+                <p>{{ header.text }}</p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+    {# <div class="section">
+        <img class="imgHeader" src="{{ asset('uploads/pictures/header/' ~ header.picture.path ) }}">
         <div class="fixed">
             <div class="bg1">
                 <p>{{ header.text }}</p>
@@ -10,7 +21,7 @@
         </div>
     </div>
     <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ header.picture2 ) }}">
+        <img class="imgHeader" src="{{ asset('uploads/pictures/header/' ~ header.picture2.path ) }}">
         <div class="fixed">
             <div class="bg2">
                 <p>{{ header.text2 }}</p>
@@ -18,13 +29,13 @@
         </div>
     </div>
     <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ header.picture3 ) }}">
+        <img class="imgHeader" src="{{ asset('uploads/pictures/header/' ~ header.picture3.path ) }}">
         <div class="fixed">
             <div class="bg3">
                 <p>{{ header.text3 }}</p>
             </div>
         </div>
-    </div>
+    </div> #}
 </header>
 <nav class="navbar fixed-top navbar-expand-md  navbar-inverse">
                 

@@ -3,20 +3,11 @@
 namespace App\Controller\Backend;
 
 use App\Entity\Header;
-use App\Entity\Footer;
-use App\Entity\Approach;
-use App\Entity\Network;
-use App\Entity\Horaire;
 use App\Form\HeaderType;
-use App\Form\FooterType;
-use App\Form\ApproachType;
-use App\Form\NetworkType;
-use App\Form\HoraireType;
 use App\Repository\HeaderRepository;
 use App\Repository\FooterRepository;
 use App\Repository\ApproachRepository;
 use App\Repository\NetworkRepository;
-use App\Repository\HoraireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,12 +33,6 @@ class HeaderController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('header_index');
         }
-
-
-
-
-
-
         return $this->render('back/header/index.html.twig', [
             'headers' => $headerRepository->findAll(),
             'footers' => $footerRepository->findAll(),
