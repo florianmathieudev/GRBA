@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Role;
 use App\Entity\User;
 use App\Form\RegistrationType;
 // use Doctrine\ORM\EntityManager;
@@ -24,6 +25,11 @@ class SecurityController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
+
+            //on va enregistrer par défaut le role "user"
+            //pour ca, on va rechercher le role
+            $roleUser = $manager->getRepository(Role::class)->findOneBy(["name" => "user"]);
+            $user->setRole($roleUser);
             $manager->persist($user);
             $manager->flush();
             return $this->redirectToRoute('main');

@@ -14,8 +14,8 @@
 
         {# {{ render(controller('App\\Controller\\HeaderController::indexBack'))}} #}
 
-        {% include "_nav.html.twig" %}
-        
+        {% include "back/_nav.html.twig" %}
+        {% include "_confirmError.html.twig" %}
         {% block body %}   
         {% endblock %}
         {% block javascripts %}

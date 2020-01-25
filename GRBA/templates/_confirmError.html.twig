@@ -1,0 +1,30 @@
+{# 
+ # _confirmError.html.twig permet d'afficher les confirmations
+ # et erreurs qui sont stockées en flash message  
+ #}
+ <div class="container-fluid mt-5">
+ {% for message in app.flashes('confirmation') %}
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        </div>
+    </div>
+    
+{% endfor %}
+
+{% for message in app.flashes('error') %}
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        </div>
+    </div>
+ 
+{% endfor %}
+
+</div>

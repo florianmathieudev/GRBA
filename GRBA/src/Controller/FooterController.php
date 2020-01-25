@@ -12,13 +12,5 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FooterController extends AbstractController
 {
 
-    public function index(NetworkRepository $networkRepository, ApproachRepository $approachRepository, FooterRepository $footerRepository)
-    {
-        return $this->render('/_footer.html.twig', [
-            'controller_name' => 'MainController',
-            'approachs' => $approachRepository->findAll(),
-            'footers' =>  $footerRepository->findAll(),
-            'networks' => $networkRepository->findAll()
-        ]);
-    }
+    
 }

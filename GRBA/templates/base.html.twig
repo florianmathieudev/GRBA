@@ -29,10 +29,12 @@
         {{ render(controller('App\\Controller\\HeaderController::indexBack'))}}
         {% endif %}
         
+        {% include "_confirmError.html.twig" %}
+
         {% block body %}   
         {% endblock %}
 
-        {{ render(controller('App\\Controller\\FooterController::index'))}}
+        {{ render(controller('App\\Controller\\HeaderController::footer'))}}
 
         {% block javascripts %}
         

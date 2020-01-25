@@ -2,10 +2,10 @@
 
 <header>
 
-{% if  header|length != 0 %}
-    {% for picture in header.pictures %}
+{% if  headers|length != 0 %}
+    {% for header in headers %}
         <div class="section">
-            <img class="imgHeader" src="{{ asset('uploads/pictures/header/' ~ header.picture.path ) }}">
+            <img class="imgHeader" src="{{ asset('image/header/' ~ header.picturePath ) }}">
             <div class="fixed">
                 <div class="bg1">
                     <p>{{ header.text }}</p>
@@ -14,30 +14,7 @@
         </div>
     {% endfor %}
 {% endif %}
-    {# <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/header/' ~ header.picture.path ) }}">
-        <div class="fixed">
-            <div class="bg1">
-                <p>{{ header.text }}</p>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/header/' ~ header.picture2.path ) }}">
-        <div class="fixed">
-            <div class="bg2">
-                <p>{{ header.text2 }}</p>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/header/' ~ header.picture3.path ) }}">
-        <div class="fixed">
-            <div class="bg3">
-                <p>{{ header.text3 }}</p>
-            </div>
-        </div>
-    </div> #}
+
 </header>
 <nav class="navbar fixed-top navbar-expand-md  navbar-inverse">
                 

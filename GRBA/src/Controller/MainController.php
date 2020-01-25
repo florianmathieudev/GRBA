@@ -21,16 +21,12 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="main")
      */
-    public function index(HeaderRepository $headerRepository, EventRepository $eventRepository, ApproachRepository $approachRepository, TypeRepository $typeRepository)
+    public function index(EventRepository $eventRepository, ApproachRepository $approachRepository, TypeRepository $typeRepository)
     {
 
-        $header = $headerRepository->findById(3);
         
-        // if (empty($header) || (is_array($header) && count($header) == 0)){
-        //     dd($header);
-        //     $header = ["pictures"=> []];
-        //     ;
-        // }
+        
+        
 
 
 // dd($eventRepository->findPastEventsMP());
@@ -41,8 +37,7 @@ class MainController extends AbstractController
             'findPastEvents' => $eventRepository->findPastEventsMP(),
             'findOtherEvents' => $eventRepository->findOtherEventsMP(),
             'approachs' => $approachRepository->findAll(),
-            'type' => $typeRepository->findAll(),
-            'header' => $header
+            'type' => $typeRepository->findAll()
         ]);
     }
 
