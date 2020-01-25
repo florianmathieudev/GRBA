@@ -23,6 +23,17 @@ class MainController extends AbstractController
      */
     public function index(HeaderRepository $headerRepository, EventRepository $eventRepository, ApproachRepository $approachRepository, TypeRepository $typeRepository)
     {
+
+        $header = $headerRepository->findById(3);
+        
+        // if (empty($header) || (is_array($header) && count($header) == 0)){
+        //     dd($header);
+        //     $header = ["pictures"=> []];
+        //     ;
+        // }
+
+
+// dd($eventRepository->findPastEventsMP());
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
             'events' => $eventRepository->findAll(),
@@ -31,7 +42,7 @@ class MainController extends AbstractController
             'findOtherEvents' => $eventRepository->findOtherEventsMP(),
             'approachs' => $approachRepository->findAll(),
             'type' => $typeRepository->findAll(),
-            'header' => $headerRepository->findById(3)
+            'header' => $header
         ]);
     }
 

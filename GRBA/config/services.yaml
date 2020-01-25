@@ -8,6 +8,7 @@ parameters:
     upload_picture_directory: '%kernel.project_dir%/public/uploads/pictures/event'
     upload_picture_header_directory: '%kernel.project_dir%/public/uploads/pictures/header'
     upload_picture_type_directory: '%kernel.project_dir%/public/uploads/pictures/type'
+    imgHeaders_directory: '%kernel.project_dir%/public/image/header'
     app_locales: [fr_FR]
 
 services:

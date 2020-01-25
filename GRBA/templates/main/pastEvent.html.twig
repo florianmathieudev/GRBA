@@ -20,7 +20,7 @@
                                 <a href="{{ path('event_show', {'id': event.id}) }}" id="btn" class="btn btn-primary">Voir plus</a>
 
                                 <div >
-                                    {{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM')}}                
+                                    {{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM Y')}}                
                                 </div>
                                 <div>
                                     {{ event.date ? event.date|date('H:i') : '' }}

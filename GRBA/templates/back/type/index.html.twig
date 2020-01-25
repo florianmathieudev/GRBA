@@ -23,8 +23,8 @@
                             <tr>
                                 <td>{{ type.title }}</td>
                                 <td>{{ type.code }}</td>
-
-                                <td><img class="col-3" src="{{asset('uploads/pictures/type/' ~  type.picture.path)}}" class="card-img-top" alt="..."></td>
+{# 
+                                <td><img class="col-3" src="{{asset('uploads/pictures/type/' ~  type.picture.path)}}" class="card-img-top" alt="..."></td> #}
                                 <td>
                                     <a href="{{ path('type_show', {'id': type.id}) }}">Voir</a>
                                     <a href="{{ path('type_edit', {'id': type.id}) }}">Éditer</a>

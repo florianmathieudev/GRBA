@@ -2,16 +2,18 @@
 
 <header>
 
-{% for picture in header.pictures %}
-    <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/header/' ~ header.picture.path ) }}">
-        <div class="fixed">
-            <div class="bg1">
-                <p>{{ header.text }}</p>
+{% if  header|length != 0 %}
+    {% for picture in header.pictures %}
+        <div class="section">
+            <img class="imgHeader" src="{{ asset('uploads/pictures/header/' ~ header.picture.path ) }}">
+            <div class="fixed">
+                <div class="bg1">
+                    <p>{{ header.text }}</p>
+                </div>
             </div>
         </div>
-    </div>
-{% endfor %}
+    {% endfor %}
+{% endif %}
     {# <div class="section">
         <img class="imgHeader" src="{{ asset('uploads/pictures/header/' ~ header.picture.path ) }}">
         <div class="fixed">

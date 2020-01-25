@@ -7,6 +7,7 @@ use App\Entity\HeadersPicture;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -21,10 +22,9 @@ class HeaderType extends AbstractType
             // ->add('title', TextType::class, array(
             //     'label' => 'Titre du site'
             // ))
-            ->add('headersPictures', EntityType::class, [
+            ->add('headersPictures', FileType::class, [
                 'label' => 'Image principale du Site',
-                'class' => HeadersPicture::class,
-                'choice_label' => 'name',
+                
                 'required'   => false,
                 'multiple' => true
             ])
