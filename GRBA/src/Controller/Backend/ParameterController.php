@@ -2,6 +2,7 @@
 
 namespace App\Controller\Backend;
 
+use App\Entity\AProposPage;
 use App\Entity\ContactPage;
 use App\Entity\HeaderMainPage;
 use App\Form\ContactPageType;
@@ -153,15 +154,16 @@ class ParameterController extends AbstractController
     public function ContactPage(Parameter $parameter, Request $request, EntityManagerInterface $em)
     {
         $contactData = new ContactPage();
-    
+        //on recupere les données existante
         $contactData->telephone = $parameter->get("telephone");
         $contactData->email = $parameter->get("email");
         $contactData->adress = $parameter->get("adress");
         $contactData->open = $parameter->get("open");
         $contactData->closed = $parameter->get("closed");
+        //creation du formulaire
         $form = $this->createForm(ContactPageType::class, $contactData);
         $form->handleRequest($request);
-
+        //si valid, on set les données du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
             $parameter->set("telephone", $contactData->telephone);
             $parameter->set("email", $contactData->email);
@@ -170,7 +172,7 @@ class ParameterController extends AbstractController
             $parameter->set("closed", $contactData->closed);
 
             $em->flush();
-
+            //flash confirmation de sauvegarde
             $this->addFlash(
                 'confirmation',
                 "Les contact one été sauvegardé."
@@ -179,6 +181,30 @@ class ParameterController extends AbstractController
         };
         return $this->render('back/parameter/contactPage.html.twig', [
             "contactPageForm" => $form->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("/AProposPage", name="AProposPage")
+     */
+    public function AProposPage (Parameter $parameter, Request $request, EntityManagerInterface $em)
+    {
+        $aProposData = new AProposPage();
+        $aProposData->text = $parameter->get("text");
+        $form = $this->createForm(AProposPage::class, $aProposData);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $parameter->set("text", $aProposData->text);
+            $em->flush();
+            $this->addFlash(
+                'confirmation',
+                "Le textea été sauvegardé"
+            );
+            return $this->redirectToRoute('backend_parameter_AProposPage');
+        };
+        return $this->render('back/parameter/aProposPage.html.twig', [
+            "aProposPageForm" => $form->createView()
         ]);
     }
 }

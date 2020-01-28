@@ -7,6 +7,7 @@ use App\Entity\Picture;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use App\Repository\PictureRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -78,7 +79,7 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}/edit", name="event_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Event $event, Picture $picture): Response
+    public function edit(Request $request, Event $event, Picture $picture, EntityManagerInterface $em): Response
     {
         //création du formulaire
         $eventForm = $this->createForm(EventType::class, $event);
@@ -105,8 +106,15 @@ class EventController extends AbstractController
                         );
                         //
                 // dd($event->picturefiles);
-                        
-                        $event->picturefiles->addPicture($newImagename);
+                        //creation d'une nouvelle image avec toutes ses données
+                        $picture = new Picture;
+                        $picture->setPath("/image/".$newImagename);
+                        $picture->setName($newImagename);
+                        $picture->setEvent($event);
+                        // dd($picture);
+                        //on enregistre le nom dans event
+                        $event->addPicture($picture);
+                        $em->persist($picture);
                 
                         } catch (FileException $e) {
                 
