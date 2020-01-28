@@ -80,6 +80,20 @@ class TypeController extends AbstractController
         $typeForm->handleRequest($request);
 
         if ($typeForm->isSubmitted() && $typeForm->isValid()) {
+            $image =  $typeForm->get('pathPicture')->getData();
+            if ($image) {
+                $originalImagename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeImagename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalImagename);
+                $newImageName = $safeImagename.'-'.uniqid().'.'.$image->guessExtension();
+
+            //    dd($image);
+                    $image->move(
+                        $this->getParameter('upload_picture_type_directory'),
+                        $newImageName
+                    );
+                    
+                    $type->setPathPicture($newImageName);
+                }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('type_index');

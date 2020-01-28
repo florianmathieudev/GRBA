@@ -4,8 +4,9 @@
 body, html  {
     background-color: rgb(97, 97, 97);
     font-family: 'Roboto', sans-serif;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     scroll-behavior: smooth;
+    height: auto;
 }
 
                                                     /* header */
@@ -25,11 +26,13 @@ body, html  {
     z-index: 3;
 }
 
-
+.navbar-toggler {
+    color: #000;
+}
 
 
 .navbar {
-    
+    backdrop-filter: contrast(40%);
     background: transparent;
     font-size: 1em;
     height: 50px;
@@ -75,9 +78,9 @@ body, html  {
 } */
 
                                                     /* paralax */
-                                                    
-                                                    
-                                                    
+
+
+
 @import "https://fonts.googleapis.com/css?family=Sintony";
 * {
     box-sizing: border-box;
@@ -122,9 +125,9 @@ header {
     box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
     /* background-image: url(/image/img1.jpg);  */
     color: #fff;
-    /* background-size: cover;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed; */
+    background-attachment: fixed;
     top: 0;
     z-index: 1;
 }
@@ -136,9 +139,9 @@ header {
     box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
     /* background-image: url(/image/img2.jpg);  */
     color: #fff;
-    /* background-size: cover;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed; */
+    background-attachment: fixed;
     top: 100vh;
     z-index: 2;
 }
@@ -150,9 +153,9 @@ header {
     box-shadow: inset 0 1px 80px rgba(0, 0, 0, 0.14);
     /* background-image: url(/image/img3.jpg);  */
     color: #fff;
-    /* background-size: cover;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed; */
+    background-attachment: fixed;
     top: 200vh;
     z-index: 3;
 }
@@ -204,11 +207,13 @@ header {
     transform: translate(-50%, -50%);
 }
 
-#imgHeader {
+.imgHeader {
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     object-fit:cover;
-    width: 100%;
-    max-height: 60vh;
+    width: 100vw;
+    height: 100vh;
 }
 
 .section:nth-child(5) {
@@ -290,17 +295,17 @@ header {
     font-size: 1em;
     min-width: 300px;
 }
-    
-    
-                                                    
 
-                                                    
-                                                    
+
+
+
+
+
                                                     /* fin paralax */
 
 .main {
-    margin-top: 309vh;
-    
+    margin-top: 300vh;
+
 }
                                                     /* end description */
 .container {
@@ -309,7 +314,7 @@ header {
 
 .cont {
     min-height: 100vh;
-    height: auto;
+    height: 100%;
 }
 
 
@@ -318,7 +323,7 @@ h2 {
     color: white;
     font-weight: 300;
     font-size: 3em;
-    
+
 }
 
 .container-fluid{
@@ -378,11 +383,11 @@ figcaption {
     background-attachment: fixed;
     margin: 2em 0 2em 2em;
     padding: 10px;
-    
+
     border-top: solid 2px;
     border-bottom: solid 2px;
     border-left: solid 2px;
-    
+
     /* min-height: 80vh;  */
     height: auto;
     -webkit-box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
@@ -390,17 +395,22 @@ figcaption {
     box-shadow: inset 0px 0px 13px 3px rgba(0,0,0,0.35);
     }
 
+    #nextLastEvents h2 {
+        padding-top: 1em;
+    }
+
     #nextLastEvents {
         padding-top: 10em;
+        padding-bottom: 5em;
         background-image: linear-gradient(to right top, #7a7a7a, #7d8591, #7394a5, #61a4ae, #5bb3a7, #5abca0, #63c493, #76cb83, #6ed27e, #65d878, #5cdf71, #50e56a);
     }
-    
+
 .myContainer {
     position: relative;
     max-width: 300px;
     height: 450px;
     margin: 0.5em;
-    
+
     -webkit-perspective: 1000;
     -moz-perspective: 1000;
     -o-perspective: 1000;
@@ -410,7 +420,7 @@ figcaption {
 
 
 .myCard{
-    
+
     position: absolute;
     width: 100%;
     height: 100%;
@@ -427,17 +437,17 @@ figcaption {
     transform: rotateY(180deg);
 }
 
-.myFront {    
+.myFront {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
     background-size: 150%;
-    background-attachment: fixed;   
+    background-attachment: fixed;
     -webkit-box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
 -moz-box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
 box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
-    
+
 }
 
 .myBack {
@@ -452,7 +462,7 @@ box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
     -webkit-box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
 -moz-box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
 box-shadow: 28px 17px 29px -12px rgba(87,84,87,0.62);
-    
+
 }
 
 .card {
@@ -516,7 +526,7 @@ h6{
     background: linear-gradient(164deg, rgba(31,31,31,1) 0%, rgba(189,184,184,1) 35%) !important;
     background-size: 150%;
     background-attachment: fixed;
-    
+
 
     /* border: solid 2px; */
 }
@@ -526,7 +536,7 @@ h6{
     clear: left;
     height: auto;
     background: white;
-    width: auto; 
+    width: auto;
     height: 278.5px;
     color: black;
 }
@@ -534,14 +544,14 @@ h6{
 #descItem {
     text-align: center;
     height: auto;
-    width: auto; 
+    width: auto;
     color: black;
     display: table-cell;
     vertical-align: middle;
 }
 .seeAll {
-    position: relative;    
-    
+    position: relative;
+
 }
 
 .btnSeeAll {
@@ -555,17 +565,24 @@ h6{
 
                                                                     /* other last events */
 
+#otherLastEvents {
+    background: rgb(129,159,129);
+    background: linear-gradient(117deg, rgba(129,159,129,1) 39%, rgba(49,49,49,1) 100%);
+    padding-bottom: 5em;
+
+}
+
 .otherLastEvents {
-    margin: 2em 0 2em 0;
     padding: 1em;
     height: auto;
-    
+    backdrop-filter: contrast(40%);
+    min-height: 100vh;
     }
 
 .otherLastEvents h2 {
 text-align: center;
 }
-    
+
 
 #col {
     padding: 0;
@@ -600,7 +617,7 @@ text-align: center;
 }
 
 .card2 {
-    
+
     padding: 1em;
     width: 100%;
     height: 350px;
@@ -663,9 +680,9 @@ text-align: center;
     padding: .5em;
     clear: left;
     height: auto;
-    
-    
-    width: auto; 
+
+
+    width: auto;
     height: 278.5px;
     color: black;
 }
@@ -683,7 +700,7 @@ text-align: center;
     background-attachment: fixed;
     margin: 2em 2em 2em 0;
     padding: 10px;
-    
+
     border-top: solid 2px;
     border-bottom: solid 2px;
     border-right: solid 2px;
@@ -698,30 +715,32 @@ text-align: center;
         max-width: 300px;
         height: 450px;
         margin-bottom: 0.5em;
-        
+
         -webkit-perspective: 1000;
         -moz-perspective: 1000;
         -o-perspective: 1000;
         perspective: 1000;
     }
 
-    
+
 
     .previousLastEvents h2 {
         text-align: right;
-        
+
     }
 
     #previousLastEvents h2 {
-        padding-top: 3em;
+        padding-top: 1em;
     }
 
     #previousLastEvents {
         background-image: linear-gradient(to right top, #535353, #59595e, #5f606a, #646776, #676e82, #636f8c, #5f6f95, #5a709f, #4f69a8, #4661b0, #4059b7, #3f4fbc);
+        padding-bottom: 3em;
+
     }
 
     .card-img-top2 {
-        
+
         margin: 0;
         height: 30%;
         width: auto;
@@ -764,7 +783,7 @@ footer {
 
 #us {
     margin: auto;
-    
+
 }
 
 
@@ -776,11 +795,11 @@ footer {
     background-image: url(/image/bgdiv.png);
     background-size: 150%;
     background-attachment: fixed;
-    
+
     margin-top: 1em;
 }
 .card-img-top3 {
-    
+
     height: 450px;
     /* width: 42.4%; /
     max-width: 450px;
@@ -819,7 +838,7 @@ footer {
     height: auto;
     border-top: solid 2px;
     border-bottom: solid 2px;
-    border-right: solid 2px;    
+    border-right: solid 2px;
     border-left: solid 2px;
     padding: 20px;
 }
@@ -833,7 +852,7 @@ footer {
     height: auto;
     border-top: solid 2px;
     border-bottom: solid 2px;
-    border-right: solid 2px;    
+    border-right: solid 2px;
     border-left: solid 2px;
     padding: 20px;
 }
@@ -854,7 +873,7 @@ h1 {
 #carousel {
     padding: 10px;
     color: #333;
-    
+
   }
 
 .your-class {
@@ -864,11 +883,11 @@ h1 {
 .slick-slide {
     text-align: center;
     background: #cacaca;
-    
+
     margin: 10px;
     border-radius: 0;
-    
-    
+
+
     padding-top: 0px;
   }
 
@@ -889,7 +908,7 @@ hr {
 
 .nextEventCard-local {
     position: absolute;
-    bottom: 20px;
+    bottom: 3em;
     right: 5px;
     font-size: 1.7em;
 }
@@ -918,9 +937,11 @@ hr {
 
 #btn {
     position: absolute;
+    bottom: 1em;
+    right: 5px;
     width: 6em;
-    height: 2em;
-    font-size: .5em;
+    /* height: 2em;
+    font-size: .5em; */
 }
 
 
@@ -931,7 +952,7 @@ hr {
     .slick-next {
         right: -55px;
     }
-    
+
 }
 
 @media only screen and (max-width: 1200px) {

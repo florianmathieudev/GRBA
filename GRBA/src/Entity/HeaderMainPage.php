@@ -9,7 +9,7 @@ namespace App\Entity;
 class HeaderMainPage
 {
 
-    private $id;
+    
     public $picturePath1;
     public $text1;
     public $picturePath2;

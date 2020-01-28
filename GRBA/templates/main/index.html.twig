@@ -19,7 +19,7 @@
                                             <div class="card " > 
                                                 <figure>
                                                     {% if  event.type.pathPicture is not empty %}
-                                                    <img src="{{asset('uploads/pictures/type/' ~  event.type.pathPicture)}}" class="card-img-top" alt="...">
+                                                    <img src="{{asset('image/' ~  event.type.pathPicture)}}" class="card-img-top" alt="...">
                                                     {% endif %}
                                                     <figcaption class="img-title">{{ event.type }}</figcaption>    
                                                 </figure>
@@ -59,7 +59,7 @@
             </div>
         </div>         
     </div>
-    <div class="cont" id="otherLastEvents">
+    <div class="cont">
     <div class="content otherLastEvents">
         <h2>Autres Évènements</h2>
             <div class="container-fluid ">
@@ -109,7 +109,7 @@
                                     <div class="card">
                                         <figure>
                                             {% if event.type.pathPicture is not empty  %}
-                                                <img src="{{asset('uploads/pictures/' ~  event.type.pathPicture)}}" class="card-img-top" alt="...">
+                                                <img src="{{asset('image/' ~  event.type.pathPicture)}}" class="card-img-top" alt="...">
                                             {% endif %}
                                             <figcaption class="img-title">{{ event.type }}</figcaption>    
                                         </figure>

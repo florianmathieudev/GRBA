@@ -70,13 +70,18 @@ class HeaderController extends AbstractController
         ]);
     }
 
-    public function footer(NetworkRepository $networkRepository, ApproachRepository $approachRepository, FooterRepository $footerRepository)
+    public function footer(ServiceParameter $parameter)
     {
+        
+        $listData = [
+            "telephone" => $parameter->get("telephone"),
+            "email" => $parameter->get("email"),
+            "adress" =>$parameter->get("adress"),
+            "open" => $parameter->get("open"),
+            "closed" => $parameter->get("closed"),
+        ];
         return $this->render('/_footer.html.twig', [
-            'controller_name' => 'MainController',
-            'approachs' => $approachRepository->findAll(),
-            'footers' =>  $footerRepository->findAll(),
-            'networks' => $networkRepository->findAll()
+            'footers' => $listData
         ]);
     }
 }

@@ -6,38 +6,32 @@
             <div class="approach col-lg-4 col-md-12">
                 <h3>Contact</h3>
                     <ul>
-                        {% for approach in approachs %}
-                        <li><a href="">{{ approach.phone }}</a></li>
-                        {# {% endfor %}
-                        {% for approach in approachs %} #}
-                        <li><a href="mailto:#">{{ approach.email }}</a></li>
-                        {# {% endfor %}
-                        {% for approach in approachs %} #}
-                        <li><a href="https://www.google.fr/maps/place/Maison+des+Associations/@48.3022338,4.060545,17z/data=!3m1!4b1!4m5!3m4!1s0x47ee985b554ce31f:0xe61ecee0c59eec95!8m2!3d48.3022303!4d4.0627337">{{ approach.adresse }}</a></li>
-                        {% endfor %}                        
+                        
+                        <li><a href="">{{ footers.telephone }}</a></li>
+                        
+                       
+                        <li><a href="mailto:#">{{ footers.email }}</a></li>
+                        
+                        
+                        <li><a href="https://www.google.fr/maps/place/Maison+des+Associations/@48.3022338,4.060545,17z/data=!3m1!4b1!4m5!3m4!1s0x47ee985b554ce31f:0xe61ecee0c59eec95!8m2!3d48.3022303!4d4.0627337">{{ footers.adress }}</a></li>
+                         
                     </ul>
             </div>
             <div class="network col-lg-4 col-md-12">
                 <h3>Réseaux sociaux</h3>
                     <span style="font-size: 20px; color: aliceblue;">
-                        {% for network in networks %}
-                            <a href="{{ network.facebook }}"><i class="fab fa-facebook-f"></i></a>
-                        {% endfor %}  
+                        
                     </span>       
                                 
             </div>
             <div class="about col-lg-4 col-md-12">
                 <h3 id="about">A propos</h3>
-                    {% for footer in footers %}
-                        <p>{{ footer.text }}</p>
-                    {% endfor %}  
+                     
             </div>
         </div>
         <div class="row">
-            <p id="ovh">                    
-                {% for footer in footers %}
-                    <p>{{ footer.information }}</p>
-                {% endfor %}</p>
+                              
+                
         </div>
         <div class="row">
             <div id="us">©️2019, Corentin Tournaire, Florian Mathieu, Franck Valet</div>

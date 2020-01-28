@@ -14,10 +14,10 @@ class HeaderMainPageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('picturePath1', FileType::class, [
-            'label' => 'Image principale du Site',
-            
-            'required'   => false,
-            'multiple' => false
+                        'label' => 'Image principale du Site',
+                        
+                        'required'   => false,
+                        'multiple' => false
         ])
                 ->add('text1')
                 
@@ -27,7 +27,11 @@ class HeaderMainPageType extends AbstractType
                     'multiple' => false
                 ])
                 ->add('text2')
-                ->add('picturePath3')
+                ->add('picturePath3', FileType::class, [
+                    'label' =>'Troisième image',
+                    'required'   => false,
+                    'multiple' => false
+                ])
                 ->add('text3')
         ;
     }

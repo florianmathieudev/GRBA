@@ -2,7 +2,9 @@
 
 namespace App\Controller\Backend;
 
+use App\Entity\ContactPage;
 use App\Entity\HeaderMainPage;
+use App\Form\ContactPageType;
 use App\Form\HeaderMainPageType;
 use App\Service\Parameter;
 use Doctrine\ORM\EntityManagerInterface;
@@ -57,8 +59,7 @@ class ParameterController extends AbstractController
 
                 try {
                     $image1->move(
-                        $this->getParameter('imgHeaders_directory'),
-                        $newFilename
+                        $this->getParameter('imgHeaders_directory'), $newFilename
                     );
                     $parameter->set("mainHeaderImage1", $newFilename);
                 } catch (FileException $e) {
@@ -94,6 +95,32 @@ class ParameterController extends AbstractController
                 }
 
             }
+
+            //Récupération du Post de l'image3 dans $image3
+            $image3 = $form->get('picturePath3')->getData();
+            //test si $image2 existe
+            if ($image3) {
+                //on enregistre le nom du fichier pour pouvoir le rendre safe et le réutiliser
+                $originalimage3name = pathinfo($image3->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeImage3Name = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalimage3name);
+                //on concatene le nouveau nom avec un  id unique et l'extension du fichier pour qu'il n'y est pas d'écrasement de fichier
+                $newImage3Name = $safeImage3Name.'-'.uniqid().'.'.$image3->guessExtension();
+                //on met le fichier dans le dossier image
+                try {
+                    $image3->move(
+                        $this->getParameter('imgHeaders_directory'),
+                        $newImage3Name
+                    );
+                    //on enregistre le nom de l'image dans parameter sous la clé mainHeaderImage2
+                    $parameter->set("mainHeaderImage3", $newImage3Name);
+                } catch (FileException $e) {
+                    $this->addFlash(
+                        'error',
+                        "Déplacement de image3 dans le dossier image impossible"
+                    );
+                }
+
+            }
             
            
             
@@ -116,6 +143,42 @@ class ParameterController extends AbstractController
 
         return $this->render('back/parameter/headerMainPage.html.twig', [
             "headerMainPageForm" => $form->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("/ContactPage", name="ContactPage")
+     */
+    public function ContactPage(Parameter $parameter, Request $request, EntityManagerInterface $em)
+    {
+        $contactData = new ContactPage();
+    
+        $contactData->telephone = $parameter->get("telephone");
+        $contactData->email = $parameter->get("email");
+        $contactData->adress = $parameter->get("adress");
+        $contactData->open = $parameter->get("open");
+        $contactData->closed = $parameter->get("closed");
+        $form = $this->createForm(ContactPageType::class, $contactData);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $parameter->set("telephone", $contactData->telephone);
+            $parameter->set("email", $contactData->email);
+            $parameter->set("adress", $contactData->adress);
+            $parameter->set("open", $contactData->open);
+            $parameter->set("closed", $contactData->closed);
+
+            $em->flush();
+
+            $this->addFlash(
+                'confirmation',
+                "Les contact one été sauvegardé."
+            );
+            return $this->redirectToRoute('backend_parameter_ContactPage');
+        };
+        return $this->render('back/parameter/contactPage.html.twig', [
+            "contactPageForm" => $form->createView()
         ]);
     }
 }

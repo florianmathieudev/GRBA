@@ -56,6 +56,9 @@ class Event
     private $files;
 
 
+    public $picturefiles;
+
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();

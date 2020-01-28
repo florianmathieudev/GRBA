@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class EventType extends AbstractType
@@ -32,13 +33,10 @@ class EventType extends AbstractType
                 'required'   => false,
             ))
             ->add('type')
-            ->add('pictures', EntityType::class, [
-                'class' => Picture::class,
-                'choice_label' => 'name',
-                'label' => 'Selectionner une Image',
+            ->add('picturefiles', FileType::class, [
                 'required'   => false,
-                'mapped' => false,
-                'multiple' => true
+                'multiple' => true,
+                'label' => 'Selectionner l\'Image du Type'
             ])
         ;
     }

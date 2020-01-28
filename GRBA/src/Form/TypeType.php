@@ -23,6 +23,7 @@ class TypeType extends AbstractType
                 'label' => 'Code du Type'
             ))
             ->add('pathPicture', FileType::class, [
+                'data_class' => null,
                 'required'   => false,
                 'label' => 'Selectionner l\'Image du Type'
             ]);
