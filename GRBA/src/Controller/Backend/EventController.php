@@ -108,7 +108,7 @@ class EventController extends AbstractController
                 // dd($event->picturefiles);
                         //creation d'une nouvelle image avec toutes ses données
                         $picture = new Picture;
-                        $picture->setPath("/image/".$newImagename);
+                        $picture->setPath($newImagename);
                         $picture->setName($newImagename);
                         $picture->setEvent($event);
                         // dd($picture);
