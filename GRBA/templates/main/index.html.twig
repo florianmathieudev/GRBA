@@ -18,9 +18,10 @@
                                         <div class="myFront">
                                             <div class="card " > 
                                                 <figure>
-                                                    {% if  event.type.pathPicture is not empty %}
+                                                    
+                                                    
                                                     <img src="{{asset('image/' ~  event.type.pathPicture)}}" class="card-img-top" alt="...">
-                                                    {% endif %}
+                                                    
                                                     <figcaption class="img-title">{{ event.type }}</figcaption>    
                                                 </figure>
                                                 <div class="card-body">
@@ -108,9 +109,9 @@
                                 <div class="myContainer2">
                                     <div class="card">
                                         <figure>
-                                            {% if event.type.pathPicture is not empty  %}
-                                                <img src="{{asset('image/' ~  event.type.pathPicture)}}" class="card-img-top" alt="...">
-                                            {% endif %}
+                                            
+                                            <img src="{{asset('image/' ~  event.type.pathPicture)}}" class="card-img-top" alt="...">
+                                            
                                             <figcaption class="img-title">{{ event.type }}</figcaption>    
                                         </figure>
 

@@ -76,7 +76,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/evenement/{id}", name="event_show", methods={"GET"})
+     * @Route("/evenement/{id}/", name="event_show", methods={"GET"})
      */
     public function show(Event $event): Response
     {

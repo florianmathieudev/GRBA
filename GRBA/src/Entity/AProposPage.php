@@ -4,7 +4,7 @@
 * du formulaire pour modifier le texte a propos de la page d'accueil
 */
 
-use Symfony\Component\Form\FormTypeInterface;
+
 namespace App\Entity;
 
 

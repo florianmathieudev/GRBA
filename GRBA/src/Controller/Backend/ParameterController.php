@@ -5,8 +5,11 @@ namespace App\Controller\Backend;
 use App\Entity\AProposPage;
 use App\Entity\ContactPage;
 use App\Entity\HeaderMainPage;
+use App\Entity\OtherHeaderPage;
 use App\Form\ContactPageType;
 use App\Form\HeaderMainPageType;
+use App\Form\OtherHeaderPageType;
+use App\Form\AProposPageType;
 use App\Service\Parameter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -192,7 +195,7 @@ class ParameterController extends AbstractController
     {
         $aProposData = new AProposPage();
         $aProposData->text = $parameter->get("text");
-        $form = $this->createForm(AProposPage::class, $aProposData);
+        $form = $this->createForm(AProposPageType::class, $aProposData);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $parameter->set("text", $aProposData->text);
@@ -206,5 +209,40 @@ class ParameterController extends AbstractController
         return $this->render('back/parameter/aProposPage.html.twig', [
             "aProposPageForm" => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/otherHeaderPage", name"OtherHeaderPage")
+     */
+    public function OtherHeaderPage (Parameter $parameter, Request $request, EntityManagerInterface $em)
+    {
+        $otherHeader = new OtherHeaderPage();
+        
+        $form = $this->createForm(OtherHeaderPageType::class, $otherHeader);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('headerPath')->getData();
+            if ($image) {
+                $originalImageName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalImageName);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
+
+                try {
+                    $image->move(
+                        $this->getParameter('imHeaders_directory'), $newFilename
+                    );
+                    $parameter->set("header", $newFilename);
+                } catch (FileException $e) {
+                    
+                };
+            }
+            $em->flush();
+            $this->addFlash(
+                'confirmation',
+                "Le nouveau header est sauvegardé"
+            );
+            return $this->redirectToRoute('backend_parameter_OtherHeaderPage');
+        };
+        return $this->render('back/parameter/otherHeaderPage.html.twig');
     }
 }

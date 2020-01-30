@@ -51,6 +51,14 @@ class HeaderController extends AbstractController
             'headers' => $listPicturesAndText
         ]);
     } 
+
+    public function indexOther(ServiceParameter $parameter)
+    {
+        $headerPath = $parameter->get("header");
+        return $this->render('/_header.html.twig', [
+            'headers' => $headerPath
+        ]);
+    }
     
     
     public function indexBack(EntityManagerInterface $em)
@@ -79,6 +87,7 @@ class HeaderController extends AbstractController
             "adress" =>$parameter->get("adress"),
             "open" => $parameter->get("open"),
             "closed" => $parameter->get("closed"),
+            "text"=> $parameter->get("text"),
         ];
         return $this->render('/_footer.html.twig', [
             'footers' => $listData
