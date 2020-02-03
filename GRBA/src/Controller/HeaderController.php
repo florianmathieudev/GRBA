@@ -15,17 +15,17 @@ use Doctrine\ORM\EntityManagerInterface;
 class HeaderController extends AbstractController
 {
     
-    public function index(EntityManagerInterface $em, ServiceParameter $parameter)
-    {
+    // public function index(EntityManagerInterface $em, ServiceParameter $parameter)
+    // {
 
-        // $parameter =new ServiceParameter($em);
+    //     // $parameter =new ServiceParameter($em);
 
-        $headerPath = $parameter->get("headerImage");
+    //     $headerPath = $parameter->get("headerImage");
 
-        return $this->render('/_header.html.twig', [
-            'pathPicture' => $headerPath
-        ]);
-    } 
+    //     return $this->render('/_header.html.twig', [
+    //         'pathPicture' => $headerPath
+    //     ]);
+    // } 
     
     
     public function indexMain(EntityManagerInterface $em, ServiceParameter $parameter)
@@ -52,11 +52,11 @@ class HeaderController extends AbstractController
         ]);
     } 
 
-    public function indexOther(ServiceParameter $parameter)
+    public function index(ServiceParameter $parameter)
     {
         $headerPath = $parameter->get("header");
         return $this->render('/_header.html.twig', [
-            'headers' => $headerPath
+            'otherHeaders' => $headerPath
         ]);
     }
     

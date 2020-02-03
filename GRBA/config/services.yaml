@@ -9,6 +9,7 @@ parameters:
     upload_picture_header_directory: '%kernel.project_dir%/public/uploads/pictures/header'
     upload_picture_type_directory: '%kernel.project_dir%/public/image'
     imgHeaders_directory: '%kernel.project_dir%/public/image/header'
+    imgOtherHeaders_directory: '%kernel.project_dir%/public/image/otherHeader'
     app_locales: [fr_FR]
 
 services:

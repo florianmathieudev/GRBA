@@ -212,7 +212,7 @@ class ParameterController extends AbstractController
     }
 
     /**
-     * @Route("/otherHeaderPage", name"OtherHeaderPage")
+     * @Route("/otherHeaderPage", name="OtherHeaderPage")
      */
     public function OtherHeaderPage (Parameter $parameter, Request $request, EntityManagerInterface $em)
     {
@@ -229,7 +229,7 @@ class ParameterController extends AbstractController
 
                 try {
                     $image->move(
-                        $this->getParameter('imHeaders_directory'), $newFilename
+                        $this->getParameter('imgOtherHeaders_directory'), $newFilename
                     );
                     $parameter->set("header", $newFilename);
                 } catch (FileException $e) {
@@ -243,6 +243,8 @@ class ParameterController extends AbstractController
             );
             return $this->redirectToRoute('backend_parameter_OtherHeaderPage');
         };
-        return $this->render('back/parameter/otherHeaderPage.html.twig');
+        return $this->render('back/parameter/otherHeaderPage.html.twig', [
+            "otherHeaderForm" => $form->createView()
+        ]);
     }
 }
