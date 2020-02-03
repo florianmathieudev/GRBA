@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Entity\Role;
 use App\Form\RoleType;
+use App\Form\UserRoleType;
 use App\Repository\UserRepository;
 use App\Repository\RoleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -80,19 +81,30 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user): Response
     {
-        $userForm = $this->createForm(UserType::class, $user);
+        //je recupere le mot de passe
+        $oldPassword = $user->getPassword();
+        $userForm = $this->createForm(UserRoleType::class, $user);
         $userForm->handleRequest($request);
-
+        $user->setPassword($oldPassword);
+        //je le set dans confirmPassword
+        $user->setConfirmPassword($oldPassword);
+        
         if ($userForm->isSubmitted() && $userForm->isValid()) {
+            $user->setPassword($oldPassword);
+            $user->setConfirmPassword($oldPassword);
+            
             $this->getDoctrine()->getManager()->flush();
-
+            
             return $this->redirectToRoute('user_index');
         }
+        // dd($userForm);
 
         return $this->render('back/user/edit.html.twig', [
             'user' => $user,
-            'userForm' => $userForm->createView(),
+            'userRoleForm' => $userForm->createView(),
+            
         ]);
+        
     }
 
     /**

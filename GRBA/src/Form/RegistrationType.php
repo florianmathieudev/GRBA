@@ -27,6 +27,7 @@ class RegistrationType extends AbstractType
                 'label' => 'Confirmation du Mot de Passe'
             ))
             
+            
         ;
     }
 

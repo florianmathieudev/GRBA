@@ -17,6 +17,7 @@
                             <tr>
                                 <th>Email</th>
                                 <th>Mot de passe</th>
+                                <th>Rôle</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -25,6 +26,7 @@
                             <tr>
                                 <td>{{ user.email }}</td>
                                 <td>{{ user.password }}</td>
+                                <td>{{ user.role }}</td>
                                 <td>
                                     <a href="{{ path('user_show', {'id': user.id}) }}">Voir</a>
                                     <a href="{{ path('user_edit', {'id': user.id}) }}">Éditer</a>

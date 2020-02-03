@@ -31,8 +31,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères !")
-     * @Assert\Length(max="16", maxMessage="Votre mot de passe doit faire maximum 16 caractères !")
-     * @Assert\EqualTo(propertyPath="confirm_password", message="Vous n'avez pas écrit le même mot de passe")
+     * 
      */
     private $password;
     /**
