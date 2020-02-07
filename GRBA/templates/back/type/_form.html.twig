@@ -1,6 +1,6 @@
 {{ form_start(typeForm) }}
     {{ form_row(typeForm.title, {'attr': {'placeholder': 'Entrer le titre de votre type ...'}} )}}
     {{ form_row(typeForm.code, {'attr': {'placeholder': 'Entrer un numero de code ...'}} )}}
-    {{ form_row(typeForm.picture, {'attr': {'placeholder': 'Selectionner l\'image du type ...'}} )}}
+    {# {{ form_row(typeForm.picture, {'attr': {'placeholder': 'Selectionner l\'image du type ...'}} )}} #}
     <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
 {{ form_end(typeForm)}}

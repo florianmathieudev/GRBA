@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,18 +15,18 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('firstname', TextType::class, array(
-                'label' => 'Prenom'
+                'label' => 'Prénom'
             ))
             ->add('lastname', TextType::class, array(
                 'label' => 'Nom'
             ))
             ->add('phone', TextType::class, array(
-                'label' => 'Numero de Telephone'
+                'label' => 'Numéro de Telephone'
             ))            
             ->add('email', TextType::class, array(
                 'label' => 'Adresse Email'
             ))            
-            ->add('message', TextType::class, array(
+            ->add('message', TextareaType::class, array(
                 'label' => 'Message'
             ))
         ;

@@ -1,4 +1,4 @@
-{% extends 'back_base.html.twig' %}
+{% extends 'back/back_base.html.twig' %}
 
 {% block title %}User{% endblock %}
 
@@ -22,6 +22,10 @@
                             <tr>
                                 <th>Mot de passe</th>
                                 <td>{{ user.password }}</td>
+                            </tr>                            
+                            <tr>
+                                <th>Role</th>
+                                <td>{{ user.role }}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -29,19 +29,17 @@ class Picture
      */
     private $event;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Header", inversedBy="pictures")
-     */
-    private $header;
-
+  
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
+    
+
     public function __construct()
     {
-        $this->header = new ArrayCollection();
+   
     }
 
     public function getId(): ?int
@@ -76,32 +74,6 @@ class Picture
     public function __toString()
     {
         return $this->path;
-    }
-
-    /**
-     * @return Collection|Header[]
-     */
-    public function getHeader(): Collection
-    {
-        return $this->header;
-    }
-
-    public function addHeader(Header $header): self
-    {
-        if (!$this->header->contains($header)) {
-            $this->header[] = $header;
-        }
-
-        return $this;
-    }
-
-    public function removeHeader(Header $header): self
-    {
-        if ($this->header->contains($header)) {
-            $this->header->removeElement($header);
-        }
-
-        return $this;
     }
 
     public function getName()

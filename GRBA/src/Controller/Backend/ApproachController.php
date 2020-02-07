@@ -16,12 +16,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApproachController extends AbstractController
 {
     /**
-     * @Route("/", name="approach_index", methods={"GET"})
+     * @Route("/", name="approach_index", methods={"GET", "POST"})
      */
-    public function index(ApproachRepository $approachRepository): Response
-    {
+    public function index(ApproachRepository $approachRepository, Request $request): Response
+    {       
+        $approach = new Approach();
+        $approachForm = $this->createForm(ApproachType::class, $approach);
+        $approachForm->handleRequest($request);
+        if ($approachForm->isSubmitted() && $approachForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($approach);
+            $entityManager->flush();
+            return $this->redirectToRoute('approach_index');
+        }
         return $this->render('back/approach/index.html.twig', [
             'approachs' => $approachRepository->findAll(),
+            'approach' => $approach,
+            'approachForm' => $approachForm->createView(),
         ]);
     }
 
@@ -69,7 +80,7 @@ class ApproachController extends AbstractController
         if ($approachForm->isSubmitted() && $approachForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('header_index');
+            return $this->redirectToRoute('approach_index');
         }
 
         return $this->render('back/approach/edit.html.twig', [
@@ -89,6 +100,6 @@ class ApproachController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('header_index');
+        return $this->redirectToRoute('approach_index');
     }
 }

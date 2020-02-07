@@ -3,7 +3,7 @@
 
 {% block body %}
 <div class="container-fluid">
-    <div class="cont" id="nextLastEvents">
+    <div class="cont" id="previousLastEvents">
         <h1>Evènements Précédents </h1>
         
         {% for type in types %}  
@@ -17,10 +17,10 @@
                     
                         <div class="nextEventCard">
                             <div class="nextEventCard-title">
-                                <a href="{{ path('event_show', {'id': event.id}) }}" id="btn" class="btn btn-primary">Voir plus</a>
+                                
 
                                 <div >
-                                    {{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM')}}                
+                                    {{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM Y')}}                
                                 </div>
                                 <div>
                                     {{ event.date ? event.date|date('H:i') : '' }}
@@ -30,10 +30,9 @@
                             <div class="nextEvent-desc">
                                 {{ event.description }}
                                 <div class="nextEventCard-local">
-                                    <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>
-                                    {{ event.place }}
-
+                                    <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>{{ event.place }}
                                 </div>
+                                <a href="{{ path('event_show', {'id': event.id}) }}" id="btn" class="btn btn-primary">Voir plus</a>
                             </div>
                         </div> 
                     
@@ -46,7 +45,5 @@
     </div>
 </div>
 
-{% for type in types %}
-{{ type.title }}
-{% endfor %}
+
 {% endblock %}

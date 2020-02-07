@@ -1,65 +1,21 @@
 {% block body %}
 
-<header>
-    <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ header.picture ) }}">
-        <div class="fixed">
-            <div class="bg1">
-                <p>{{ header.text }}</p>
+<header id="header">
+    
+{% if  headers|length != 0 %}
+    {% for header in headers %}
+        <div class="section">
+            <a href="/"> <img id="logo" src="{{ asset('/image/GBRA.svg')}}" alt=""> </a>
+            <img class="imgHeader" src="{{ asset('image/header/' ~ header.picturePath ) }}">
+            <div class="fixed">
+                <div class="bg1">
+                    <p>{{ header.text }}</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ header.picture2 ) }}">
-        <div class="fixed">
-            <div class="bg2">
-                <p>{{ header.text2 }}</p>
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <img class="imgHeader" src="{{ asset('uploads/pictures/' ~ header.picture3 ) }}">
-        <div class="fixed">
-            <div class="bg3">
-                <p>{{ header.text3 }}</p>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
+{% endif %}
+
 </header>
-<nav class="navbar fixed-top navbar-expand-md  navbar-inverse">
-                
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item ml">
-                <a class="btn btn-outline-light" href="#nextLastEvents">Prochaines randonnées</a>
-            </li> 
-            <li class="nav-item">
-                <a class="btn btn-outline-light" href="#otherLastEvents">Autres évènements</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-outline-light" href="#previousLastEvents">Précédents évènements</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            {% if not app.user %}
-                <li class="nav-item ml">
-                    <a class="btn btn-outline-light" href="{{ path('security_login') }}">Connexion</a>
-                </li>                        
-                <li class="nav-item">
-                    <a class="btn btn-outline-light" href="{{ path('security_registration') }}">Inscription</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="btn btn-outline-light" href="{{ path('security_logout') }}">Déconnexion</a>
-                </li>                        
-                <li class="nav-item">
-                    <a class="btn btn-outline-light" href="{{ path('file') }}">Téléchargements</a>
-                </li>
-            {% endif %}
-        </ul>
-    </div>
-</nav>
+
 {% endblock %}

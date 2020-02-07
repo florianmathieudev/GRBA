@@ -1,0 +1,40 @@
+{% block body %}
+<nav class="navbar fixed-top navbar-expand-md  navbar-inverse ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('event_index') }}">Évènements</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('type_index') }}">Type d'évènements</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('backend_parameter_HeaderMainPage') }}">Entête page d'accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('backend_parameter_OtherHeaderPage') }}">Entête autres pages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('backend_parameter_ContactPage') }}">Contact</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('backend_parameter_AProposPage') }}">A propos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('user_index') }}">Utilisateurs</a>
+            </li>
+            
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="btn btn-outline-light" href="{{ path('security_logout') }}">Déconnexion</a>
+            </li>                        
+        </ul>
+    </div>
+</nav>
+{% endblock %}
+

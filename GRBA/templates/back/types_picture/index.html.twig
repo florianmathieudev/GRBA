@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypesPicture index{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test2 col-md-12 col-lg-9'>
+                    <h1>Liste des Images des Types</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Path</th>
+                                <th>Name</th>
+                                <th>Images</th>
+                                <th>actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for types_picture in types_pictures %}
+                            <tr>
+                                <td>{{ types_picture.path }}</td>
+                                <td>{{ types_picture.name }}</td>
+                                <td> <td><img src="{{ asset('uploads/pictures/type/' ~ types_picture.path ) }}" height="80em" ></td></td>
+                                <td>
+                                {{ include('back/types_picture/_delete_form.html.twig') }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">Aucune Image</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class='test col-md-12 col-lg-3'>
+                    <h1>Ajouter une Images</h1>
+                    {{ include('back/types_picture/_form.html.twig') }}
+            </div>
+        </div>
+    </div>      
+</div>
+
+{% endblock %}

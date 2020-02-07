@@ -1,50 +1,7 @@
-{% extends 'back_base.html.twig' %}
+{% extends 'back/back_base.html.twig' %}
 {% block title %}Liste des Évènements{% endblock %}
 
 {% block body %}
-
-<div class="container-fluid">
-    <div class="row ">
-        <div class="col-lg-12">  
-            <div class="row ">
-                <div class='test col-md-12 col-lg-9'>
-                    <h1>Liste des Types</h1>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Titre</th>
-                                <th>Code</th>
-                                <th>Image</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for type in types %}
-                            <tr>
-                                <td>{{ type.title }}</td>
-                                <td>{{ type.code }}</td>
-                                <td><img src="{{ asset('uploads/pictures/' ~ type.picture ) }}" height="80em" ></td>
-                                <td>
-                                    <a href="{{ path('type_show', {'id': type.id}) }}">Voir</a>
-                                    <a href="{{ path('type_edit', {'id': type.id}) }}">Éditer</a>
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="4">Ajouter un type</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <div class='test2 col-md-12 col-lg-3'>
-                    <h1>Ajouter un Type</h1>
-                    {{ include('back/type/_form.html.twig') }}
-                </div>
-            </div>
-        </div>
-    </div>      
-</div>
 
 <div class="container-fluid">
     <div class="row ">
@@ -78,7 +35,7 @@
                                 {% endfor %}
                                 </td>
                                 <td>
-                                    <a href="{{ path('event_show', {'id': event.id}) }}">Voir</a>
+                                    <a href="{{ path('event_show_back', {'id': event.id}) }}">Voir</a>
                                     <a href="{{ path('event_edit', {'id': event.id}) }}">Éditer</a>
                                 </td>
                             </tr>
@@ -98,7 +55,7 @@
                         {{ form_row(eventForm.description, {'attr': {'placeholder': 'Entrer une description ...'}} )}}
                         {{ form_row(eventForm.content, {'attr': {'placeholder': 'Entrer le contenu ...'}} )}}
                         {{ form_row(eventForm.type, {'attr': {'placeholder': 'Choisisser le type ...'}} )}}
-                        {{ form_row(eventForm.pictures)}}
+                        {{ form_row(eventForm.picturefiles)}}
                         <button class="btn text-white">{{ button_label|default('Sauvergarder') }}</button>
                     {{ form_end(eventForm)}}
                 </div>

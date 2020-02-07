@@ -2,9 +2,14 @@
 {% block title %}Fichiers{% endblock %}
 
 {% block body %} 
+<h2>Téléchargement</h2>
+<div class="col">
+    <div class="row">
     {% for file in files %}                     
-        <div>
-            <a href="{{asset('uploads/files/' ~  file.path)}}">{{ file.name }}</a> 
+        <div class="file">
+            <a href="{{asset('uploads/files/' ~  file.path)}}">{{ file.name }} <span><i class="fas fa-file-download"></i></span></a> 
         </div>                                   
     {% endfor %}
+</div>
+</div>
 {% endblock %}

@@ -34,9 +34,9 @@ class Type
     private $events;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Picture", cascade={"remove"})
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $picture;
+    private $pathPicture;
 
     public function __toString()
     {
@@ -108,15 +108,17 @@ class Type
         return $this;
     }
 
-    public function getPicture(): ?Picture
+    public function getPathPicture(): ?string
     {
-        return $this->picture;
+        return $this->pathPicture;
     }
 
-    public function setPicture(?Picture $picture): self
+    public function setPathPicture(?string $pathPicture): self
     {
-        $this->picture = $picture;
+        $this->pathPicture = $pathPicture;
 
         return $this;
     }
+    
+
 }

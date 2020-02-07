@@ -1,0 +1,24 @@
+{% extends 'back/back_base.html.twig' %}
+{% block title %}Formulaire de modification du header{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">  
+            <div class="row ">
+                <div class='test2 col-md-12 col-lg-9'>
+                    <h1>Formulaire de modification du header</h1>
+                    
+                    {{ form_start(headerMainPageForm) }}
+                        <button class="btn text-white">{{ button_label|default('Sauvergarder') }}</button>
+                    {{ form_end(headerMainPageForm)}}
+
+
+                </div>
+                
+            </div>
+        </div>
+    </div>      
+</div>
+{% endblock %}

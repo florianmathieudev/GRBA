@@ -16,12 +16,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class TypeController extends AbstractController
 {
     /**
-     * @Route("/", name="type_index", methods={"GET"})
+     * @Route("/", name="type_index", methods={"GET", "POST"})
      */
-    public function index(TypeRepository $typeRepository): Response
+    public function index(TypeRepository $typeRepository, Request $request): Response
     {
+        $type = new Type();
+        $typeForm = $this->createForm(TypeType::class, $type);
+        $typeForm->handleRequest($request);
+
+        if ($typeForm->isSubmitted() && $typeForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($type);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('type_index');
+        }
         return $this->render('back/type/index.html.twig', [
             'types' => $typeRepository->findAll(),
+            'type' => $type,
+            'typeForm' => $typeForm->createView()
         ]);
     }
 
@@ -67,9 +80,23 @@ class TypeController extends AbstractController
         $typeForm->handleRequest($request);
 
         if ($typeForm->isSubmitted() && $typeForm->isValid()) {
+            $image =  $typeForm->get('pathPicture')->getData();
+            if ($image) {
+                $originalImagename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeImagename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalImagename);
+                $newImageName = $safeImagename.'-'.uniqid().'.'.$image->guessExtension();
+
+            //    dd($image);
+                    $image->move(
+                        $this->getParameter('upload_picture_type_directory'),
+                        $newImageName
+                    );
+                    
+                    $type->setPathPicture($newImageName);
+                }
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('event_index');
+            return $this->redirectToRoute('type_index');
         }
 
         return $this->render('back/type/edit.html.twig', [
@@ -89,6 +116,6 @@ class TypeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('event_index');
+        return $this->redirectToRoute('type_index');
     }
 }

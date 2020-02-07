@@ -1,0 +1,51 @@
+{% extends 'back/back_base.html.twig' %}
+
+{% block title %}Liste des Entêtes{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12 col-md-12 ">  
+            <div class="row ">
+            <div class='test2 col-md-12 col-lg-9'>
+                <h1>Liste des Entêtes</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Onglet</th>
+                            <th>Titre</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for header in headers %}
+                        <tr>
+                            <td>{{ header.id }}</td>
+                            <td>{{ header.textImage1 }}</td>
+                            
+                            <td>
+                                <a href="{{ path('header_show', {'id': header.id}) }}">Voir</a>
+                                <a href="{{ path('header_edit', {'id': header.id}) }}">Éditer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucune Entête</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class='test col-md-12 col-lg-3'>
+                <h1>Ajoutez une Entête</h1>
+                {{ include('back/main_header/_form.html.twig') }}
+            </div>
+            </div>
+        </div>
+    </div>      
+</div>
+
+{% endblock %}

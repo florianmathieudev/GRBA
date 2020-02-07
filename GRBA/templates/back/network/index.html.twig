@@ -1,41 +1,51 @@
-{% extends 'back_base.html.twig' %}
+{% extends 'back/back_base.html.twig' %}
 
 {% block title %}Liste des Réseaux sociaux{% endblock %}
 
 {% block body %}
-    <h1>Liste des Réseaux sociaux</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Facebook</th>
-                <th>Twitter</th>
-                <th>Instagram</th>
-                <th>Linkedin</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for network in networks %}
-            <tr>
-                <td>{{ network.id }}</td>
-                <td>{{ network.facebook }}</td>
-                <td>{{ network.twitter }}</td>
-                <td>{{ network.instagram }}</td>
-                <td>{{ network.linkedin }}</td>
-                <td>
-                    <a href="{{ path('network_show', {'id': network.id}) }}">Voir</a>
-                    <a href="{{ path('network_edit', {'id': network.id}) }}">Éditer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">Aucun Réseau social</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('network_new') }}">Créer un nouveau Réseau social</a>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12 col-md-12 ">  
+            <div class="row ">
+                <div class='test2 col-md-12 col-lg-9'>
+                    <h1>Liste des Réseaux sociaux</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Facebook</th>
+                                <th>Twitter</th>
+                                <th>Instagram</th>
+                                <th>Linkedin</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for network in networks %}
+                            <tr>
+                                <td>{{ network.facebook }}</td>
+                                <td>{{ network.twitter }}</td>
+                                <td>{{ network.instagram }}</td>
+                                <td>{{ network.linkedin }}</td>
+                                <td>
+                                    <a href="{{ path('network_show', {'id': network.id}) }}">Voir</a>
+                                    <a href="{{ path('network_edit', {'id': network.id}) }}">Éditer</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">Aucun Réseau social</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class='test col-md-12 col-lg-3'>
+                    <h1>Ajoutez un Réseau social</h1>
+                    {{ include('back/network/_form.html.twig') }}
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>      
+</div>
 {% endblock %}

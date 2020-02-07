@@ -1,37 +1,47 @@
-{% extends 'back_base.html.twig' %}
+{% extends 'back/back_base.html.twig' %}
 
 {% block title %}Liste des Pieds de page{% endblock %}
 
 {% block body %}
-    <h1>Liste des Pieds de page</h1>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12 col-md-12 ">  
+            <div class="row ">
+            <div class='test2 col-md-12 col-lg-9'>
+                <h1>Liste des Pieds de page</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Texte</th>
+                            <th>Information</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for footer in footers %}
+                        <tr>
+                            <td>{{ footer.text }}</td>
+                            <td>{{ footer.information }}</td>
+                            <td>
+                                <a href="{{ path('footer_show', {'id': footer.id}) }}">Voir</a>
+                                <a href="{{ path('footer_edit', {'id': footer.id}) }}">Éditer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucun Pied de page</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class='test col-md-12 col-lg-3'>
+                <h1>Ajoutez un Pied de page</h1>
+                {{ include('back/footer/_form.html.twig') }}
+            </div>
+            </div>
+        </div>
+    </div>      
+</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Texte</th>
-                <th>Information</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for footer in footers %}
-            <tr>
-                <td>{{ footer.id }}</td>
-                <td>{{ footer.text }}</td>
-                <td>{{ footer.information }}</td>
-                <td>
-                    <a href="{{ path('footer_show', {'id': footer.id}) }}">Voir</a>
-                    <a href="{{ path('footer_edit', {'id': footer.id}) }}">Éditer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Aucun Pied de page</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('footer_new') }}">Créer un nouveau Pied de page</a>
 {% endblock %}

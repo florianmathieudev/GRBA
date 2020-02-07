@@ -3,10 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Header;
-use App\Entity\Picture;
+use App\Entity\HeadersPicture;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -21,24 +22,24 @@ class HeaderType extends AbstractType
             // ->add('title', TextType::class, array(
             //     'label' => 'Titre du site'
             // ))
-            ->add('picture', EntityType::class, [
+            ->add('headersPictures', FileType::class, [
                 'label' => 'Image principale du Site',
-                'class' => Picture::class,
-                'choice_label' => 'name',
+                
                 'required'   => false,
+                'multiple' => true
             ])
-            ->add('picture2', EntityType::class, [
-                'label' => 'Deuxieme Image principale du Site (Facultatif)',
-                'class' => Picture::class,
-                'choice_label' => 'name',
-                'required'   => false,
-            ])
-            ->add('picture3', EntityType::class, [
-                'label' => 'Troisieme Image principale du Site (Facultatif)',
-                'class' => Picture::class,
-                'choice_label' => 'name',
-                'required'   => false,
-            ])
+            // ->add('picture2', EntityType::class, [
+            //     'label' => 'Deuxieme Image principale du Site (Facultatif)',
+            //     'class' => HeadersPicture::class,
+            //     'choice_label' => 'name',
+            //     'required'   => false,
+            // ])
+            // ->add('picture3', EntityType::class, [
+            //     'label' => 'Troisieme Image principale du Site (Facultatif)',
+            //     'class' => HeadersPicture::class,
+            //     'choice_label' => 'name',
+            //     'required'   => false,
+            // ])
             ->add('text', TextType::class, array(
                 'label' => 'Texte sur la premiere image',
                 'required'   => false,

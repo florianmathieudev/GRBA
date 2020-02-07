@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Entity\Role;
 use App\Form\RoleType;
+use App\Form\UserRoleType;
 use App\Repository\UserRepository;
 use App\Repository\RoleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,23 +34,10 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_index');
         }
 
-        $role = new Role();
-        $roleForm = $this->createForm(RoleType::class, $role);
-        $roleForm->handleRequest($request);
-        if ($roleForm->isSubmitted() && $roleForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($role);
-            $entityManager->flush();
-            return $this->redirectToRoute('user_index');
-        }
-
         return $this->render('back/user/index.html.twig', [
             'users' => $userRepository->findAll(),
             'user' => $user,
             'userForm' => $userForm->createView(),
-            'role' => $role,
-            'roleForm' => $roleForm->createView(),
-            'roles' => $roleRepository->findAll(),
         ]);
     }
 
@@ -93,19 +81,30 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user): Response
     {
-        $userForm = $this->createForm(UserType::class, $user);
+        //je recupere le mot de passe
+        $oldPassword = $user->getPassword();
+        $userForm = $this->createForm(UserRoleType::class, $user);
         $userForm->handleRequest($request);
-
+        $user->setPassword($oldPassword);
+        //je le set dans confirmPassword
+        $user->setConfirmPassword($oldPassword);
+        
         if ($userForm->isSubmitted() && $userForm->isValid()) {
+            $user->setPassword($oldPassword);
+            $user->setConfirmPassword($oldPassword);
+            
             $this->getDoctrine()->getManager()->flush();
-
+            
             return $this->redirectToRoute('user_index');
         }
+        // dd($userForm);
 
         return $this->render('back/user/edit.html.twig', [
             'user' => $user,
-            'userForm' => $userForm->createView(),
+            'userRoleForm' => $userForm->createView(),
+            
         ]);
+        
     }
 
     /**

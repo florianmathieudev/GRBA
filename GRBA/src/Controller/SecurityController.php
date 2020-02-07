@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Role;
 use App\Entity\User;
 use App\Form\RegistrationType;
+use App\Form\UserType;
 // use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
@@ -24,6 +27,11 @@ class SecurityController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
+
+            //on va enregistrer par défaut le role "user"
+            //pour ca, on va rechercher le role
+            $roleUser = $manager->getRepository(Role::class)->findOneBy(["name" => "user"]);
+            $user->setRole($roleUser);
             $manager->persist($user);
             $manager->flush();
             return $this->redirectToRoute('main');
@@ -32,6 +40,27 @@ class SecurityController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    // /**
+    //  * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+    //  */
+    // public function edit(Request $request, User $user): Response
+    // {
+    //     $userForm = $this->createForm(RegistrationType::class, $user);
+    //     $userForm->handleRequest($request);
+        
+    //     if ($userForm->isSubmitted() && $userForm->isValid()) {
+    //         dd($userForm);
+    //         $this->getDoctrine()->getManager()->flush();
+
+    //         return $this->redirectToRoute('user_index');
+    //     }
+
+    //     return $this->render('back/user/edit.html.twig', [
+    //         'user' => $user,
+    //         'userForm' => $userForm->createView(),
+    //     ]);
+    // }
     /**
      * @Route("/connexion", name="security_login")
      *
@@ -44,4 +73,6 @@ class SecurityController extends AbstractController
      */
     public function logout() {
     }
+
+    
 }

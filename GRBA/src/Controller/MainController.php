@@ -21,8 +21,15 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="main")
      */
-    public function index(HeaderRepository $headerRepository, EventRepository $eventRepository, ApproachRepository $approachRepository, TypeRepository $typeRepository)
+    public function index(EventRepository $eventRepository, ApproachRepository $approachRepository, TypeRepository $typeRepository)
     {
+
+        
+        
+        
+
+
+// dd($eventRepository->findPastEventsMP());
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
             'events' => $eventRepository->findAll(),
@@ -30,8 +37,7 @@ class MainController extends AbstractController
             'findPastEvents' => $eventRepository->findPastEventsMP(),
             'findOtherEvents' => $eventRepository->findOtherEventsMP(),
             'approachs' => $approachRepository->findAll(),
-            'type' => $typeRepository->findAll(),
-            'header' => $headerRepository->findById(3)
+            'type' => $typeRepository->findAll()
         ]);
     }
 
@@ -70,7 +76,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/evenement/{id}", name="event_show", methods={"GET"})
+     * @Route("/evenement/{id}/", name="event_show", methods={"GET"})
      */
     public function show(Event $event): Response
     {

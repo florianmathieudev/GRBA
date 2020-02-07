@@ -1,4 +1,4 @@
-{% extends 'back_base.html.twig' %}
+{% extends 'back/back_base.html.twig' %}
 
 {% block title %}Éditer Contact{% endblock %}
 
@@ -11,7 +11,7 @@
                     <h1>Éditer Contact</h1>
                     {{ include('back/approach/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
                     {{ include('back/approach/_delete_form.html.twig') }}
-                    <a href="{{ path('header_index') }}">Revenir a la liste</a>
+                    <a href="{{ path('approach_index') }}">Revenir a la liste</a>
                 </div>
             </div>
         </div>

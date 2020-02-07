@@ -16,22 +16,22 @@ class PictureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('path', FileType::class, array(
-                'data_class' => null,
-                'label' => 'Chemin de l\'Image',
-                'multiple' => true
-                ))            
-            ->add('name', TextType::class, array(
-                'label' => 'Nom de l\'Image'
-            ))
-            ->add('event', EntityType::class, [
-                'class' => Event::class,
-                'label' => 'Evenement lie a cette Image',
-                'placeholder' => 'Choisisser l\'Evenement ...',
-                'choice_label' => 'place',
-                'required'   => false,
-                'empty_data' => null,
-            ])
+        ->add('path', FileType::class, array(
+            'data_class' => null,
+            'label' => 'Chemin de l\'Image',
+            'multiple' => true
+            ))            
+        ->add('name', TextType::class, array(
+            'label' => 'Nom de l\'Image'
+        ))
+        ->add('event', EntityType::class, [
+            'class' => Event::class,
+            'label' => 'Evenement lie a cette Image',
+            'placeholder' => 'Choisisser l\'Evenement ...',
+            'choice_label' => 'place',
+            'required'   => false,
+            'empty_data' => null,
+        ])
         ;
     }
 
