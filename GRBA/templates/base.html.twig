@@ -32,7 +32,7 @@
                         <a class="btn btn-outline-light" href="/contact">Contact</a>
                     </li> 
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" href="#">Téléchargement</a>
+                        <a class="btn btn-outline-light" href="/fichiers">Téléchargement</a>
                     </li>
                     
                 </ul>
@@ -55,7 +55,7 @@
             </div>
         </nav>
 
-        {% if app.request.attributes.get('_route') == 'allPastEvents' or app.request.attributes.get('_route') == 'allNextEvents' or app.request.attributes.get('_route') == 'allOtherEvents' or app.request.attributes.get('_route') == 'contact'  or app.request.attributes.get('_route') == 'security_registration'  or app.request.attributes.get('_route') == 'security_login' or app.request.attributes.get('_route') == 'event_show'  or app.request.attributes.get('_route') == 'security_login' or app.request.attributes.get('_route') == 'file' %}
+        {% if app.request.attributes.get('_route') == 'allPastEvents' or app.request.attributes.get('_route') == 'allNextEvents' or app.request.attributes.get('_route') == 'allOtherEvents' or app.request.attributes.get('_route') == 'contact'  or app.request.attributes.get('_route') == 'security_registration'  or app.request.attributes.get('_route') == 'security_login' or app.request.attributes.get('_route') == 'event_show'  or app.request.attributes.get('_route') == 'security_login' or app.request.attributes.get('_route') == 'file' or app.request.attributes.get('_route') == 'legalNotice' %}
         {{ render(controller('App\\Controller\\HeaderController::index'))}}
         {% elseif app.request.attributes.get('_route') == 'main' %}
         {{ render(controller('App\\Controller\\HeaderController::indexMain'))}}
@@ -63,7 +63,7 @@
         {{ render(controller('App\\Controller\\HeaderController::indexBack'))}}
         {% endif %}
         
-        {% include "_confirmError.html.twig" %}
+        {# {% include "_confirmError.html.twig" %} #}
 
         {% block body %}   
         {% endblock %}

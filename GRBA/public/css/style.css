@@ -232,7 +232,7 @@ header {
     background-attachment: fixed;
     object-fit:cover;
     width: 100vw;
-    height: 100vh;
+    height: 50vh;
 }
 
 .section:nth-child(5) {
@@ -862,6 +862,10 @@ footer {
     padding: 20px;
 }
 
+#legalNotice h2 {
+    color: black;
+}
+
 #rgpd {
     margin: 2em 2em 2em 1em;
     background-image: url(/image/bgdiv.png);
@@ -874,6 +878,9 @@ footer {
     border-right: solid 2px;
     border-left: solid 2px;
     padding: 20px;
+}
+#rgpd h2{
+    color: black;
 }
 
 
@@ -964,7 +971,7 @@ hr {
 }
 
 
-.currentEvent {
+.currentEventImg {
     object-fit:cover;
     width: 300px;
     height: 200px;
@@ -973,7 +980,7 @@ hr {
 .blocs {
     display: block;
     width: 90%;
-    margin: 0 auto;
+    margin: 5em auto 5em auto;
     text-align: center;
     
   }
@@ -1044,6 +1051,56 @@ hr {
          
       }
 
+      .currentEvent {
+          margin: 2em 0 2em 2em;
+          font-weight: 700;
+      }
+
+      span {
+          color: #98B884;
+      }
+      #content {
+          background-color: white;
+          padding: 2em;
+      }
+/* CONTACT */
+.content {
+    padding-top: 3em;
+}
+
+.p {
+    margin-left: 5em;
+    font-size: large;
+}
+
+.formulaire {
+    background-color: #98B884;
+    width: 100vw;
+    padding: 10px 3% 20px 3%;
+}
+.form {
+    margin: 0 3% 0 3%;
+    color: white;
+    width: auto;
+    max-width: 500px;
+    background-color: #333;
+    padding: 2em;
+    border-radius: 10%;
+}
+/* FIN CONTACT */
+/* TELECHARGEMENT */
+.file {
+    margin: 3em 0 3em 0;
+    padding: 15px;
+    font-size: 2em;
+    background-color: white;
+    border-radius: 10px;
+}
+h2 {
+    text-align: center;
+    margin-top: 2em;
+}
+/* FIN TELECHARGEMENT */
 
 @media only screen and (max-width: 400px) {
     .slick-prev:before, .slick-next:before {

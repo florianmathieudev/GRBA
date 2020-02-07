@@ -25,11 +25,16 @@ class FileController extends AbstractController
         $fileForm = $this->createForm(FilesType::class, $file);
         $fileForm->handleRequest($request);
         if ($fileForm->isSubmitted() && $fileForm->isValid()) {
+            $fileFile = $file->getPath();
+            $filePath = md5(uniqid()).'.'.$fileFile->guessExtension();
+            $fileFile->move($this->getParameter('upload_file_directory'), $filePath);
+            $file->setPath($filePath);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($file);
             $entityManager->flush();
             return $this->redirectToRoute('file_index');
         }
+        
         return $this->render('back/file/index.html.twig', [
             'files' => $fileRepository->findAll(),
             'file' => $file,
@@ -38,7 +43,7 @@ class FileController extends AbstractController
     }    
     
     /**
-     * @Route("/", name="file_new", methods={"GET", "POST"})
+     * @Route("/new", name="file_new", methods={"GET", "POST"})
      */
     public function new(Request $request): Response
     {       
@@ -46,10 +51,14 @@ class FileController extends AbstractController
         $fileForm = $this->createForm(FilesType::class, $file);
         $fileForm->handleRequest($request);
         if ($fileForm->isSubmitted() && $fileForm->isValid()) {
+            $fileFile = $file->getPath();
+            $filePath = md5(uniqid()).'.'.$fileFile->guessExtension();
+            $fileFile->move($this->getParameter('upload_file_directory'), $filePath);
+            $file->setPath($filePath);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($file);
             $entityManager->flush();
-            return $this->redirectToRoute('file_index');
+            return $this->redirectToRoute('uploads_index');
         }
         return $this->render('back/file/index.html.twig', [
             'file' => $file,
