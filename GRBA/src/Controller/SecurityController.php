@@ -30,7 +30,7 @@ class SecurityController extends AbstractController
 
             //on va enregistrer par défaut le role "user"
             //pour ca, on va rechercher le role
-            $roleUser = $manager->getRepository(Role::class)->findOneBy(["name" => "user"]);
+            $roleUser = $manager->getRepository(Role::class)->findOneBy(["name" => "Utilisateur"]);
             $user->setRole($roleUser);
             $manager->persist($user);
             $manager->flush();
@@ -66,6 +66,8 @@ class SecurityController extends AbstractController
      *
      */
     public function login() {
+
+
         return $this->render('security/login.html.twig');
     }
     /**
@@ -74,5 +76,4 @@ class SecurityController extends AbstractController
     public function logout() {
     }
 
-    
 }
