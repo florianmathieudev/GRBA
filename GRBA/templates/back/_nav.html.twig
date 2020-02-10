@@ -1,5 +1,5 @@
 {% block body %}
-<nav class="navbar fixed-top navbar-expand-md  navbar-inverse ">
+<!-- <nav class="navbar fixed-top navbar-expand-md  navbar-inverse navback col-1">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -35,6 +35,41 @@
             </li>                        
         </ul>
     </div>
-</nav>
+</nav> -->
+
+
+<div class="sidebar">
+    <nav class="menu navbar navbar-expand-md ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav flex-column">
+              
+            <a class="nav-link" href="{{ path('event_index') }}">Évènements<span >Création d'un évènement et ajout de photos et édition d'un évènement existant</span ></a>
+                
+        
+            <a class="nav-link" href="{{ path('type_index') }}">Type d'évènements<span >Création d'un type d'évènement et édition d'un évènement existant</span ></a>
+        
+        
+            <a class="nav-link" href="{{ path('file_index') }}">Fichiers à télécharger<span >Ajout ou suppression d'un fichier à télécharger</span ></a>
+        
+            <a class="nav-link" href="{{ path('backend_parameter_HeaderMainPage') }}">Entête page d'accueil<span >Modification des images et des textes sur l'entête de la page d'accueil</span ></a>
+        
+            <a class="nav-link" href="{{ path('backend_parameter_OtherHeaderPage') }}">Entête autres pages<span >Modification de l'image de l'entête des autres pages</span ></a>
+        
+            <a class="nav-link" href="{{ path('backend_parameter_ContactPage') }}">Contact<span >Modification du téléphone, email, adresse, heure d'ouverture et de fermeture</span ></a>
+        
+            <a class="nav-link" href="{{ path('backend_parameter_AProposPage') }}">A propos<span >Modification du texte en pied de page</span ></a>
+        
+            <a class="nav-link" href="{{ path('user_index') }}">Utilisateurs<span >Validation des demandes d'inscriptions</span ></a>
+            </ul>
+          </div>
+    </nav>
+</div>
+
+
+
+
 {% endblock %}
 

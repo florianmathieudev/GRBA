@@ -68,6 +68,10 @@ class ParameterController extends AbstractController
                     $parameter->set("mainHeaderImage1", $newFilename);
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
+                    $this->addFlash(
+                        'error',
+                        "Déplacement de image1 dans le dossier image impossible"
+                    );
                 }
 
             }

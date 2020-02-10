@@ -3,11 +3,11 @@
 {% block title %}Liste des Types{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-    <div class="row ">
-        <div class="col-lg-12">  
-            <div class="row ">
-                <div class='test2 col-md-12 col-lg-9'>
+<div  class="container-fluid">
+    <div id="xxx" class="row ">
+        <div class="col-lg-6">  
+            
+                
                     <h1>Liste des Types</h1>
                     <table class="table">
                         <thead>
@@ -23,8 +23,8 @@
                             <tr>
                                 <td>{{ type.title }}</td>
                                 <td>{{ type.code }}</td>
-{# 
-                                <td><img class="col-3" src="{{asset('uploads/pictures/type/' ~  type.picture.path)}}" class="card-img-top" alt="..."></td> #}
+ 
+                                <td><img class="col-3" src="{{asset('image/' ~  type.pathPicture)}}" class="card-img-top" alt="..."></td> 
                                 <td>
                                     <a href="{{ path('type_show', {'id': type.id}) }}">Voir</a>
                                     <a href="{{ path('type_edit', {'id': type.id}) }}">Éditer</a>
@@ -41,8 +41,7 @@
                 <div class='test col-md-12 col-lg-3'>
                     <h1>Ajouter un Type</h1>
                     {{ include('back/type/_form.html.twig') }}
-                </div>
-            </div>
+            
         </div>
     </div>      
 </div>

@@ -32,6 +32,10 @@ class EventController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($event);
             $entityManager->flush();
+            $this->addFlash(
+                'confirmation',
+                "L'évènement à été sauvegardé"
+            );
             return $this->redirectToRoute('event_index');
         };
         return $this->render('back/event/index.html.twig', [
