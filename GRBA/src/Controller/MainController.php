@@ -48,7 +48,8 @@ class MainController extends AbstractController
     public function pastEvents(EventRepository $eventRepository, TypeRepository $typeRepository){
         return $this->render('main/pastEvent.html.twig', [
             'controller_name' => 'MainController',
-            'types' => $typeRepository->findPastEventsByType()
+            'types' => $typeRepository->findPastEventsByType(),
+           
         ]);
     }
 
@@ -58,8 +59,7 @@ class MainController extends AbstractController
      */
     public function nextEvents(EventRepository $eventRepository, TypeRepository $typeRepository){
         return $this->render('main/nextEvent.html.twig', [
-            'controller_name' => 'MainController',
-            // 'findNextEvents' => $eventRepository->findNextEvents(),
+            'controller_name' => 'MainController',            
             'types' => $typeRepository->findNextEventsByType()
         ]);
     }
