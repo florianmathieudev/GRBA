@@ -32,6 +32,10 @@ class FileController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($file);
             $entityManager->flush();
+            $this->addFlash(
+                'confirmation',
+                "Le fichier à été sauvegardé"
+            );
             return $this->redirectToRoute('file_index');
         }
         

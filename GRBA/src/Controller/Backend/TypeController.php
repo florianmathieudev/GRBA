@@ -28,7 +28,10 @@ class TypeController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($type);
             $entityManager->flush();
-
+            $this->addFlash(
+                'confirmation',
+                "Le type a été sauvegardé"
+            );
             return $this->redirectToRoute('type_index');
         }
         return $this->render('back/type/index.html.twig', [
@@ -95,6 +98,10 @@ class TypeController extends AbstractController
                     $type->setPathPicture($newImageName);
                 }
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash(
+                'confirmation',
+                "Le type été sauvegardé"
+            );
 
             return $this->redirectToRoute('type_index');
         }

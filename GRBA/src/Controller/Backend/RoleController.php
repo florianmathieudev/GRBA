@@ -27,6 +27,10 @@ class RoleController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($role);
             $entityManager->flush();
+            $this->addFlash(
+                'confirmation',
+                "Le rôle a été sauvegardé"
+            );
             return $this->redirectToRoute('role_index');
         }
         return $this->render('back/role/index.html.twig', [

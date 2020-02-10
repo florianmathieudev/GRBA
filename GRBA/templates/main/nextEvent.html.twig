@@ -7,41 +7,39 @@
 <div class="container-fluid">
     <div class="cont" id="nextLastEvents">
         <h1>Prochaines Randonnées</h1>
-        
         {% for type in types %}  
-        <div class="container-fluid nextEvent">
-        <h2>{{ type.title }}</h2>
-            
-            <div id="carousel">
-                <div class="your-class">
-                    
-                    {% for event in type.events %}
-                    
-                        <div class="nextEventCard">
-                            <div class="nextEventCard-title">
-                                <div >
-                                    {{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM Y')}}                
+        <div class="container-fluid nextEvent contAll">
+            <img class="imgType img-fluid" src="{{asset('image/' ~  type.pathPicture)}}" alt="" style="height:100vh; object-fit:cover; filter:opacity(.6)contrast(1.6)blur(5px)">
+            <div class="ccc">
+                <h2>{{ type.title }}</h2>
+                    <div id="carousel">
+                        <div class="your-class">
+                        {% for event in type.events %}
+                            <div class="nextEventCard">
+                                <div class="nextEventCard-title">
+                                    <div >
+                                        {{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM Y')}}                
+                                    </div>
+                                    <div>
+                                        {{ event.date ? event.date|date('H:i') : '' }}
+                                    </div>
                                 </div>
-                                <div>
-                                    {{ event.date ? event.date|date('H:i') : '' }}
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="nextEvent-desc">
-                                {{ event.description }}
-                                <div class="nextEventCard-local">
-                                    <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>
-                                    {{ event.place }}
-                                </div>
-                            </div>
                             
-                        </div> 
-                    
-                    {% endfor %}
-                    
-                </div>
-            </div>    
+                            <hr>
+                                <div class="nextEvent-desc">
+                                    {{ event.description }}
+                                    <div class="nextEventCard-local">
+                                        <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>
+                                        {{ event.place }}
+                                    </div>
+                                </div>
+                            </div> 
+                        {% endfor %}
+                        </div>
+                    </div>
             </div>
+        </div>    
+            
         {% endfor %}
     </div>
 </div>

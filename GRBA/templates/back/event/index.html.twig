@@ -3,11 +3,11 @@
 
 {% block body %}
 
-<div class="container-fluid">
-    <div class="row ">
-        <div class="col-lg-12">  
+<div class="container-fluid ">
+    <div class="row  rowA">
+        <div class="col-lg-10 ">  
             <div class="row ">
-                <div class='test2 col-md-12 col-lg-9'>
+                <div class="col-md-12 col-lg-8">
                     <h1>Liste des Évènements</h1>
                     <table class="table">
                         <thead>
@@ -17,23 +17,17 @@
                                 <th>Description</th>
                                 <th>Contenu</th>                
                                 <th>Type</th>
-                                <th>Images</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                         {% for event in events %}
                             <tr>
-                                <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ event.date ? event.date|date('d-m-Y') : '' }}</td>
                                 <td>{{ event.place }}</td>                
-                                <td>{{ event.description }}</td>
-                                <td>{{ event.content }}</td>
+                                <td>{{ event.description|truncate(50) }}</td>
+                                <td>{{ event.content|truncate(50) }}</td>
                                 <td>{{ event.type }}</td>
-                                <td>
-                                {% for picture in pictures %}
-                                    <img src="{{ asset('uploads/pictures/' ~ picture.path ) }}" height="80em" >
-                                {% endfor %}
-                                </td>
                                 <td>
                                     <a href="{{ path('event_show_back', {'id': event.id}) }}">Voir</a>
                                     <a href="{{ path('event_edit', {'id': event.id}) }}">Éditer</a>
@@ -47,8 +41,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div class='test col-md-12 col-lg-3'>
+                <div class='test col-md-12 col-lg-4'>
                     <h1>Ajouter un Évènement</h1>
+                    <div class="">
                     {{ form_start(eventForm) }}
                         {{ form_row(eventForm.date, {'attr': {'placeholder': 'Selectioner la date ...'}} )}}
                         {{ form_row(eventForm.place, {'attr': {'placeholder': 'Entrer le lieu ...'}} )}}
@@ -58,6 +53,7 @@
                         {{ form_row(eventForm.picturefiles)}}
                         <button class="btn text-white">{{ button_label|default('Sauvergarder') }}</button>
                     {{ form_end(eventForm)}}
+                </div>
                 </div>
             </div>
         </div>

@@ -41,7 +41,7 @@ body, html  {
 }
 
 
-.navbar {
+#navMain {
     backdrop-filter: contrast(40%);
     background: transparent;
     font-size: 1em;
@@ -599,7 +599,7 @@ h6{
 }
 
 .otherLastEvents {
-    padding: 1em;
+    padding:0;
     height: auto;
     backdrop-filter: contrast(40%);
     min-height: 100vh;
@@ -832,10 +832,66 @@ footer {
     / object-fit:cover; */
 }
 
+/* ADMIN */
+
+.rowA {
+    justify-content: flex-end;
+}
+.custom-file-label {
+    z-index: 0;
+}
+.sidebar {
+    position: fixed;
+    left: 0;
+     top: 0;
+     bottom: 0;
+     background-color: #7394a5;
+     min-width: 30px;
+     font-size: .5em;
+     z-index: 1;
+}
+
+
+
+a{
+    color:#ccc;
+    text-shadow:0 -1px 0 black;                
+}
+a:hover,a:focus{
+    background:rgba(0,0,0,.4);
+    box-shadow:0 1px 0 rgba(255,255,255,.4);
+}
+a span{
+    width: fit-content;
+    font-size: 15px;
+    position:absolute; 
+    margin-top:23px;
+     margin-left:-35px;     
+     color:#09c;
+     background:rgba(0,0,0,.9);
+     padding:15px;
+     border-radius:3px;
+     box-shadow:0 0 2px rgba(0,0,0,.5);   
+     transform:scale(0) rotate(-12deg);    
+     transition:all .25s;   
+     opacity:0;
+     z-index: 2;
+}
+a:hover span, a:focus span{
+    transform:scale(1) rotate(0);     
+    opacity:1;   
+}
+#xxx{
+    justify-content: flex-end;
+    margin-left: 20%x;
+    
+}
+
+
 .test {
     background-color: #2D2D2D;
     color: white;
-    padding: 2em 5em 2em 5em;
+    padding: .5em;
     font-size: 0.7em;
 
 }
@@ -845,6 +901,7 @@ footer {
     color: #2D2D2D;
     padding: 2em 5em 2em 5em;
     font-size: 0.7em;
+    z-index: 1;
 }
 
 .test table {
@@ -854,6 +911,8 @@ footer {
 /* .test btn {
     color: white;
 } */
+
+/* ADMIN */
 
 #legalNotice {
     margin: 2em 1em 2em 2em;
@@ -897,10 +956,23 @@ h1 {
     text-align: center;
 }
 
-.nextEvent {
-    backdrop-filter: contrast(40%);
+.ccc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+}
+
+.contAll {
+    backdrop-filter: blur(0);
     width: 100%;
     margin-bottom: 100px;
+    border: solid 5px;
+}
+
+.imgType {
+    width: 100%;
 }
 
 #carousel {
@@ -1063,9 +1135,9 @@ hr {
           font-weight: 700;
       }
 
-      span {
+      /* span {
           color: #98B884;
-      }
+      } */
       #content {
           background-color: white;
           padding: 2em;
@@ -1086,12 +1158,14 @@ hr {
     padding: 10px 3% 20px 3%;
 }
 .form {
+    font-size: 1em;
     margin: 0 3% 0 3%;
     color: white;
     width: auto;
+    min-height: 400px;
     max-width: 500px;
     background-color: #333;
-    padding: 2em;
+    padding: 1em;
     border-radius: 10%;
 }
 /* FIN CONTACT */
