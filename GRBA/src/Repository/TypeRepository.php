@@ -23,7 +23,8 @@ class TypeRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('t')
                     ->leftJoin('t.events', 'e')
-                    ->where("t.code=1 OR t.code=2 OR t.code=3 OR t.code=4")             
+                    ->where("t.code=1 OR t.code=2 OR t.code=3 OR t.code=4")
+                    ->addSelect('e')
                     ->andWhere("e.date > CURRENT_TIMESTAMP()")
                     ->orderBy('e.date', 'ASC')
                     ->getQuery()
@@ -34,7 +35,8 @@ class TypeRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('t')
                     ->leftJoin('t.events', 'e')
-                    ->where("t.code!=1 AND t.code!=2 AND t.code!=3 AND t.code!=4")             
+                    ->where("t.code!=1 AND t.code!=2 AND t.code!=3 AND t.code!=4") 
+                    ->addSelect('e')            
                     ->andWhere("e.date > CURRENT_TIMESTAMP()")
                     ->orderBy('e.date', 'ASC')
                     ->getQuery()
@@ -45,7 +47,7 @@ class TypeRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('t')
                     ->leftJoin('t.events', 'e')
-                    ->where("t.code=1 OR t.code=2 OR t.code=3 OR t.code=4 OR t.code=5 OR t.code=6 OR t.code=7 OR t.code=8 OR t.code=9 OR t.code=10")             
+                    ->addSelect('e') 
                     ->andWhere("e.date < CURRENT_TIMESTAMP()")
                     ->orderBy('e.date', 'ASC')
                     ->getQuery()
