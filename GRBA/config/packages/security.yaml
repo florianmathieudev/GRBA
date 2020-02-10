@@ -33,8 +33,19 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
+    # access_denied_url: /connexion
+
     # # Easy way to control access for large sections of your site
     # # Note: Only the *first* access control that matches will be used
-    # access_control:
-    #     # - { path: ^/admin, roles: ROLE_ADMIN }
-    #     # - { path: ^/profile, roles: ROLE_USER }
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/fichiers, roles: ROLE_MEMBER }
+        - { path: ^/precedents-evenements, roles: ROLE_MEMBER }
+        - { path: ^/prochaines-randonnees, roles: ROLE_MEMBER }
+        - { path: ^/autres-evenements, roles: ROLE_MEMBER }
+        - { path: ^/evenement, roles: ROLE_MEMBER }
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_MEMBER
+        ROLE_MEMBER: ROLE_USER
+
