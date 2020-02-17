@@ -4,7 +4,7 @@
 
 {% block body %}
     <div>
-        <h2 class="currentEvent">{{ event.place }} le <span>{{ event.date|localizeddate('none', 'none', 'none', null, 'EEEE dd MMMM')}}</span></h2>
+        <h2 class="currentEvent">{{ event.place }} le <span>{{ event.date|localizeddate('full', 'none')}}</span></h2>
             
             <p id="content">{{ event.content }}</p>
     </div>

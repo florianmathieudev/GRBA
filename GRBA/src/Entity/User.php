@@ -107,7 +107,7 @@ class User implements UserInterface
         return $this;
     }
     public function getRoles() {
-        return ['ROLE_ADMIN'];
+        return [$this->role->getCode()];
     }
     public function getSalt() {}
     public function eraseCredentials() {}

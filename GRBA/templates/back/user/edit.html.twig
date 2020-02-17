@@ -11,12 +11,13 @@
                     <h1>Éditer User</h1>
                     <div>{{user.email}}</div>
                     <div>{{user.role}}</div>
+                    <div class="form">
                     {{ form_start(userRoleForm) }}
                     
                     {{ form_row(userRoleForm.role, {'attr': {'placeholder': 'Selectionner un role ...'}} )}}
                     <button class="btn">{{ button_label|default('Sauvergarder') }}</button>
                     {{ form_end(userRoleForm)}}
-                    
+                    </div>
                     <a href="{{ path('user_index') }}">Revenir à la liste</a>
                 </div>
             </div>
