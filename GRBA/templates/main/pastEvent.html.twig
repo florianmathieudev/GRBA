@@ -16,7 +16,7 @@
                                 <div class="nextEventCard">
                                     <div class="nextEventCard-title">
                                         <div >
-                                            {{ event.date|localizeddate('none', 'none', null, null, 'EEEE dd MMMM Y')}}                
+                                            {{ event.date|localizeddate('full', 'none')}}                
                                         </div>
                                         <div>
                                             {{ event.date ? event.date|date('H:i') : '' }}

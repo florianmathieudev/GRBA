@@ -30,7 +30,7 @@ class SecurityController extends AbstractController
 
             //on va enregistrer par défaut le role "user"
             //pour ca, on va rechercher le role
-            $roleUser = $manager->getRepository(Role::class)->findOneBy(["name" => "Utilisateur"]);
+            $roleUser = $manager->getRepository(Role::class)->findOneBy(["code" => "ROLE_USER"]);
             $user->setRole($roleUser);
             $manager->persist($user);
             $manager->flush();
