@@ -9,7 +9,7 @@
         <h1>Prochaines Randonnées</h1>
         {% for type in types %}  
         <div class="container-fluid nextEvent contAll">
-            <img class="imgType img-fluid" src="{{asset('image/' ~  type.pathPicture)}}" alt="" style="height:100vh; object-fit:cover; filter:opacity(.6)contrast(1.6)blur(5px)">
+            <img class="imgType img-fluid" src="{{asset('image/' ~  type.pathPicture)}}" alt="" >
             <div class="ccc">
                 <h2>{{ type.title }}</h2>
                     <div id="carousel">

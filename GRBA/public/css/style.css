@@ -458,7 +458,7 @@ figcaption {
     }
 
     #nextLastEvents h2 {
-        padding-top: 1em;
+        padding-top: 0em;
     }
 
     #nextLastEvents {
@@ -1014,6 +1014,9 @@ h1 {
 
 .imgType {
     width: 100%;
+    height:100vh; 
+    object-fit:cover; 
+    filter:opacity(.6)contrast(1.6)blur(5px);
 }
 
 #carousel {
@@ -1023,7 +1026,7 @@ h1 {
   }
 
 .your-class {
-    margin: 50px;
+    margin: 0px 50px 50px 50px;
 }
 
 .slick-slide {
@@ -1220,7 +1223,7 @@ hr {
 }
 h2 {
     text-align: center;
-    margin-top: 2em;
+    margin-top: 1em;
 }
 /* FIN TELECHARGEMENT */
 
