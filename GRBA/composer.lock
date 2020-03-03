@@ -1650,16 +1650,16 @@
         },
         {
             "name": "oneup/uploader-bundle",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/1up-lab/OneupUploaderBundle.git",
-                "reference": "ddc0c39b3d3f05b1e3fc47a91ae75b90fbf0ff36"
+                "reference": "a6011449b716f163fe1ae323053077e59212350c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/1up-lab/OneupUploaderBundle/zipball/ddc0c39b3d3f05b1e3fc47a91ae75b90fbf0ff36",
-                "reference": "ddc0c39b3d3f05b1e3fc47a91ae75b90fbf0ff36",
+                "url": "https://api.github.com/repos/1up-lab/OneupUploaderBundle/zipball/a6011449b716f163fe1ae323053077e59212350c",
+                "reference": "a6011449b716f163fe1ae323053077e59212350c",
                 "shasum": ""
             },
             "require": {
@@ -1730,7 +1730,7 @@
                 "plupload",
                 "upload"
             ],
-            "time": "2019-09-03T20:06:08+00:00"
+            "time": "2020-02-04T10:37:36+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -3075,16 +3075,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v4.3.9",
+            "version": "v4.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "3d72a13a7edcffecc73151821eb75c57e9214e00"
+                "reference": "ea69c129aed9fdeca781d4b77eb20b62cf5d5357"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/3d72a13a7edcffecc73151821eb75c57e9214e00",
-                "reference": "3d72a13a7edcffecc73151821eb75c57e9214e00",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/ea69c129aed9fdeca781d4b77eb20b62cf5d5357",
+                "reference": "ea69c129aed9fdeca781d4b77eb20b62cf5d5357",
                 "shasum": ""
             },
             "require": {
@@ -3093,7 +3093,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -3120,7 +3120,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-17T21:56:13+00:00"
+            "time": "2020-02-14T07:42:58+00:00"
         },
         {
             "name": "symfony/flex",
@@ -5227,16 +5227,16 @@
         },
         {
             "name": "symfony/templating",
-            "version": "v4.3.9",
+            "version": "v4.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/templating.git",
-                "reference": "b513c4152bcaf1e54889ff8b75760fad53385707"
+                "reference": "9995a4f65149d5ab7f0d9cca6d88136ae8bfaa72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/templating/zipball/b513c4152bcaf1e54889ff8b75760fad53385707",
-                "reference": "b513c4152bcaf1e54889ff8b75760fad53385707",
+                "url": "https://api.github.com/repos/symfony/templating/zipball/9995a4f65149d5ab7f0d9cca6d88136ae8bfaa72",
+                "reference": "9995a4f65149d5ab7f0d9cca6d88136ae8bfaa72",
                 "shasum": ""
             },
             "require": {
@@ -5252,7 +5252,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -5279,7 +5279,7 @@
             ],
             "description": "Symfony Templating Component",
             "homepage": "https://symfony.com",
-            "time": "2019-10-28T17:07:32+00:00"
+            "time": "2020-01-04T13:00:46+00:00"
         },
         {
             "name": "symfony/translation",
