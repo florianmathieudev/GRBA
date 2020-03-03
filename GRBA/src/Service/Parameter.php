@@ -23,7 +23,7 @@ class Parameter
         if(!empty($param)){
             return $param->getValue();
         }
-        // dd($param);
+     
         return "";
     }
 
@@ -33,6 +33,11 @@ class Parameter
         
         if(!empty($param)){
             $param->setValue($value);
+        } else {
+            $param = new EntityParameter();
+            $param->setKeyIndex($keyIndex);
+            $param->setValue($value);
+            $this->em->persist($param);
             
         }
 

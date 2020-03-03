@@ -20,6 +20,62 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class EventController extends AbstractController
 {
+
+
+    /**
+     * @Route("/edit/{id}", name="event_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Event $event, Picture $picture, EntityManagerInterface $em): Response
+    {
+        //création du formulaire
+        $eventForm = $this->createForm(EventType::class, $event);
+        $eventForm->handleRequest($request);
+        if ($eventForm->isSubmitted() && $eventForm->isValid()) {
+            // parcours $picturefiles
+            // si pas d'image envoyé, on garde les images précédentes
+            $image = $eventForm->get('picturefiles')->getData();
+            // dd($image);
+                //on parcours le tableau $image, pour chaque on transforme son nom
+            foreach($image as $i)
+            {
+                if ($i) {
+                $originalImagename = pathinfo($i->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeImagename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalImagename);
+                $newImagename = $safeImagename.'-'.uniqid().'.'.$i->guessExtension();
+                //on déplace le fichier dans le bon dossier
+                    try {
+                        $i->move(
+                        $this->getParameter('upload_picture_type_directory'), $newImagename
+                        );
+                        //
+                // dd($event->picturefiles);
+                        //creation d'une nouvelle image avec toutes ses données
+                        $picture = new Picture();
+                        $picture->setPath($newImagename);
+                        $picture->setName($newImagename);
+                        $picture->setEvent($event);
+                        $em->persist($picture);
+                        // dd($picture);
+                        //on enregistre le nom dans event
+                        $event->addPicture($picture);
+                        
+                
+                        } catch (FileException $e) {
+                 
+                        }
+                }
+            }
+                
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('event_index');
+        }
+        return $this->render('back/event/edit.html.twig', [
+            'event' => $event,
+            'eventForm' => $eventForm->createView(),
+        ]);
+    }
+
+
     /**
      * @Route("/", name="event_index", methods={"GET","POST"})
      */
@@ -80,62 +136,7 @@ class EventController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="event_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Event $event, Picture $picture, EntityManagerInterface $em): Response
-    {
-        //création du formulaire
-        $eventForm = $this->createForm(EventType::class, $event);
-        $eventForm->handleRequest($request);
-        if ($eventForm->isSubmitted() && $eventForm->isValid()) {
-            // dd($eventForm);
-            // parcours $picturefiles
-            // dump($eventForm->get('picturefiles')->getData());
-            // dd($event->picturefiles);
-        // si pas d'image envoyé, on garde les images précédentes
-            $image = $eventForm->get('picturefiles')->getData();
-            // dd($image);
-                //on parcours le tableau $image, pour chaque on transforme son nom
-            foreach($image as $i)
-            {
-                if ($i) {
-                $originalImagename = pathinfo($i->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeImagename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalImagename);
-                $newImagename = $safeImagename.'-'.uniqid().'.'.$i->guessExtension();
-                //on déplace le fichier dans le bon dossier
-                    try {
-                        $i->move(
-                        $this->getParameter('upload_picture_type_directory'), $newImagename
-                        );
-                        //
-                // dd($event->picturefiles);
-                        //creation d'une nouvelle image avec toutes ses données
-                        $picture = new Picture();
-                        $picture->setPath($newImagename);
-                        $picture->setName($newImagename);
-                        $picture->setEvent($event);
-                        $em->persist($picture);
-                        // dd($picture);
-                        //on enregistre le nom dans event
-                        $event->addPicture($picture);
-                        
-                
-                        } catch (FileException $e) {
-                 
-                        }
-                }
-            }
-                
-            $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('event_index');
-        }
-        return $this->render('back/event/edit.html.twig', [
-            'event' => $event,
-            'eventForm' => $eventForm->createView(),
-        ]);
-    }
-
+    
     /**
      * @Route("/{id}", name="event_delete", methods={"DELETE"})
      */

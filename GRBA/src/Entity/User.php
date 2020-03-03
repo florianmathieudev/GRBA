@@ -30,7 +30,7 @@ class User implements UserInterface
     private $email;
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères !")
+     * @Assert\Length(min="4", minMessage="Votre mot de passe doit faire minimum 8 caractères !")
      * 
      */
     private $password;
@@ -45,7 +45,7 @@ class User implements UserInterface
      */
     private $role;
     /**
-     * @Assert\Length(min="8", minMessage="Votre nom d\'utilisateur doit faire minimum 8 caractères !")
+     * @Assert\Length(min="4", minMessage="Votre nom d\'utilisateur doit faire minimum 8 caractères !")
      * @Assert\Length(max="16", maxMessage="Votre nom d\'utilisateur doit faire maximum 16 caractères !")
      * @ORM\Column(type="string", length=255)
      */
