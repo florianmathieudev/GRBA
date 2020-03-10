@@ -6,7 +6,7 @@
     <div>
         <h2 class="currentEvent">{{ event.place }} le <span>{{ event.date|localizeddate('full', 'none')}}</span></h2>
             
-            <p id="content">{{ event.content }}</p>
+            <p id="content">{{ event.content|nl2br }}</p>
     </div>
 
 

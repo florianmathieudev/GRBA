@@ -2,11 +2,21 @@
 {% block title %}Les précédents évenements{% endblock %}
 
 {% block body %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        {% for type in types %}  
+            <a class="nav-item nav-link" href="#{{ type.title }}">{{ type.title }}</a>
+        {% endfor %}
+        </div>
+    </div>
+</nav>
 <div class="container-fluid">
     <div class="cont" id="previousLastEvents">
         <h1>Evènements Précédents </h1>
         {% for type in types %}  
-        <div class="container-fluid nextEvent contAll">
+        <div id="{{ type.title }}" class="container-fluid nextEvent contAll">
             <img class="imgType img-fluid" src="{{asset('image/' ~  type.pathPicture)}}" alt="" style="height:100vh; object-fit:cover; filter:opacity(.6)contrast(1.6)blur(5px)">
                 <div class="ccc">
                     <h2>{{ type.title }}</h2>
@@ -18,13 +28,10 @@
                                         <div >
                                             {{ event.date|localizeddate('full', 'none')}}                
                                         </div>
-                                        <div>
-                                            {{ event.date ? event.date|date('H:i') : '' }}
-                                        </div>
                                     </div>
                                     <hr>
                                     <div class="nextEvent-desc">
-                                        {{ event.description }}
+                                        {{ event.description|nl2br }}
                                         <div class="nextEventCard-local">
                                             <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>{{ event.place }}
                                         </div>

@@ -12,7 +12,7 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th>Lieu</th>
+                                <th>Lieu et nb de km</th>
                                 <td>{{ event.place }}</td>
                             </tr>
                             <tr>
@@ -27,12 +27,12 @@
                                 <th>Contenu</th>
                                 <td>{{ event.content }}</td>
                             </tr>            
-                            <tr>
+                            {# <tr>
                                 <th>Images</th>
                                 {% for picture in pictures %}
                                     <td><img class="col-3" src="{{asset('uploads/pictures/' ~  event.picture)}}" class="card-img-top" alt="..."></td>
                                 {% endfor %}
-                            </tr>
+                            </tr> #}
                         </tbody>
                     </table>
                     <a href="{{ path('event_edit', {'id': event.id}) }}">Éditer</a>

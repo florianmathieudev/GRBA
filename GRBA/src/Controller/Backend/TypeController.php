@@ -51,9 +51,20 @@ class TypeController extends AbstractController
         $typeForm->handleRequest($request);
 
         if ($typeForm->isSubmitted() && $typeForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($type);
-            $entityManager->flush();
+            $image =  $typeForm->get('pathPicture')->getData();
+            $originalImagename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            $safeImagename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalImagename);
+            $newImageName = $safeImagename.'-'.uniqid().'.'.$image->guessExtension();
+            $image->move(
+                $this->getParameter('upload_picture_type_directory'),
+                $newImageName
+            );
+            $type->setPathPicture($newImageName);
+            $this->getDoctrine()->getManager()->flush();
+            $this->addFlash(
+                'confirmation',
+                "Le type été sauvegardé"
+            );
 
             return $this->redirectToRoute('type_index');
         }
@@ -79,11 +90,33 @@ class TypeController extends AbstractController
      */
     public function edit(Request $request, Type $type): Response
     {
+
+        $typeTitle = $type->getTitle();
+        $typeCode = $type->getCode();
+        $typePathPicture = $type->getPathPicture();
+
+
         $typeForm = $this->createForm(TypeType::class, $type);
         $typeForm->handleRequest($request);
 
         if ($typeForm->isSubmitted() && $typeForm->isValid()) {
+            $title = $typeForm->get('title')->getData();
+            if ($title) {
+                $type->setTitle($title);
+            } else {
+                $type->setTitle($typeTitle);
+            }
+
+            $code = $typeForm->get('code')->getData();
+            if ($code) {
+                $type->setCode($code);
+            } else (
+                $type->setCode($typeCode)
+            );
+
             $image =  $typeForm->get('pathPicture')->getData();
+
+            // $type->setPathPicture($typePathPicture);
             if ($image) {
                 $originalImagename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeImagename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalImagename);
@@ -96,7 +129,9 @@ class TypeController extends AbstractController
                     );
                     
                     $type->setPathPicture($newImageName);
-                }
+                } else {
+                    $type->setPathPicture($typePathPicture);
+                };
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash(
                 'confirmation',

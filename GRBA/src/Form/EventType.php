@@ -22,9 +22,9 @@ class EventType extends AbstractType
                 'label' => 'Date de l\'Evenement'
             ))
             ->add('place', TextType::class, array(
-                'label' => 'Lieu de l\'Evenement'
+                'label' => 'Lieu et nb de Km de l\'Evenement'
             ))
-            ->add('description', TextType::class, array(
+            ->add('description', TextareaType::class, array(
                 'label' => 'Description de l\'Evenement'
                 
             ))
@@ -36,7 +36,7 @@ class EventType extends AbstractType
             ->add('picturefiles', FileType::class, [
                 'required'   => false,
                 'multiple' => true,
-                'label' => 'Selectionner l\'Image du Type'
+                'label' => 'Selectionner la ou les Images de l\'evenement'
             ])
         ;
     }

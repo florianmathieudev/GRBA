@@ -13,9 +13,9 @@
                         <thead>
                             <tr>
                                 <th>Date</th>
-                                <th>Lieu</th>
+                                <th>Lieu et nb km</th>
                                 <th>Description</th>
-                                <th>Contenu</th>                
+                                <th>Compte-rendu</th>                
                                 <th>Type</th>
                                 <th>Actions</th>
                             </tr>
@@ -46,11 +46,11 @@
                     <div class="">
                     {{ form_start(eventForm) }}
                         {{ form_row(eventForm.date, {'attr': {'placeholder': 'Selectioner la date ...'}} )}}
-                        {{ form_row(eventForm.place, {'attr': {'placeholder': 'Entrer le lieu ...'}} )}}
+                        {{ form_row(eventForm.place, {'attr': {'placeholder': 'Entrer le lieu et le nombre de km...'}} )}}
                         {{ form_row(eventForm.description, {'attr': {'placeholder': 'Entrer une description ...'}} )}}
                         {{ form_row(eventForm.content, {'attr': {'placeholder': 'Entrer le contenu ...'}} )}}
                         {{ form_row(eventForm.type, {'attr': {'placeholder': 'Choisisser le type ...'}} )}}
-                        {{ form_row(eventForm.picturefiles)}}
+                        <div class="d-none">{{ form_row(eventForm.picturefiles)}}</div>
                         <button class="btn text-white">{{ button_label|default('Sauvergarder') }}</button>
                     {{ form_end(eventForm)}}
                 </div>

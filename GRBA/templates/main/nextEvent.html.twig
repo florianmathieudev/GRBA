@@ -3,12 +3,21 @@
 
 {% block body %}
 
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <a class="nav-item nav-link" href="#Randonnée mercredi">Randonnée mercredi</a>
+        <a class="nav-item nav-link" href="#Marche nordique.">Marche nordique</a>
+        <a class="nav-item nav-link " href="#Randonnée douce">Randonnée douce</a>
+        <a class="nav-item nav-link " href="#Randonnée dimanche">Randonnée dimanche</a>
+        </div>
+    </div>
+</nav>
 <div class="container-fluid">
     <div class="cont" id="nextLastEvents">
         <h1>Prochaines Randonnées</h1>
         {% for type in types %}  
-        <div class="container-fluid nextEvent contAll">
+        <div id="{{ type.title }}" class="container-fluid nextEvent contAll">
             <img class="imgType img-fluid" src="{{asset('image/' ~  type.pathPicture)}}" alt="" >
             <div class="ccc">
                 <h2>{{ type.title }}</h2>
@@ -20,14 +29,11 @@
                                     <div >
                                         {{ event.date|localizeddate('full', 'none')}}                
                                     </div>
-                                    <div>
-                                        {{ event.date ? event.date|date('H:i') : '' }}
-                                    </div>
                                 </div>
                             
                             <hr>
                                 <div class="nextEvent-desc">
-                                    {{ event.description }}
+                                    {{ event.description|nl2br }}
                                     <div class="nextEventCard-local">
                                         <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>
                                         {{ event.place }}

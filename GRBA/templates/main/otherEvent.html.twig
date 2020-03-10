@@ -2,12 +2,22 @@
 {% block title %}Les autres évenements{% endblock %}
 
 {% block body %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <a class="nav-item nav-link " href="#Repas">Repas</a>
+        <a class="nav-item nav-link " href="#Voyage">Voyage</a>
+        </div>
+    </div>
+</nav>
+
 <div class="container-fluid">
     <div class="cont" id="otherLastEvents">
         <h1>Prochaines Evènements</h1>
         
         {% for type in types %}  
-        <div class="container-fluid otherLastEvents contAll">
+        <div id="{{ type.title }}" class="container-fluid otherLastEvents contAll">
             <img class="imgType img-fluid" src="{{asset('image/' ~  type.pathPicture)}}" alt="" style="height:100vh; object-fit:cover; filter:opacity(.6)contrast(1.6)blur(5px)">
             <div class="ccc">
         <h2>{{ type.title }}</h2>
@@ -22,13 +32,10 @@
                                 <div >
                                     {{ event.date|localizeddate('full', 'none')}}                
                                 </div>
-                                <div>
-                                    {{ event.date ? event.date|date('H:i') : '' }}
-                                </div>
                             </div>
                             <hr>
                             <div class="nextEvent-desc">
-                                {{ event.description }}
+                                {{ event.description|nl2br }}
                                 <div class="nextEventCard-local">
                                     <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>
                                     {{ event.place }}

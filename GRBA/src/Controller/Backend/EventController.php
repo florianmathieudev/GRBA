@@ -25,9 +25,15 @@ class EventController extends AbstractController
     /**
      * @Route("/edit/{id}", name="event_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Event $event, Picture $picture, EntityManagerInterface $em): Response
+    public function edit(Request $request, Event $event, EntityManagerInterface $em): Response
     {
-        //création du formulaire
+        // $eventPlace = $event->getPlace();
+        // $eventDate = $event->getDate();
+        // $eventDescription = $event->getDescription();
+        // $eventContent = $event->getContent();
+        // $eventType = $event->getPictures();
+        // $eventType = $event->getFiles();
+        // //création du formulaire
         $eventForm = $this->createForm(EventType::class, $event);
         $eventForm->handleRequest($request);
         if ($eventForm->isSubmitted() && $eventForm->isValid()) {
@@ -72,6 +78,7 @@ class EventController extends AbstractController
         return $this->render('back/event/edit.html.twig', [
             'event' => $event,
             'eventForm' => $eventForm->createView(),
+            'pictures' => $event->getPictures(),
         ]);
     }
 

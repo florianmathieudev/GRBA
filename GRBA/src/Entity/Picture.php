@@ -29,18 +29,10 @@ class Picture
      */
     private $event;
 
-  
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $name;
-
-    
-
-    public function __construct()
-    {
-   
-    }
 
     public function getId(): ?int
     {

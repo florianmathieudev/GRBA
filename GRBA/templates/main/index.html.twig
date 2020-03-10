@@ -4,10 +4,12 @@
 
 {% block body %} 
 
+
+
 <div class="main">
     
     <div class="cont" id="nextLastEvents">
-        <h2>Prochaines Randonnées</h2>
+        <h2>Prochaines randonnées</h2>
     <div class="content nextLastEvents" >
         <div class="container-fluid">
                 <div class="row ">
@@ -25,7 +27,7 @@
                                                     <figcaption class="img-title">{{ event.type }}</figcaption>    
                                                 </figure>
                                                 <div class="card-body">
-                                                    <p>le {{ event.date| localizeddate('full', 'none')}} à {{ event.date ? event.date|date('H:i') : '' }}</p> 
+                                                    <p>le {{ event.date| localizeddate('full', 'none')}}</p> 
                                                 </div>
                                                 <h5 class="card-title">
                                                         <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>
@@ -36,11 +38,10 @@
                                             <div class="cardReverse" >      
                                                 <div class="back-card-body" id="des">
                                                     <h5 class="back-card-title">{{ event.place }}</h5>
-                                                        <h6>{{ event.date|localizeddate('full', 'none')}} à {{ event.date ? event.date|date('H:i:s') : '' }}</h6>
                                                         <div class="desc" >
                                                             <div id="descItem">
                                                                 <div>
-                                                                    {{ event.description|truncate(180) }}
+                                                                    {{ event.description|nl2br }}
                                                                 </div>
                                                             </div>
                                                         </div>                
@@ -69,7 +70,7 @@
                                                     <figcaption class="img-title">{{ event.type }}</figcaption>    
                                                 </figure>
                                                 <div class="card-body">
-                                                    <p>le {{ event.date|localizeddate('full', 'none')}} à {{ event.date ? event.date|date('H:i') : '' }}</p> 
+                                                    <p>le {{ event.date|localizeddate('full', 'none')}}</p> 
                                                 </div>
                                                 <h5 class="card-title">
                                                         <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i></span>
@@ -88,7 +89,7 @@
     </div>
     <div class="cont">
     <div class="content otherLastEvents">
-        <h2>Autres Évènements</h2>
+        <h2>Autres évènements</h2>
             <div class="container-fluid ">
                 <div class="row">
                     <div class="col-lg-11 col-md-12 ">   
@@ -100,10 +101,10 @@
                                             <div class="img-title2">{{ event.type }}</div>
                                         
                                         <div class="card-body card-body2">
-                                            <div id="date">le {{ event.date|localizeddate('full', 'none')}} à {{ event.date ? event.date|date('H:i') : '' }} </div>
+                                            <div id="date">le {{ event.date|localizeddate('full', 'none')}}</div>
                                         </div>
                                         <div class="desc2" >
-                                            {{ event.description }}
+                                            {{ event.description|nl2br }}
                                         </div>   
                                         <h5 class="card-title2">
                                                 <span style="font-size: 1em; color: black;"><i class="fas fa-map-marker-alt"></i>{{ event.place }}</span>
@@ -125,7 +126,7 @@
 
 
     <div class="cont" id="previousLastEvents">
-        <h2>Précédents Évènements</h2>
+        <h2>Précédents évènements</h2>
     <div class="content previousLastEvents">
         
             <div class="container-fluid">
@@ -146,7 +147,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{ event.place }}</h5>
                                                 <p>{{ event.date|localizeddate('full', 'none')}}</p>
-                                                <p class="card-text">{{ event.content|truncate(50) }}</p>
+                                                <p class="card-text">{{ event.content|nl2br }}</p>
                                                 
                                         </div>
                                         {% if is_granted('ROLE_MEMBER') %}
