@@ -85,9 +85,10 @@ class HeaderController extends AbstractController
             "telephone" => $parameter->get("telephone"),
             "email" => $parameter->get("email"),
             "adress" =>$parameter->get("adress"),
-            "open" => $parameter->get("open"),
-            "closed" => $parameter->get("closed"),
+            "textContact" => $parameter->get("textContact"),
             "text"=> $parameter->get("text"),
+            "facebook"=> $parameter->get("facebook"),
+            "otherSite"=> $parameter->get("otherSite")
         ];
         return $this->render('/_footer.html.twig', [
             'footers' => $listData

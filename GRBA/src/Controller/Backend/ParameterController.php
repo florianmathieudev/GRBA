@@ -6,10 +6,12 @@ use App\Entity\AProposPage;
 use App\Entity\ContactPage;
 use App\Entity\HeaderMainPage;
 use App\Entity\OtherHeaderPage;
+use App\Entity\Network;
 use App\Form\ContactPageType;
 use App\Form\HeaderMainPageType;
 use App\Form\OtherHeaderPageType;
 use App\Form\AProposPageType;
+use App\Form\NetworkType;
 use App\Service\Parameter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -165,8 +167,7 @@ class ParameterController extends AbstractController
         $contactData->telephone = $parameter->get("telephone");
         $contactData->email = $parameter->get("email");
         $contactData->adress = $parameter->get("adress");
-        $contactData->open = $parameter->get("open");
-        $contactData->closed = $parameter->get("closed");
+        $contactData->textContact = $parameter->get("textContact");
         //creation du formulaire
         $form = $this->createForm(ContactPageType::class, $contactData);
         $form->handleRequest($request);
@@ -175,14 +176,13 @@ class ParameterController extends AbstractController
             $parameter->set("telephone", $contactData->telephone);
             $parameter->set("email", $contactData->email);
             $parameter->set("adress", $contactData->adress);
-            $parameter->set("open", $contactData->open);
-            $parameter->set("closed", $contactData->closed);
+            $parameter->set("textContact", $contactData->textContact);
 
             $em->flush();
             //flash confirmation de sauvegarde
             $this->addFlash(
                 'confirmation',
-                "Les contact one été sauvegardé."
+                "Les contact on été sauvegardé."
             );
             return $this->redirectToRoute('backend_parameter_ContactPage');
         };
@@ -206,7 +206,7 @@ class ParameterController extends AbstractController
             $em->flush();
             $this->addFlash(
                 'confirmation',
-                "Le textea été sauvegardé"
+                "Le texte a été sauvegardé"
             );
             return $this->redirectToRoute('backend_parameter_AProposPage');
         };
@@ -249,6 +249,37 @@ class ParameterController extends AbstractController
         };
         return $this->render('back/parameter/otherHeaderPage.html.twig', [
             "otherHeaderForm" => $form->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("/network", name="network")
+     */
+    public function Network(Parameter $parameter, Request $request, EntityManagerInterface $em)
+    {
+        $networkData = new Network();
+        //on recupere les données existante
+        $networkData->facebook = $parameter->get("facebook");
+        $networkData->otherSite = $parameter->get("otherSite");
+        //creation du formulaire
+        $form = $this->createForm(NetworkType::class, $networkData);
+        $form->handleRequest($request);
+        //si valid, on set les données du formulaire
+        if ($form->isSubmitted() && $form->isValid()) {
+            $parameter->set("facebook", $networkData->facebook);
+            $parameter->set("otherSite", $networkData->otherSite);
+
+            $em->flush();
+            //flash confirmation de sauvegarde
+            $this->addFlash(
+                'confirmation',
+                "Les reseaux sociaux on été sauvegardé."
+            );
+            return $this->redirectToRoute('backend_parameter_network');
+        };
+        return $this->render('back/parameter/network.html.twig', [
+            "networkForm" => $form->createView()
         ]);
     }
 }

@@ -90,12 +90,9 @@ class TypeController extends AbstractController
      */
     public function edit(Request $request, Type $type): Response
     {
-
         $typeTitle = $type->getTitle();
         $typeCode = $type->getCode();
         $typePathPicture = $type->getPathPicture();
-
-
         $typeForm = $this->createForm(TypeType::class, $type);
         $typeForm->handleRequest($request);
 
@@ -106,28 +103,22 @@ class TypeController extends AbstractController
             } else {
                 $type->setTitle($typeTitle);
             }
-
             $code = $typeForm->get('code')->getData();
             if ($code) {
                 $type->setCode($code);
             } else (
                 $type->setCode($typeCode)
             );
-
             $image =  $typeForm->get('pathPicture')->getData();
 
-            // $type->setPathPicture($typePathPicture);
             if ($image) {
                 $originalImagename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeImagename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalImagename);
                 $newImageName = $safeImagename.'-'.uniqid().'.'.$image->guessExtension();
-
-            //    dd($image);
                     $image->move(
                         $this->getParameter('upload_picture_type_directory'),
                         $newImageName
                     );
-                    
                     $type->setPathPicture($newImageName);
                 } else {
                     $type->setPathPicture($typePathPicture);
@@ -137,10 +128,8 @@ class TypeController extends AbstractController
                 'confirmation',
                 "Le type été sauvegardé"
             );
-
             return $this->redirectToRoute('type_index');
         }
-
         return $this->render('back/type/edit.html.twig', [
             'type' => $type,
             'typeForm' => $typeForm->createView(),

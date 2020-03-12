@@ -40,10 +40,10 @@
     <nav class="menu navbar navbar-expand-md ">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav flex-column">
-              
+
             <a class="nav-link" href="{{ path('event_index') }}">Évènements<span class="admin" >Création d'un évènement et ajout de photos et édition d'un évènement existant</span class="admin" ></a>
                 
         
@@ -59,10 +59,12 @@
             <a class="nav-link" href="{{ path('backend_parameter_ContactPage') }}">Contact<span class="admin" >Modification du téléphone, email, adresse, heure d'ouverture et de fermeture</span ></a>
         
             <a class="nav-link" href="{{ path('backend_parameter_AProposPage') }}">A propos<span class="admin" >Modification du texte en pied de page</span ></a>
+
+            <a class="nav-link" href="{{ path('backend_parameter_network') }}">Reseaux sociaux<span class="admin" >Modification des lien de reseau sociaux</span ></a>
         
             <a class="nav-link" href="{{ path('user_index') }}">Utilisateurs<span class="admin" >Validation des demandes d'inscriptions</span ></a>
             </ul>
-          </div>
+        </div>
     </nav>
 </div>
 

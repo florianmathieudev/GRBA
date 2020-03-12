@@ -13,7 +13,6 @@ class ContactPage
     public $telephone;
     public $email;
     public $adress;
-    public $open;
-    public $closed;
+    public $texteContact;
     
 }
