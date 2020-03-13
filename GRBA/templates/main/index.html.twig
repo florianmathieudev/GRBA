@@ -147,7 +147,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{ event.place }}</h5>
                                                 <p>{{ event.date|localizeddate('full', 'none')}}</p>
-                                                <p class="card-text">{{ event.content|nl2br|truncate(80) }}</p>
+                                                <p class="card-text">{{ event.content|nl2br|truncate(50) }}</p>
                                                 
                                         </div>
                                         {% if is_granted('ROLE_MEMBER') %}
